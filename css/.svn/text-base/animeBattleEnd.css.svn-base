@@ -1,0 +1,118 @@
+@-webkit-keyframes nbaLogoIN {
+	0% {-webkit-transform:scale(4, 4);opacity: 0;}
+	100% {-webkit-transform:scale(1, 1);opacity: 1;}
+}
+@-webkit-keyframes scoreIN {
+	0% {-webkit-transform:scale(3, 3);opacity: 0;}
+	100% {-webkit-transform:scale(1, 1);opacity: 1;}
+}
+@-webkit-keyframes textIN {
+	0% {-webkit-transform:scale(0.2, 0.2);opacity: 0;}
+	90% {-webkit-transform:scale(1.2, 1.2);opacity: 1;}
+	100% {-webkit-transform:scale(1, 1);opacity: 1;}
+}
+@-webkit-keyframes run1 {
+	0% {opacity: 1;}
+	33% {opacity: 0;}
+	66% {opacity: 0;}
+	100% {opacity: 1;}
+}
+@-webkit-keyframes run2 {
+	0% {opacity: 0;}
+	33% {opacity: 1;}
+	66% {opacity: 0;}
+	100% {opacity: 0;}
+}
+@-webkit-keyframes run3 {
+	0% {opacity: 0;}
+	33% {opacity: 0;}
+	66% {opacity: 1;}
+	100% {opacity: 0;}
+}
+@-webkit-keyframes light1_1 {
+	0% {opacity: 1;-webkit-transform: rotate(-30deg);}
+	50% {opacity: 1;-webkit-transform: rotate(30deg);}
+	100% {opacity: 1;-webkit-transform: rotate(-30deg);}
+}
+@-webkit-keyframes light1_2 {
+	0% {opacity: 1;-webkit-transform: rotate(30deg);}
+	50% {opacity: 1;-webkit-transform: rotate(-30deg);}
+	100% {opacity: 1;-webkit-transform: rotate(30deg);}
+}
+@-webkit-keyframes starHikaru {
+	0% {-webkit-transform:scale(0.2, 0.2);opacity: 0;}
+	50% {-webkit-transform:scale(1, 1);opacity: 0.8;}
+	70% {-webkit-transform:scale(1, 1);opacity: 0.8;}
+	80% {-webkit-transform:scale(0.2, 0.2);opacity: 0;}
+	100% {-webkit-transform:scale(0.2, 0.2);opacity: 0;}
+}
+@-webkit-keyframes scorebgIN{
+	0% {opacity: 0;-webkit-transform: translate(0px, 150px);}
+	100% {opacity: 10;-webkit-transform: translate(0px, 0px);}
+}
+
+.doScorebgIN{
+	-webkit-animation-name: scorebgIN; 
+	-webkit-animation-duration: 0.2s; 
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.doStarHikaru{
+	-webkit-animation-name: starHikaru; 
+	-webkit-animation-duration: 0.4s; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.doLight1_1 {
+	-webkit-animation-name: light1_1; 
+	-webkit-animation-duration: 3s; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: infinite;
+}
+.doLight1_2 {
+	-webkit-animation-name: light1_2; 
+	-webkit-animation-duration: 3s; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: infinite;
+}
+.doRun1 {
+	-webkit-animation-name: run1; 
+	-webkit-animation-duration: 0.3s; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: infinite;
+}
+.doRun2 {
+	-webkit-animation-name: run2; 
+	-webkit-animation-duration: 0.3s; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: infinite;
+}
+.doRun3 {
+	-webkit-animation-name: run3; 
+	-webkit-animation-duration: 0.3s; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: infinite;
+}
+.doTextIN{
+	-webkit-animation-name: textIN; 
+	-webkit-animation-duration: 0.2s; 
+	-webkit-animation-timing-function: ease-in;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.doScoreIN {
+	-webkit-animation-name: scoreIN; 
+	-webkit-animation-duration: 0.1s; 
+	-webkit-animation-timing-function: ease-in;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.doNbaLogoIN {
+	-webkit-animation-name: nbaLogoIN; 
+	-webkit-animation-duration: 0.1s; 
+	-webkit-animation-timing-function: ease-in;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}

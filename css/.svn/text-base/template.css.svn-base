@@ -1,0 +1,206 @@
+@charset "utf-8";
+
+h2.titleTemplate {
+	width:100%;
+	height:30px;
+	line-height:30px;
+	font-size:16px;
+	background-color:#039;
+	color:#FFF;
+	text-align:center;
+	margin-bottom:10px;
+}
+
+.bgTemplate {
+	background:url(../img/bg/bgWood.jpg) repeat-y;
+	background-size:100%;
+}
+
+.div.boxWrapAreaGray {
+	margin-bottom:0px;
+}
+
+.titleBoxGray {
+	text-align:center;
+}
+
+div.marginTemplate div.wrapAreaYellow div.areaYellow,
+div.marginTemplate div.wrapAreaGray div.areaGray {
+	margin-bottom:0;
+}
+
+h3.titleTemplate2 {
+	width:100%;
+	height:25px;
+	line-height:25px;
+	font-size:12px;
+	background-color:#69C;
+	color:#FFF;
+	text-align:center;
+	margin:10px 0 5px;
+}
+
+#template {
+	margin: 0 auto;
+	padding-bottom:15px;
+	width: 320px;
+	position:relative;
+	background:#6CF;
+}
+
+#template div.txt-center p {
+	margin-bottom:15px;
+}
+
+
+/* 1 Team Color
+-----------------------
+/* 緑　// Boston Celtics用 */
+.grdTeamBOS {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(73,127,100,1)), color-stop(100%,rgba(0,128,64,1))); 
+}
+
+/* 濃紺　// New Jersey Nets用 */
+.grdTeamNJN {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(28,51,73,1)), color-stop(100%,rgba(8,41,74,1))); 
+}
+
+/* 青　// New York Knicks用 */
+.grdTeamNYK {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(58,117,188,1)), color-stop(100%,rgba(21,96,190,1)));
+}
+
+/* 黒　// Philadelphia 76ers用 */
+.grdTeamPHI {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(45,45,45,1)), color-stop(100%,rgba(0,0,0,1)));
+}
+
+/* 赤　// Toronto Raptors用 */
+.grdTeamTOR {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(211,86,107,1)), color-stop(100%,rgba(212,0,38,1))); 
+}
+
+/* 赤　// Chicago Bulls用 */
+.grdTeamCHI {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(211,69,93,1)), color-stop(100%,rgba(212,0,38,1))); 
+}
+
+/* 赤　// Cleveland Cavaliers用 */
+.grdTeamCLE {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(178,62,70,1)), color-stop(100%,rgba(179,18,29,1))); 
+}
+
+/* 水色// Detroit Pistons用 */
+.grdTeamDET {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(58,126,175,1)), color-stop(100%,rgba(0,103,177,1)));
+}
+
+/* 濃紺　// Indiana Pacers用 */
+.grdTeamIND {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(28,54,86,1)), color-stop(100%,rgba(9,44,87,1)));
+}
+
+/* 緑　// Milwaukee Bucks用 */
+.grdTeamMIL {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(43,76,55,1)), color-stop(100%,rgba(30,77,48,1)));
+}
+
+/* 濃紺　// Atlanta Hawks用 */
+.grdTeamATL {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(42,42,76,1)), color-stop(100%,rgba(0,0,77,1)));
+}
+
+/* オレンジ　// Charlotte Bobcats用 */
+.grdTeamCHA {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(239,109,76,1)), color-stop(100%,rgba(241,88,48,1)));
+}
+
+/* 黒　// MIAMI HEAT用 */
+.grdTeamMIA {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(45,45,45,1)), color-stop(100%,rgba(0,0,0,1)));
+}
+
+/* 青　// Orlando Magic用 */
+.grdTeamORL {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(64,148,196,1)), color-stop(100%,rgba(0,124,197,1)));
+}
+
+/* 鈍青　// Washington Wizards用 */
+.grdTeamWAS {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(50,99,130,1)), color-stop(100%,rgba(0,79,131,1))); 
+}
+
+/* 水色　// Denver Nuggets用 */
+.grdTeamDEN {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(110,161,204,1)), color-stop(100%,rgba(75,144,204,1))); 
+}
+
+/* 青　// Minnesota Timberwolves用 */
+.grdTeamMIN {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(82,121,170,1)), color-stop(100%,rgba(36,95,172,1)));
+}
+
+/* オレンジ　// Oklahoma City Thunder用 */
+.grdTeamOKC {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(239,113,91,1)), color-stop(100%,rgba(240,80,51,1)));
+}
+
+/* 黒　// Portland Trail Blazers用 */
+.grdTeamPOR {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(45,45,45,1)), color-stop(100%,rgba(0,0,0,1)));
+}
+
+/* 濃紺　// Utah Jazz用 */
+.grdTeamUTA {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(44,56,89,1)), color-stop(100%,rgba(26,43,90,1))); 
+}
+
+/* 濃紺　// Golden State Warriors用 */
+.grdTeamGSW {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(22,31,63,1)), color-stop(100%,rgba(7,20,64,1))); 
+}
+
+/* 赤　// Los Angeles Clippers用 */
+.grdTeamLAC {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(204,59,95,1)), color-stop(100%,rgba(204,0,51,1)));
+}
+
+/* 紫　// Los Angeles Lakers用 */
+.grdTeamLAL {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(120,93,170,1)), color-stop(100%,rgba(97,55,173,1)));
+}
+
+/* 紫　// Phoenix Suns用 */
+.grdTeamPHX {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(85,74,135,1)), color-stop(100%,rgba(66,49,137,1)));
+}
+
+/* 紫　// Sacramento Kings用 */
+.grdTeamSAC {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(81,81,150,1)), color-stop(100%,rgba(57,57,151,1)));
+}
+
+/* 紺　// Dallas Mavericks用 */
+.grdTeamDAL {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(33,50,84,1)), color-stop(100%,rgba(7,33,86,1)));
+}
+
+/* 赤　// Houston Rockets用 */
+.grdTeamHOU {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(196,62,82,1)), color-stop(100%,rgba(197,0,30,1)));
+}
+
+/* 濃紺　// Memphis Grizzlies用 */
+.grdTeamMEM {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(43,57,86,1)), color-stop(100%,rgba(24,45,89,1)));
+}
+
+/* 水色　// New Orleans Hornets用 */
+.grdTeamNOH {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(54,156,193,1)), color-stop(100%,rgba(0,143,196,1)));
+}
+
+/* 黒　// San Antonio Spurs用 */
+.grdTeamSAS {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(45,45,45,1)), color-stop(100%,rgba(0,0,0,1)));
+}

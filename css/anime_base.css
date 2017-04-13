@@ -1,0 +1,138 @@
+.anime-stage {
+	font-style: normal;
+	position: relative;
+	-webkit-perspective: 600;
+	width:100%;
+	height:550px;
+	overflow:hidden;
+	background-color:#000;
+}
+.anime-stage #animelim{
+	height:550px;
+	width:100%;
+	overflow:hidden;
+}
+.anime-stage div {
+	position: absolute;
+}
+.anime-stage a {
+/*	color: inherit;*/
+	color: #f00;
+	text-decoration: none;
+}
+.btn1{
+	color: #f00;
+}
+.anime-stage * {
+	margin: 0;
+	padding: 0;
+	-webkit-font-smoothing: antialiased;
+}
+.anime-stage img {
+	width:100%;
+	overflow: hidden;
+}
+body, .anime-stage{
+	margin: 0 auto;
+	padding: 0;
+}
+
+/* ------------------------------------------------------------
+	Float
+------------------------------------------------------------ */
+.fcl { 
+	zoom: 100%;
+}
+
+.fcl:after {
+	content: " "; 
+	clear: both; 
+	height: 0; 
+	display: block; 
+	visibility:hidden;
+}
+
+.nodisplay {
+	display: none;	
+}
+#test-stage{
+	width:320px;
+	overflow:hidden;
+}
+/* ------------------------------------------------------------
+	common
+------------------------------------------------------------ */
+@-webkit-keyframes fadeIN {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+@-webkit-keyframes fadeOUT {
+	0% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+@-webkit-keyframes fadeINOUT {
+	0% {opacity: 0;}
+	50% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+.fadeIN01 {
+	-webkit-animation-name: fadeIN; 
+	-webkit-animation-duration: 0.1s; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.fadeOUT01 {
+	-webkit-animation-name: fadeOUT; 
+	-webkit-animation-duration: 0.1s; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.fadeIN03 {
+	-webkit-animation-name: fadeIN; 
+	-webkit-animation-duration: 0.3s; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.fadeIN05 {
+	-webkit-animation-name: fadeIN; 
+	-webkit-animation-duration: 0.5s; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.fadeIN08 {
+	-webkit-animation-name: fadeIN; 
+	-webkit-animation-duration: 0.8s; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.fadeOUT03 {
+	-webkit-animation-name: fadeOUT; 
+	-webkit-animation-duration: 0.3s; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.fadeOUT05 {
+	-webkit-animation-name: fadeOUT; 
+	-webkit-animation-duration: 0.5s; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.infiniteFadeINOUT {
+	-webkit-animation-name: fadeINOUT; 
+	-webkit-animation-duration: 2s; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-direction:alternate;
+}

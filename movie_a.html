@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>シートガチャ</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no, address=no" />
+    <link type="text/css" rel="stylesheet" href="css/anime_base.css" />
+    <link type="text/css" rel="stylesheet" href="css/anime_sheetgacha.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.velocity.min.js"></script>
+    <script type="text/javascript" src="js/jsdeferred.js"></script>
+  </head>
+  <body>
+    <style type="text/css">
+      #container{padding:0;}
+      .anime-stage, #animelim{width: 320px;}
+      .bit000{width:100%;height:100%;opacity: 0;top: 0px;}
+      .bitFFF{width:100%;height:100%;opacity: 0;top: 0px;}
+      .bit000 img{width:100%;height:100%;}
+      .bitFFF img{width:100%;height:100%;}
+      .bg{opacity: 1;width: 320px;}
+      .bg2{width: 320px;visibility: hidden;}
+      #btn{width: 171px; left:76.5px;top: 335px;opacity: 0;}
+
+      .card{opacity: 0;}
+
+    #getcard1_1{width: 168.5px;left: 76px;top: 90px;}
+    #getcard1_1new{width: 65px;top: 90px;left: 180px;opacity: 0;}
+
+    #getcard21{width: 110px;left: 31px;top: 92px;}
+    #getcard22{width: 110px;left: 171px;top: 92px;}
+
+    #getcard2_1new{width: 49px;top: 92px;left: 94px;opacity: 0;}
+    #getcard2_2new{width: 49px;top: 92px;left: 234px;opacity: 0;}
+
+    #getcard3_1{width: 94px;left: 8px;top: 132px;}
+    #getcard3_2{width: 94px;left: 112px;top: 132px;}
+    #getcard3_3{width: 94px;left: 217px;top: 132px;}
+    #getcard3_1new{width: 36px;top: 132px;left: 67px;opacity: 0;}
+    #getcard3_2new{width: 36px;top: 132px;left: 171px;opacity: 0;}
+    #getcard3_3new{width: 36px;top: 132px;left: 277px;opacity: 0;}
+
+    #getcard4_1{width: 93px;left: 62px;top: 35px;}
+    #getcard4_2{width: 93px;left: 166px;top: 35px;}
+    #getcard4_3{width: 93px;left: 62px;top: 165px;}
+    #getcard4_4{width: 93px;left: 166px;top: 165px;}
+
+    #getcard4_1new {width: 49px;top: 35px;left: 106px;opacity: 0;}
+    #getcard4_2new{width: 49px;top: 35px;left: 210px;opacity: 0;}
+    #getcard4_3new{width: 49px;top: 165px;left: 106px;opacity: 0;}
+    #getcard4_4new{width: 49px;top: 165px;left: 210px;opacity: 0;}
+
+    #getcard5_1{width: 98px;left: 5px;top: 38px;}
+    #getcard5_2{width: 98px;left: 111px;top: 38px;}
+    #getcard5_3{width: 98px;left: 215px;top: 38px;}
+    #getcard5_4{width: 98px;left: 58px;top: 166px;}
+    #getcard5_5{width: 98px;left: 161px;top: 166px;}
+
+    #getcard5_1new{width: 49px;top: 38px;left: 55px;opacity: 0;}
+    #getcard5_2new{width: 49px;top: 38px;left: 161px;opacity: 0;}
+    #getcard5_3new{width: 49px;top: 38px;left: 265px;opacity: 0;}
+    #getcard5_4new{width: 49px;top: 166px;left: 112px;opacity: 0;}
+    #getcard5_5new{width: 49px;top: 166px;left: 211px;opacity: 0;}
+
+    #getcard61{width: 83px;left: 20px;top: 68px;}
+    #getcard62{width: 83px;left: 114px;top: 68px;}
+    #getcard63{width: 83px;left: 208px;top: 68px;}
+    #getcard64{width: 83px;left: 20px;top: 186px;}
+    #getcard65{width: 83px;left: 114px;top: 186px;}
+    #getcard66{width: 83px;left: 208px;top: 186px;}
+
+    #getcard6_1new{width: 36px; left: 67px; top: 68px; opacity: 0; }
+    #getcard6_2new{width: 36px;left: 161px;top: 68px;opacity: 0;}
+    #getcard6_3new{width: 36px; left: 255px; top: 68px; opacity: 0; }
+    #getcard6_4new{width: 36px; left: 67px; top: 186px; opacity: 0; }
+    #getcard6_5new{width: 36px;left: 161px;top: 186px;opacity: 0;}
+    #getcard6_6new{width: 36px; left: 255px; top: 186px; opacity: 0; }
+
+    #getcard7_1{width: 110px; left: 105px; top: 113px; }
+    #getcard7_2{width: 62px; left: 19px; top: 58px;}
+    #getcard7_3{width: 62px; left: 19px; top: 142px; }
+    #getcard7_4{width: 62px; left: 19px; top: 227px;}
+    #getcard7_5{width: 62px; left: 240px; top: 58px;}
+    #getcard7_6{width: 62px; left: 240px; top: 142px; }
+    #getcard7_7{width: 62px; left: 240px; top: 227px;}
+
+    #getcard7_1new{width: 49px; top: 113px; left: 166px; opacity: 0; }
+    #getcard7_2new{width: 32px; top: 58px;  left: 50px; opacity: 0; }
+    #getcard7_3new{width: 32px; top: 142px; left: 50px; opacity: 0; }
+    #getcard7_4new{width: 32px; top: 227px; left: 50px; opacity: 0; }
+    #getcard7_5new{width: 32px; top: 58px;   left: 271px;opacity: 0;}
+    #getcard7_6new{width: 32px; top: 142px;  left: 271px;opacity: 0;}
+    #getcard7_7new{width: 32px; top: 227px;  left: 271px;opacity: 0;}
+
+    #getcard8_1{width: 110px;left: 104px;top: 18px;}
+    #getcard8_2{width: 110px;left: 104px;top: 171px;}
+    #getcard8_3{width: 61px;left: 19px;top: 41px;}
+    #getcard8_4{width: 61px;left: 19px;top: 125px;}
+    #getcard8_5{width: 61px;left: 19px;top: 209px;}
+    #getcard8_6{width: 61px;left: 238px;top: 41px;}
+    #getcard8_7{width: 61px;left: 238px;top: 125px;}
+    #getcard8_8{width: 61px;left: 238px;top: 209px;}
+
+    #getcard8_1new{width: 49px;top: 18px;left: 163px;opacity: 0;}
+    #getcard8_2new{width: 49px;top: 171px;left: 163px;opacity: 0;}
+    #getcard8_3new{width: 32px;top: 41px;left: 48px;opacity: 0;}
+    #getcard8_4new{width: 32px;top: 126px;left: 48px;opacity: 0;}
+    #getcard8_5new{width: 32px;top: 209px;left: 48px;opacity: 0;}
+    #getcard8_6new{width: 32px;top: 41px;left: 267px;opacity: 0;}
+    #getcard8_7new{width: 32px;top: 126px;left: 267px;opacity: 0;}
+    #getcard8_8new{width: 32px;top: 209px;left: 267px;opacity: 0;}
+
+    #getcard9_1{  width: 76px;  left: 122px;  top: 18px;}
+    #getcard9_2{  width: 76px;  left: 122px;  top: 124px;}
+    #getcard9_3{  width: 76px;  left: 122px;  top: 230px;}
+    #getcard9_4{width: 76px; left: 37px; top: 18px; }
+    #getcard9_5{width: 76px; left: 37px; top: 124px; }
+    #getcard9_6{width: 76px; left: 37px; top: 230px; }
+    #getcard9_7{width: 76px; left: 207px; top: 18px; }
+    #getcard9_8{  width: 76px;  left: 207px;  top: 124px;}
+    #getcard9_9{  width: 76px;  left: 207px;  top: 230px;}
+
+    #getcard9_1new{width: 33px; top: 19px; left: 165px; opacity: 0; }
+    #getcard9_2new{width: 33px; top: 124px; left: 165px; opacity: 0; }
+    #getcard9_3new{width: 33px; top: 230px; left: 165px; opacity: 0; }
+    #getcard9_4new{width: 33px; top: 19px; left: 79px; opacity: 0; }
+    #getcard9_5new{width: 33px; top: 124px; left: 79px; opacity: 0; }
+    #getcard9_6new{width: 33px; top: 230px; left: 79px; opacity: 0; }
+    #getcard9_7new{width: 33px; top: 19px; left: 251px; opacity: 0; }
+    #getcard9_8new{width: 33px; top: 124px; left: 251px; opacity: 0; }
+    #getcard9_9new{width: 33px; top: 230px; left: 251px; opacity: 0; }
+
+    #getcard10_1{  width: 58px;  left: 130px;  top: 12px;}
+    #getcard10_2{  width: 58px;  left: 130px;  top: 91px;}
+    #getcard10_3{  width: 58px;  left: 130px;  top: 167px;}
+    #getcard10_4{  width: 58px;  left: 130px;  top: 246px;}
+    #getcard10_5{  width: 58px;  left: 45px;  top: 45px;}
+    #getcard10_6{  width: 58px;  left: 45px;  top: 129px;}
+    #getcard10_7{  width: 58px;  left: 45px;  top: 215px;}
+    #getcard10_8{  width: 58px;  left: 219px;  top: 45px;}
+    #getcard10_9{  width: 58px;  left: 219px;  top: 129px;}
+    #getcard10_10{  width: 58px;  left: 219px;  top: 215px;}
+
+    #getcard10_1new{  width: 33px;  top: 12px;  left: 155px;  opacity: 0;}
+    #getcard10_2new{  width: 33px;  top: 91px;  left: 155px;  opacity: 0;}
+    #getcard10_3new{  width: 33px;  top: 167px;  left: 155px;  opacity: 0;}
+    #getcard10_4new{  width: 33px;  top: 246px;  left: 155px;  opacity: 0;}
+    #getcard10_5new{  width: 33px;  top: 45px;  left: 71px;  opacity: 0;}
+    #getcard10_6new{  width: 33px;  top: 129px;  left: 71px;  opacity: 0;}
+    #getcard10_7new{  width: 33px;  top: 215px;  left: 71px;  opacity: 0;}
+    #getcard10_8new{  width: 33px;  top: 45px;  left: 245px;  opacity: 0;}
+    #getcard10_9new{  width: 33px;  top: 129px;  left: 245px;  opacity: 0;}
+    #getcard10_10new{  width: 33px;  top: 215px;  left: 245px;  opacity: 0;}
+
+    #getcard11_1{width: 146px;left: 88px;top: 110px;}
+    #getcard11_2{width: 54px;left: 17px;top: 28px;}
+    #getcard11_3{width: 54px;left: 17px;top: 98px;}
+    #getcard11_4{width: 54px;left: 17px;top: 168px;}
+    #getcard11_5{width: 54px;left: 17px;top: 238px;}
+    #getcard11_6{width: 54px;left: 17px;top: 308px;}
+    #getcard11_7{width: 54px;left: 252px;top: 28px;}
+    #getcard11_8{width: 54px;left: 252px;top: 98px;}
+    #getcard11_9{width: 54px;left: 252px;top: 168px;}
+    #getcard11_10{width: 54px;left: 252px;top: 238px;}
+    #getcard11_11{width: 54px;left: 252px;top: 308px;}
+
+    #getcard11_1new{width: 65px;top: 110px;left: 169px;opacity: 0;}
+    #getcard11_2new{width: 32px;top: 28px;left: 40px;opacity: 0;}
+    #getcard11_3new{width: 32px;top: 98px;left: 40px;opacity: 0;}
+    #getcard11_4new{width: 32px;top: 168px;left: 40px;opacity: 0;}
+    #getcard11_5new{width: 32px;top: 238px;left: 40px;opacity: 0;}
+    #getcard11_6new{width: 32px;top: 308px;left: 40px;opacity: 0;}
+    #getcard11_7new{width: 32px;top: 28px;left: 275px;opacity: 0;}
+    #getcard11_8new{width: 32px;top: 98px;left: 275px;opacity: 0;}
+    #getcard11_9new{width: 32px;top: 168px;left: 275px;opacity: 0;}
+    #getcard11_10new{width: 32px;top: 238px;left: 275px;opacity: 0;}
+    #getcard11_11new{width: 32px;top: 308px;left: 275px;opacity: 0;}
+
+    #cardMask1{width: 185px; left: 68px; top: 83px; opacity: 0; }
+    #cardMask2 {width: 270px;opacity: 0;left: 21px;top: 79px;}
+    #cardMask3{width: 320px;left: 0px;top: 120px;opacity: 0;}
+    #cardMask4{width: 320px;opacity: 0;left: 0px;top: 25px;}
+    #cardMask5{width: 320px;opacity: 0;top: 28px;left: 0px;}
+    #cardMask6{width: 294px;top: 57px;left: 9px;opacity:0;}
+    #cardMask7{width: 304px;opacity: 0;left: 8px;top: 25px;}
+    #cardMask8{width: 300px;opacity: 0;top: 10px;left: 9px;}
+    #cardMask9{width: 265px;left: 27px;top: 9px;opacity: 0;}
+    #cardMask10{width: 304px;left: 8px;top: 9px;opacity: 0;}
+    #cardMask11{width: 320px;opacity: 0;left: 1px;top: 10px;}
+
+    #card1,#card2,#card3,#card4,#card5,#card6,#card7,#card8,#card9,#card10,#card11{opacity: 0;}
+
+    .speed{visibility: hidden;width:320px;}
+    .speed img{height:390px;}
+    .bg2 img{height:390px;}
+
+    #char1{width:370px;left:-370px;top:50px;}
+    #char2{width:701px;left:320px;top:-30px;}
+    #char3{width:327px;left:-328px;top:-30px;}
+    </style>
+    <script>
+      var gachatype = 10;//3 or 10
+      var card1new = true;
+      var card2new = false;
+      var card3new = true;
+      var card4new = false;
+      var card5new = false;
+      var card6new = false;
+      var card7new = false;
+      var card8new = false;
+      var card9new = false;
+      var card10new = false;
+      var card11new = false;
+      var bg2switching = true;
+      var bg1switching = true;
+      var tick = 0;
+      var lightTick = 0;
+      var staring = true;
+    var number = 2;
+    var step = 0;
+      function doStar(){
+          var rad1 = 80;
+          var rad2 = 50;
+          var baseX = 160;
+          var baseY = 190;
+          for(var i=1;i<=12;i++){
+            var starnum = Math.floor(Math.random()*2+1);
+              //if(staring && starnum<2){
+              if(staring && starnum<2){
+                //var star = Math.floor(Math.random()*3 +1);
+                var polarPosX = Math.floor(Math.random()*320 +1);
+                var polarPosY = Math.floor(Math.random()*380 +1);
+                $('#star'+i).attr('class', 'star').css("display","block").css("left",polarPosX+"px").css("top",polarPosY+"px").addClass("doStar4");
+              }else{
+                $('#star'+i).css("display","none");
+              }
+          }
+          //if(staring)setTimeout("doStar()",600);
+        }
+
+      $(document).ready(function() {
+        var params = getUrlParams();
+        if(params['gachatype']) gachatype = params['gachatype'];
+        if(params['number']) number = params['number'];
+
+        Deferred.define();
+
+        if(gachatype == 11){
+          $('#cardmask').css("top","9px");
+          $('#card1,#card2,#card3,#card4,#card5,#card6,#card7,#card8,#card9,#card10').remove();
+        }else if(gachatype == 10){
+          $('#card1,#card2,#card3,#card4,#card5,#card6,#card7,#card8,#card9,#card11').remove();
+        }else if(gachatype == 9){
+          $('#card1,#card2,#card3,#card4,#card5,#card6,#card7,#card8,#card10,#card11').remove();
+        }else if(gachatype == 8){
+          $('#card1,#card2,#card3,#card4,#card5,#card6,#card7,#card9,#card10,#card11').remove();
+        }else if(gachatype == 7){
+          $('#card1,#card2,#card3,#card4,#card5,#card6,#card8,#card9,#card10,#card11').remove();
+        }else if(gachatype == 6){
+          $('#card1,#card2,#card3,#card4,#card5,#card7,#card8,#card9,#card10,#card11').remove();
+        }else if(gachatype == 5){
+          $('#card1,#card2,#card3,#card4,#card6,#card7,#card8,#card9,#card10,#card11').remove();
+        }else if(gachatype == 4){
+          $('#card1,#card2,#card3,#card5,#card6,#card7,#card8,#card9,#card10,#card11').remove();
+        }else if(gachatype == 3){
+          $('#card1,#card2,#card4,#card5,#card6,#card7,#card8,#card9,#card10,#card11').remove();
+        }else if(gachatype == 2){
+          $('#card1,#card3,#card4,#card5,#card6,#card7,#card8,#card9,#card10,#card11').remove();
+        }else if(gachatype == 1){
+          $('#card2,#card3,#card4,#card5,#card6,#card7,#card8,#card9,#card10,#card11').remove();
+        }
+
+
+        if(card1new)$('#getcard'+gachatype+'_1new').css("opacity","1");
+        if(card2new)$('#getcard'+gachatype+'_2new').css("opacity","1");
+        if(card3new)$('#getcard'+gachatype+'_3new').css("opacity","1");
+        if(card4new)$('#getcard'+gachatype+'_4new').css("opacity","1");
+        if(card5new)$('#getcard'+gachatype+'_5new').css("opacity","1");
+        if(card6new)$('#getcard'+gachatype+'_6new').css("opacity","1");
+        if(card7new)$('#getcard'+gachatype+'_7new').css("opacity","1");
+        if(card8new)$('#getcard'+gachatype+'_8new').css("opacity","1");
+        if(card9new)$('#getcard'+gachatype+'_9new').css("opacity","1");
+        if(card10new)$('#getcard'+gachatype+'_10new').css("opacity","1");
+        if(card11new)$('#getcard'+gachatype+'_11new').css("opacity","1");
+
+        next(function () {
+            doBg1Switch();
+            return wait(0.4);
+
+        }).
+        next(function () {
+            $("#char1").velocity({translateX:[355,0]},{duration:300,easing:"linear"})
+                       .velocity({translateX:[390,355]},{duration:1500,easing:"linear"});
+            return wait(0.2);
+
+        }).
+        next(function () {
+            $("#char2").velocity({translateX:[-500,0]},{duration:300,easing:"linear"})
+                       .velocity({translateX:[-550,-500]},{duration:1500,easing:"linear"});
+            return wait(0.2);
+
+        }).
+        next(function () {
+            $("#char3").velocity({translateX:[300,0]},{duration:300,easing:"linear"})
+                       .velocity({translateX:[330,300]},{duration:1500,easing:"linear"});
+            return wait(1);
+
+        }).
+        next(function () {        
+          $("#cardMask" + gachatype).velocity({scaleX:[1,0.5],scaleY:[1,0.5],opacity:1},{duration:400});
+            return wait(0.3);
+        }).
+        next(function () {
+          $("#bitFFF").velocity({opacity:[1,0]},{duration:200,easing:"linear"});
+            return wait(0.2);
+        }).
+        next(function () {
+          $(".speed").remove();
+          doBg2Switch();    
+          $("#bitFFF").velocity({opacity:[0,1]},{duration:100,easing:"linear"});
+          $("#card"+gachatype).css("opacity","1");
+          $('#btn').velocity({opacity:[1,0]},{duration:300,easing:"linear"});
+        });
+
+        
+        
+        
+
+  $('.anime-stage').bind('click',function() {
+
+           //window.location = 'next.html';
+   });
+
+});
+
+ 
+
+
+     function doBg2Switch(){
+      if(bg2switching){
+        next(function(){
+          if(tick == 0){
+            $('#bg21').css("visibility","visible");
+            $('#bg22').css("visibility","hidden");
+            $('#bg23').css("visibility","hidden");
+            $('#bg24').css("visibility","hidden");
+            tick = 1;
+          }
+          else if(tick == 1){
+            $('#bg21').css("visibility","hidden");
+            $('#bg22').css("visibility","visible");
+            $('#bg23').css("visibility","hidden");
+            $('#bg24').css("visibility","hidden");
+            tick = 2;
+          }
+          else if(tick == 2){
+            $('#bg21').css("visibility","hidden");
+            $('#bg22').css("visibility","hidden");
+            $('#bg23').css("visibility","visible");
+            $('#bg24').css("visibility","hidden");
+            tick = 3;
+          }
+          else if(tick == 3){
+            $('#bg21').css("visibility","hidden");
+            $('#bg22').css("visibility","hidden");
+            $('#bg23').css("visibility","hidden");
+            $('#bg24').css("visibility","visible");
+            tick = 0;
+          }
+        }).
+        next(function(){
+          setTimeout("doBg2Switch()",125);
+        });
+
+      }
+    }
+
+      function doBg1Switch(){
+      if(bg1switching){
+        next(function(){
+          if(lightTick == 0){
+ 
+            $('#bg1_1').css("visibility","visible");
+            $('#bg1_2').css("visibility","hidden");
+            $('#bg1_3').css("visibility","hidden");
+            lightTick = 1;
+          }
+          else if(lightTick == 1){
+
+            $('#bg1_1').css("visibility","hidden");
+            $('#bg1_2').css("visibility","visible");
+            $('#bg1_3').css("visibility","hidden");
+            lightTick = 2;
+          }
+          else if(lightTick == 2){
+
+            $('#bg1_1').css("visibility","hidden");
+            $('#bg1_2').css("visibility","hidden");
+            $('#bg1_3').css("visibility","visible");
+            lightTick = 0;
+          }
+
+        }).
+        next(function(){
+          setTimeout("doBg1Switch()",75);
+        });
+
+      }
+    }
+
+      function getUrlParams() {
+        var params = {};
+        var query = window.location.search.substring(1);
+        var vars = query.split('&');
+        for (var i = 0; i < vars.length; i++) {
+          console.log("vars is : " + vars[i]);
+          var tmp = vars[i].split('=');
+          params[tmp[0]] = tmp[1];
+        }
+        return params;
+      }
+
+    </script>
+    <div id="main">
+      <!-- ▼アニメーションエリア▼ -->
+      <div class='anime-stage'>
+        <div id="animelim">
+          <div id="scene1">
+              <div id="bg1_1" class="speed"><img src="img/speed_01.jpg"></div>
+              <div id="bg1_2" class="speed"><img src="img/speed_02.jpg"></div>
+              <div id="bg1_3" class="speed"><img src="img/speed_03.jpg"></div>
+
+              <div id="char3" class="char"><img src="img/char3.png"></div>
+              <div id="char2" class="char"><img src="img/char2.png"></div>
+              <div id="char1" class="char"><img src="img/char1.png"></div>
+              
+
+
+          </div>
+          <div id="scene2">
+              <div id="bg21" class="bg2"><img src="img/light_01.jpg"></div>
+              <div id="bg22" class="bg2"><img src="img/light_02.jpg"></div>
+              <div id="bg23" class="bg2"><img src="img/light_03.jpg"></div>
+              <div id="bg24" class="bg2"><img src="img/light_04.jpg"></div>
+
+               <div id="cardMask1"><img src="img/card1.png"></div>
+               <div id="cardMask2"><img src="img/card2.png"></div>
+               <div id="cardMask3"><img src="img/card3.png"></div>
+               <div id="cardMask4"><img src="img/card4.png"></div>
+               <div id="cardMask5"><img src="img/card5.png"></div>
+               <div id="cardMask6"><img src="img/card6.png"></div>
+               <div id="cardMask7"><img src="img/card7.png"></div>
+               <div id="cardMask8"><img src="img/card8.png"></div>
+               <div id="cardMask9"><img src="img/card9.png"></div>
+               <div id="cardMask10"><img src="img/card10.png"></div>
+               <div id="cardMask11"><img src="img/card11.png"></div>
+              <div id="card1">
+                <div id="getcard1_1" class="card1Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/676_1.png"></div>
+                <div id="getcard1_1new" class="getcard1new"><img src="img/new1.png"></div>
+              </div>
+
+              <div id="card2">
+                  <div id="getcard21" class="card2Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/676_1.png"></div>
+                  <div id="getcard22" class="card2Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/677_1.png"></div>
+
+                  <div id="getcard2_1new" class="card2TypeNew"><img src="img/ribbonM.png"></div>
+                  <div id="getcard2_2new" class="card2TypeNew"><img src="img/ribbonM.png"></div>
+              </div>
+
+
+              <div id="card3">
+                  <div id="getcard3_1" class="card3Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/676_1.png"></div>
+                  <div id="getcard3_1new" class="card3TypeNew"><img src="img/new3.png"></div>
+                  <div id="getcard3_2" class="card3Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/677_1.png"></div>
+                  <div id="getcard3_2new" class="card3TypeNew"><img src="img/new3.png"></div>
+                  <div id="getcard3_3" class="card3Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/678_1.png"></div>
+                  <div id="getcard3_3new" class="card3TypeNew"><img src="img/new3.png"></div>
+              </div>
+
+              <div id="card4">
+                  <div id="getcard4_1" class="card4Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/676_1.png"></div>
+                  <div id="getcard4_2" class="card4Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/677_1.png"></div>
+                  <div id="getcard4_3" class="card4Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/678_1.png"></div>
+                  <div id="getcard4_4" class="card4Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/675_1.png"></div>
+
+                  <div id="getcard4_1new" class="card4TypeNew"><img src="img/ribbonM.png"></div>
+                  <div id="getcard4_2new" class="card4TypeNew"><img src="img/ribbonM.png"></div>
+                  <div id="getcard4_3new" class="card4TypeNew"><img src="img/ribbonM.png"></div>
+                  <div id="getcard4_4new" class="card4TypeNew"><img src="img/ribbonM.png"></div>
+              </div>
+
+              <div id="card5">
+                <div id="getcard5_1" class="card5Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/676_1.png"></div>
+                <div id="getcard5_2" class="card5Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/677_1.png"></div>
+                <div id="getcard5_3" class="card5Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/678_1.png"></div>
+                <div id="getcard5_4" class="card5Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/675_1.png"></div>
+                <div id="getcard5_5" class="card5Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/674_1.png"></div>
+
+                <div id="getcard5_1new" class="card5TypeNew"><img src="img/ribbonM.png"></div>
+                <div id="getcard5_2new" class="card5TypeNew"><img src="img/ribbonM.png"></div>
+                <div id="getcard5_3new" class="card5TypeNew"><img src="img/ribbonM.png"></div>
+                <div id="getcard5_4new" class="card5TypeNew"><img src="img/ribbonM.png"></div>
+                <div id="getcard5_5new" class="card5TypeNew"><img src="img/ribbonM.png"></div>
+
+              </div>
+
+              <div id="card6">
+                  <div id="getcard61" class="card6Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/676_1.png"></div>
+                  <div id="getcard62" class="card6Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/677_1.png"></div>
+                  <div id="getcard63" class="card6Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/678_1.png"></div>
+                  <div id="getcard64" class="card6Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/675_1.png"></div>
+                  <div id="getcard65" class="card6Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/674_1.png"></div>
+                  <div id="getcard66" class="card6Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/674_1.png"></div>
+
+                  <div id="getcard6_1new" class="card6TypeNew"><img src="img/ribbonM.png"></div>
+                  <div id="getcard6_2new" class="card6TypeNew"><img src="img/ribbonM.png"></div>
+                  <div id="getcard6_3new" class="card6TypeNew"><img src="img/ribbonM.png"></div>
+                  <div id="getcard6_4new" class="card6TypeNew"><img src="img/ribbonM.png"></div>
+                  <div id="getcard6_5new" class="card6TypeNew"><img src="img/ribbonM.png"></div>
+                  <div id="getcard6_6new" class="card6TypeNew"><img src="img/ribbonM.png"></div>
+              </div>
+
+              <div id="card7">
+                <div id="getcard7_1" class="card7Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/676_1.png"></div>
+                <div id="getcard7_2" class="card7Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/677_1.png"></div>
+                <div id="getcard7_3" class="card7Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/678_1.png"></div>
+                <div id="getcard7_4" class="card7Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/675_1.png"></div>
+                <div id="getcard7_5" class="card7Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/674_1.png"></div>
+                <div id="getcard7_6" class="card7Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/673_1.png"></div>
+                <div id="getcard7_7" class="card7Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/672_1.png"></div>
+
+                <div id="getcard7_1new" class="card7TypeNew"><img src="img/ribbonM.png"></div>
+                <div id="getcard7_2new" class="card7TypeNew"><img src="img/ribbonM.png"></div>
+                <div id="getcard7_3new" class="card7TypeNew"><img src="img/ribbonS.png"></div>
+                <div id="getcard7_4new" class="card7TypeNew"><img src="img/ribbonS.png"></div>
+                <div id="getcard7_5new" class="card7TypeNew"><img src="img/ribbonS.png"></div>
+                <div id="getcard7_6new" class="card7TypeNew"><img src="img/ribbonS.png"></div>
+                <div id="getcard7_7new" class="card7TypeNew"><img src="img/ribbonS.png"></div>
+
+              </div>
+
+              <div id="card8">
+                <div id="getcard8_1" class="card8Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/676_1.png"></div>
+                <div id="getcard8_2" class="card8Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/677_1.png"></div>
+                <div id="getcard8_3" class="card8Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/678_1.png"></div>
+                <div id="getcard8_4" class="card8Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/675_1.png"></div>
+                <div id="getcard8_5" class="card8Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/674_1.png"></div>
+                <div id="getcard8_6" class="card8Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/673_1.png"></div>
+                <div id="getcard8_7" class="card8Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/672_1.png"></div>
+                <div id="getcard8_8" class="card8Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/671_1.png"></div>
+
+                <div id="getcard8_1new" class="card8TypeNew"><img src="img/ribbonM.png"></div>
+                <div id="getcard8_2new" class="card8TypeNew"><img src="img/ribbonM.png"></div>
+                <div id="getcard8_3new" class="card8TypeNew"><img src="img/ribbonS.png"></div>
+                <div id="getcard8_4new" class="card8TypeNew"><img src="img/ribbonS.png"></div>
+                <div id="getcard8_5new" class="card8TypeNew"><img src="img/ribbonS.png"></div>
+                <div id="getcard8_6new" class="card8TypeNew"><img src="img/ribbonS.png"></div>
+                <div id="getcard8_7new" class="card8TypeNew"><img src="img/ribbonS.png"></div>
+                <div id="getcard8_8new" class="card8TypeNew"><img src="img/ribbonS.png"></div>
+
+              </div>
+
+              <div id="card9">
+                    <div id="getcard9_1" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/676_1.png"></div>
+                    <div id="getcard9_2" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/677_1.png"></div>
+                    <div id="getcard9_3" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/678_1.png"></div>
+                    <div id="getcard9_4" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/675_1.png"></div>
+                    <div id="getcard9_5" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/674_1.png"></div>
+                    <div id="getcard9_6" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/673_1.png"></div>
+                    <div id="getcard9_7" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/672_1.png"></div>
+                    <div id="getcard9_8" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/671_1.png"></div>
+                    <div id="getcard9_9" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/670_1.png"></div>
+
+                    <div id="getcard9_1new" class="card11TypeNew"><img src="img/new1.png"></div>
+                    <div id="getcard9_2new" class="card11TypeNew"><img src="img/new10.png"></div>
+                    <div id="getcard9_3new" class="card11TypeNew"><img src="img/new10.png"></div>
+                    <div id="getcard9_4new" class="card11TypeNew"><img src="img/new10.png"></div>
+                    <div id="getcard9_5new" class="card11TypeNew"><img src="img/new10.png"></div>
+                    <div id="getcard9_6new" class="card11TypeNew"><img src="img/new10.png"></div>
+                    <div id="getcard9_7new" class="card11TypeNew"><img src="img/new10.png"></div>
+                    <div id="getcard9_8new" class="card11TypeNew"><img src="img/new10.png"></div>
+                    <div id="getcard9_9new" class="card11TypeNew"><img src="img/new10.png"></div>
+              </div>
+
+              <div id="card10">
+                    <div id="getcard10_1" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/676_1.png"></div>
+                    <div id="getcard10_2" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/677_1.png"></div>
+                    <div id="getcard10_3" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/678_1.png"></div>
+                    <div id="getcard10_4" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/675_1.png"></div>
+                    <div id="getcard10_5" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/674_1.png"></div>
+                    <div id="getcard10_6" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/673_1.png"></div>
+                    <div id="getcard10_7" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/672_1.png"></div>
+                    <div id="getcard10_8" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/671_1.png"></div>
+                    <div id="getcard10_9" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/670_1.png"></div>
+                    <div id="getcard10_10" class="card11Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/667_1.png"></div>
+
+                    <div id="getcard10_1new" class="card11TypeNew"><img src="img/new1.png"></div>
+                    <div id="getcard10_2new" class="card11TypeNew"><img src="img/new10.png"></div>
+                    <div id="getcard10_3new" class="card11TypeNew"><img src="img/new10.png"></div>
+                    <div id="getcard10_4new" class="card11TypeNew"><img src="img/new10.png"></div>
+                    <div id="getcard10_5new" class="card11TypeNew"><img src="img/new10.png"></div>
+                    <div id="getcard10_6new" class="card11TypeNew"><img src="img/new10.png"></div>
+                    <div id="getcard10_7new" class="card11TypeNew"><img src="img/new10.png"></div>
+                    <div id="getcard10_8new" class="card11TypeNew"><img src="img/new10.png"></div>
+                    <div id="getcard10_9new" class="card11TypeNew"><img src="img/new10.png"></div>
+                    <div id="getcard10_10new" class="card11TypeNew"><img src="img/new10.png"></div>
+              </div>
+
+                
+              <div id="card11">
+                  <div id="getcard11_1" class="card10Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/676_1.png"></div>
+                  <div id="getcard11_2" class="card10Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/677_1.png"></div>
+                  <div id="getcard11_3" class="card10Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/678_1.png"></div>
+                  <div id="getcard11_4" class="card10Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/675_1.png"></div>
+                  <div id="getcard11_5" class="card10Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/674_1.png"></div>
+                  <div id="getcard11_6" class="card10Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/673_1.png"></div>
+                  <div id="getcard11_7" class="card10Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/672_1.png"></div>
+                  <div id="getcard11_8" class="card10Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/671_1.png"></div>
+                  <div id="getcard11_9" class="card10Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/670_1.png"></div>
+                  <div id="getcard11_10" class="card10Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/667_1.png"></div>
+                  <div id="getcard11_11" class="card10Type"><img src="http://dev.battleofsekigahara.izunak.com/img/s3/sekigahara/240/668_1.png"></div>
+                  <div id="getcard11_1new" class="card10TypeNew"><img src="img/new1.png"></div>
+                  <div id="getcard11_2new" class="card10TypeNew"><img src="img/new10.png"></div>
+                  <div id="getcard11_3new" class="card10TypeNew"><img src="img/new10.png"></div>
+                  <div id="getcard11_4new" class="card10TypeNew"><img src="img/new10.png"></div>
+                  <div id="getcard11_5new" class="card10TypeNew"><img src="img/new10.png"></div>
+                  <div id="getcard11_6new" class="card10TypeNew"><img src="img/new10.png"></div>
+                  <div id="getcard11_7new" class="card10TypeNew"><img src="img/new10.png"></div>
+                  <div id="getcard11_8new" class="card10TypeNew"><img src="img/new10.png"></div>
+                  <div id="getcard11_9new" class="card10TypeNew"><img src="img/new10.png"></div>
+                  <div id="getcard11_10new" class="card10TypeNew"><img src="img/new10.png"></div>
+                  <div id="getcard11_11new" class="card10TypeNew"><img src="img/new10.png"></div>
+            </div> 
+          </div>
+
+
+          <div id="bitFFF" class="bitFFF"><img src="img/bitFFF.png"></div>
+          <div id="bit000" class="bit000"><img src="img/bit000.png"></div>
+          <div id="btn"><img src="img/button.png"></div>
+        </div>
+      </div>
+      <!-- ▲アニメーションエリア▲ -->
+    </div><!-- /main -->
+  </body>
+</html>

@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>シートガチャ</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no, address=no" />
+    <link type="text/css" rel="stylesheet" href="css/anime_base.css" />
+    <link type="text/css" rel="stylesheet" href="css/anime.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/velocity.min.js"></script>
+    <script type="text/javascript" src="js/jsdeferred.js"></script>
+  </head>
+  <body>
+    <style type="text/css">
+      #container{padding:0;}
+      .anime-stage, #animelim{width: 375px;}
+      .bit000{width:100%;height:100%;opacity: 0;top: 0px;}
+      .bitFFF{width:100%;height:100%;opacity: 0;top: 0px;}
+      .bit000 img{width:100%;height:100%;}
+      .bitFFF img{width:100%;height:100%;}
+      .bg{opacity: 1;width: 375px;}
+      .card{opacity: 1; width: 375px;}
+      .eff{
+        width: 498px;
+        height:498px;
+        top: 26px;
+        left: -61.5px;
+        opacity:0;
+        mix-blend-mode: screen;
+        
+      }
+    </style>
+    <script>
+      var bg2switching = true;
+      var bg1switching = true;
+      var tick = 0;
+      var lightTick = 0;
+      var staring = true;
+
+
+      $(document).ready(function() {
+        var params = getUrlParams();
+        if(params['gachatype']) gachatype = params['gachatype'];
+        if(params['number']) number = params['number'];
+
+        Deferred.define();
+        
+        
+        
+        next(function () {
+            $("#card").velocity({rotateX:[75,0]},{duration:500,easing:"linear"})
+                      .velocity({rotateZ:360},{duration:750,easing:"linear",loop:true});
+            $("#eff").velocity({scaleX:[0,2],scaleY:[0,2],opacity:[0,1]},{duration:1500,easing:"ease-in"});
+            return wait(1);
+
+        }).
+        next(function () {
+            $("#eff1").velocity({scaleX:[2,1],scaleY:[2,1]},{duration:1000,easing:"ease-in",queue:false});
+            $("#eff1").velocity({opacity:[1,0]},{duration:300,easing:"ease-in"})
+                      .velocity({opacity:[0,1]},{duration:500,easing:"ease-in",delay:200});
+            return wait(0.4);
+
+        });
+        // next(function () {
+        //     doBg1Switch();
+        //     return wait(0.4);
+
+        // }).
+        // next(function () {
+        //     $("#char1").velocity({translateX:[355,0]},{duration:300,easing:"linear"})
+        //                .velocity({translateX:[390,355]},{duration:1500,easing:"linear"});
+        //     return wait(0.2);
+
+        // }).
+        // next(function () {
+        //     $("#char2").velocity({translateX:[-500,0]},{duration:300,easing:"linear"})
+        //                .velocity({translateX:[-550,-500]},{duration:1500,easing:"linear"});
+        //     return wait(0.2);
+
+        // }).
+        // next(function () {
+        //     $("#char3").velocity({translateX:[300,0]},{duration:300,easing:"linear"})
+        //                .velocity({translateX:[330,300]},{duration:1500,easing:"linear"});
+        //     return wait(1);
+
+        // }).
+        // next(function () {        
+        //   $("#cardMask" + gachatype).velocity({scaleX:[1,0.5],scaleY:[1,0.5],opacity:1},{duration:400});
+        //     return wait(0.3);
+        // }).
+        // next(function () {
+        //   $("#bitFFF").velocity({opacity:[1,0]},{duration:200,easing:"linear"});
+        //     return wait(0.2);
+        // }).
+        // next(function () {
+        //   $(".speed").remove();
+        //   doBg2Switch();    
+        //   $("#bitFFF").velocity({opacity:[0,1]},{duration:100,easing:"linear"});
+        //   $("#card"+gachatype).css("opacity","1");
+        //   $('#btn').velocity({opacity:[1,0]},{duration:300,easing:"linear"});
+        // });
+
+        
+        
+        
+
+  $('.anime-stage').bind('click',function() {
+
+           //window.location = 'next.html';
+   });
+
+});
+
+ 
+
+
+     function doBg2Switch(){
+      if(bg2switching){
+        next(function(){
+          if(tick == 0){
+            $('#bg21').css("visibility","visible");
+            $('#bg22').css("visibility","hidden");
+            $('#bg23').css("visibility","hidden");
+            $('#bg24').css("visibility","hidden");
+            tick = 1;
+          }
+          else if(tick == 1){
+            $('#bg21').css("visibility","hidden");
+            $('#bg22').css("visibility","visible");
+            $('#bg23').css("visibility","hidden");
+            $('#bg24').css("visibility","hidden");
+            tick = 2;
+          }
+          else if(tick == 2){
+            $('#bg21').css("visibility","hidden");
+            $('#bg22').css("visibility","hidden");
+            $('#bg23').css("visibility","visible");
+            $('#bg24').css("visibility","hidden");
+            tick = 3;
+          }
+          else if(tick == 3){
+            $('#bg21').css("visibility","hidden");
+            $('#bg22').css("visibility","hidden");
+            $('#bg23').css("visibility","hidden");
+            $('#bg24').css("visibility","visible");
+            tick = 0;
+          }
+        }).
+        next(function(){
+          setTimeout("doBg2Switch()",125);
+        });
+
+      }
+    }
+
+      function doBg1Switch(){
+      if(bg1switching){
+        next(function(){
+          if(lightTick == 0){
+ 
+            $('#bg1_1').css("visibility","visible");
+            $('#bg1_2').css("visibility","hidden");
+            $('#bg1_3').css("visibility","hidden");
+            lightTick = 1;
+          }
+          else if(lightTick == 1){
+
+            $('#bg1_1').css("visibility","hidden");
+            $('#bg1_2').css("visibility","visible");
+            $('#bg1_3').css("visibility","hidden");
+            lightTick = 2;
+          }
+          else if(lightTick == 2){
+
+            $('#bg1_1').css("visibility","hidden");
+            $('#bg1_2').css("visibility","hidden");
+            $('#bg1_3').css("visibility","visible");
+            lightTick = 0;
+          }
+
+        }).
+        next(function(){
+          setTimeout("doBg1Switch()",75);
+        });
+
+      }
+    }
+
+      function getUrlParams() {
+        var params = {};
+        var query = window.location.search.substring(1);
+        var vars = query.split('&');
+        for (var i = 0; i < vars.length; i++) {
+          console.log("vars is : " + vars[i]);
+          var tmp = vars[i].split('=');
+          params[tmp[0]] = tmp[1];
+        }
+        return params;
+      }
+
+    </script>
+    <div id="main">
+      <!-- ▼アニメーションエリア▼ -->
+      <div class='anime-stage'>
+        <div id="animelim">
+          <div id="scene1">
+              <div id="bg" class="bg"><img src="img/bg_a_1.jpg"></div>
+              <div id="card" class="card"><img src="img/ef_c_1.png"></div>
+              <div id="eff" class="eff"><img src="img/ef_c_1.jpg"></div>
+              <div id="eff1" class="eff"><img src="img/ef_d_1.jpg"></div>
+              
+
+
+          </div>
+
+
+          <div id="bitFFF" class="bitFFF"><img src="img/bitFFF.png"></div>
+          <div id="bit000" class="bit000"><img src="img/bit000.png"></div>
+        </div>
+      </div>
+      <!-- ▲アニメーションエリア▲ -->
+    </div><!-- /main -->
+  </body>
+</html>

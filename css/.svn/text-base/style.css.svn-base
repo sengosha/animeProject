@@ -1,0 +1,1970 @@
+@charset "utf-8";
+/* --------------------------------------------------
+			
+		□ デフォルトCSSリセット用
+		
+		□ 共通
+		
+		□ 全ページ共通パーツ
+			1)Line（区切り線）
+			2)Area
+			3)Button
+			4)各種ゲージ
+			
+		□ 基本構成
+			1)GNV
+			2)container
+			3)header
+			4)footer
+			5)popup menu
+			6)box　/ 選手の一覧が並ぶエリア /
+	
+		□ 調整用CSS
+			1)float
+			2)font / 各種調整用フォント設定含む /
+			3)text
+			4)title,shadow
+			5)gradient,bgcolor
+			6)margin
+			7)padding
+			8)width
+			9)border,区切り線
+			10)others
+			
+-------------------------------------------------- */
+
+/*********************************************************/
+
+
+/* ======================================================
+	デフォルトCSSリセット用
+======================================================= */
+/*
+html5doctor.com Reset Stylesheet
+v1.4
+2009-07-27
+Author: Richard Clark - http://richclarkdesign.com
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, dialog, figure, footer, header,
+hgroup, menu, nav, section,
+time, mark, audio, video {
+	margin:0;
+	padding:0;
+	border:0;
+	outline:0;
+	font-size:14px;
+	line-height:17px;
+	background:transparent;
+	vertical-align:middle;
+}
+
+article, aside, dialog, figure, footer, header,
+hgroup, nav, section {
+	display:block;
+}
+
+nav ul {
+	list-style:none;
+}
+
+blockquote, q {
+	quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content:'';
+	content:none;
+}
+
+a {
+	margin:0;
+	padding:0;
+	border:0;
+	font-size:100%;
+	vertical-align:baseline;
+	background:transparent;
+}
+
+ins {
+	background-color:#ff9;
+	color:#000;
+	text-decoration:none;
+}
+
+mark {
+	background-color:#ff9;
+	color:#000;
+	font-style:italic;
+	font-weight:bold;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+abbr[], dfn[title] {
+	border-bottom:1px dotted #000;
+	cursor:help;
+}
+
+table {
+	border-spacing:0;
+}
+
+hr {
+    display:block;
+    border:0;
+    margin:0;
+    padding:0;
+}
+
+input, select {
+	vertical-align:middle;
+}
+
+textarea {
+	resize:none;
+}
+
+/* ======================================================
+	共通
+======================================================= */
+
+body {
+color: #FFFFFF;
+text-align:center;
+margin:0 auto;
+width:100%;
+line-height:1;
+font-family: "メイリオ",Meiryo,"Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","ＭＳ Ｐゴシック",Osaka,"Lucida Grande",Geneva,Arial,Verdana,sans-serif;
+}
+table{border-collapse:collapse; width: 100%;}
+li{list-style-type:none; }
+img { border: none; margin:0 auto; }
+sup { vertical-align: text-top; }
+sub { vertical-align: text-bottom; }
+hr { margin: 0; padding: 0; border:none; }
+abbr, acronym { border: none; font-variant: normal; }
+select { font-size: large; }
+a { color:#FFF; text-decoration: underline;}
+a:link, a:visited, a:active { text-decoration: underline; }
+a.block { display: block; cursor: pointer; }
+a img{border:none;}
+
+
+
+/* ======================================================
+	全ページ共通パーツ
+======================================================= */
+
+/* 1.Line
+-----------------------------------------------------------------------------*/
+/* 黒色ボーダー  */
+.lineBlack1 {
+	border-top:#000 1px solid;
+}
+
+/* 灰色ボーダー  */
+.lineGray1 {
+	border-top:#666 1px solid;
+}
+
+/* 黄色ボーダー  */
+.lineGold1 {
+	border-top:#FFDD55 1px solid;
+}
+
+/* 2.Area
+-----------------------------------------------------------------------------*/
+/* バナーエリア、公式コミュニティーエリアに使用  */
+.areaBlack {
+	width:294px;
+	margin:0 auto;
+	position:relative;
+	line-height:18px;
+	border:2px #999 solid;
+	border-radius:5px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(69,72,77,0.8)), color-stop(100%,rgba(0,0,0,0.8))); 
+		-webkit-box-shadow:
+		0px 0px 2px rgba(0,0,0,0.5),
+		inset 0px 0px 2px rgba(0,0,0,0.5);
+}
+
+/* グレーボーダーのみのエリア  */
+.areaBorderGray {
+	width:294px;
+	margin:0 auto;
+	position:relative;
+	line-height:18px;
+	border:2px #999 solid;
+	border-radius:5px;
+}
+
+/* ナビキャラの説明エリアに使用  */
+.areaGold {
+	width:294px;
+	margin:0 auto;
+	position:relative;
+	border:2px #FFCC00 solid;
+	border-radius:5px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(69,72,77,0.6)), color-stop(100%,rgba(0,0,0,0.6))); 
+		-webkit-box-shadow:
+		0px 0px 2px rgba(0,0,0,0.5),
+		inset 0px 0px 2px rgba(0,0,0,0.5);
+}
+
+/* ナビキャラの説明エリアに使用//画像背景１ テキスト３行想定  */
+.areaBgGoldLL {
+	background:url(../img/common/bgGoldLL.png) no-repeat center top;
+	background-size:100%;
+	text-align:left;
+	height:96px;
+	position:relative;
+}
+
+/* バトル結果メインエリア  */
+.wrapAreaYellow {
+	width:292px;
+	margin:0 auto;
+	padding:4px;
+	border-radius:5px;
+	background-color:#FFCC00;
+	-webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+}
+
+.areaYellow {
+	position:relative;
+	border-radius:5px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(73,73,73,1)), color-stop(100%,rgba(0,0,0,1))); 
+		-webkit-box-shadow:
+		0px 0px 2px rgba(0,0,0,0.9),
+		inset 0px 0px 2px rgba(0,0,0,0.9);
+}
+
+.areaYellow p{
+	line-height:20px;
+}
+
+/* バトル結果詳細エリア */
+.wrapAreaGray {
+	width:292px;
+	margin:0 auto;
+	padding:2px;
+	border-radius:5px;
+	background-color:#666666;
+}
+
+.areaGray {
+	position:relative;
+	border-radius:5px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(145,145,145,1)), color-stop(45%,rgba(61,61,61,1)), color-stop(45%,rgba(10,14,10,1)), color-stop(100%,rgba(10,8,9,1))); 
+	border:1px solid #000;
+}
+
+/* グレーグラデのボーダーが上下についたエリア  */
+.areaLineGray {
+	position:relative;
+	background:url(../img/common/lineGray1.jpg),url(../img/common/lineGray2.jpg), rgba(0,0,0,0.8);
+	background-repeat:no-repeat, no-repeat;
+	background-position:top, bottom;
+	background-size:100%;	
+}
+
+/* グレーグラデのボーダーが上のみについたエリア  */
+.areaLineGrayTop {
+	position:relative;
+	background:url(../img/common/lineGray1.jpg),rgba(0,0,0,0.8);
+	background-repeat:no-repeat;
+	background-position:top;
+	background-size:100%;	
+}
+
+/* リストで並ぶインフォメーションエリアのベース　スタイルが少し違う場合は、ページごとに調整。  */
+.areaInfo {
+	margin:10px 0;
+}
+
+.areaInfo > ul > li {
+	position:relative;
+	background:url(../img/common/lineGray1.jpg), -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(69,72,77,0.85)), color-stop(100%,rgba(0,0,0,0.85)));
+	background-repeat:no-repeat;
+	background-position:bottom;
+	background-size:100%;
+}
+
+.areaInfo > ul > li > a {
+	display:block;
+	width:100%;
+	padding:5px 0 10px;
+	text-align:left;
+}
+
+.areaInfo > ul > li > a.areaReadMore {
+	background:url(../img/common/lineGray1.jpg), -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(153,153,153,0.85)), color-stop(100%,rgba(0,0,0,0.85)));
+	background-repeat:no-repeat;
+	background-position:bottom;
+	background-size:100%;
+	padding:0;
+	width:100%;
+	height:35px;
+	text-align:center;
+	line-height:35px;
+	text-decoration:none;
+	color:#FFF;
+	text-shadow:
+		-1px -1px 0px rgba(000,000,000,1),
+		0px 0px 0px rgba(0,0,0,1);
+	font-size:16px;
+}
+
+.areaInfo > ul > li > a > table > tbody > tr > th {
+	width:40px;
+	text-indent:1em;
+	vertical-align:top;
+}
+
+.areaInfo > ul > li > a > table > tbody > tr > td {
+	width:230px;
+	padding:3px 50px 0 14px;
+	vertical-align:bottom;
+}
+
+.areaInfo > ul > li span.arrow {
+	background:url(../img/btn/arrow.png) no-repeat center top;
+	background-size: 100% auto;
+	width:21px;
+	height:14px;
+	position:absolute;
+	top:32%;
+	right:10px;
+}
+
+/* ナビキャラの解説エリア 上部中央にナビキャラ表示 */
+#Navi{
+	z-index:10;
+}
+
+#areaName {
+	background-image:url(../img/common/borderSilver.png),url(../img/common/borderSilver.png);
+	background-repeat:no-repeat, no-repeat;
+	background-position:center top, center bottom;
+	background-size:100%;
+	font-style:italic;
+	line-height:23px;
+	font-weight:bold;
+	width:120px;
+	text-shadow:
+		2px 2px 0px rgba(000,000,000,1);
+}
+
+#areaName,
+#GrdNameBlack,
+#GrdNameBlue {
+	position:absolute;
+	top:120px;
+	left:10px;
+	height:23px;
+	z-index:10;
+}
+
+#GrdNameBlack{
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(102,102,102,0.8)), color-stop(100%,rgba(0,0,0,0.8)));
+	width:120px;
+}
+
+#GrdNameBlue{
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.6)), color-stop(50%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.6)));
+	width:120px;
+}
+
+#areaNavi {
+	position:relative;
+}
+
+.bgGym /* 体育館背景 */
+{
+	background:url(../img/bg/bgGym.jpg) no-repeat center top;
+	background-size:100%;
+}
+
+.bgTeam /* 体育館天井付近背景 */
+{
+	background:url(../img/bg/bgTeam.jpg) no-repeat center top;
+	background-size:100%;
+}
+
+.bgLocker /* ロッカールーム背景 */
+{
+	background:url(../img/bg/bgLocker.jpg) no-repeat center top;
+	background-size:100%;
+}
+
+
+/* ナビキャラの解説エリア　ナビキャラの右横にテキスト表示 */
+#areaNaviText {
+	background:url(../img/nav/areaNavi.png) no-repeat center top;
+	background-size:100%;
+	margin-top:10px;
+	width:320px;
+	height:86px;
+	position:relative;
+} 
+
+.areaNaviTextInner {
+	position:absolute;
+	top:15px;
+	left:90px;
+	width:205px;
+	text-align:left;
+}
+
+/* 体育館背景 */
+#areaGym {
+	background:url(../img/bg/bgGym.jpg) no-repeat center top;
+	background-size:100%;
+}
+
+/* ボーダー付き黒背景//挨拶の際の現在のポイント表記 */
+.areaBlackBox {
+	border:rgba(102, 102, 102, 0.7) 1px solid;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(22,22,22,1)), color-stop(100%,rgba(96,96,96,1)));
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 3px rgba(0,0,0,0.7);
+	padding:4px 5px 2px;
+}
+
+/* 金枠サイズLL */
+.areaGoldLL{
+	position:relative;
+	width:266px;
+	height:96px;
+	background:url(../img/common/bgGoldLL.png) no-repeat center top;
+	background-size:100%;
+	padding:15px 20px 0;
+	margin:0 auto;
+}
+
+/* 金枠サイズL */
+.areaGoldL{
+	position:relative;
+	width:264px;
+	height:79px;
+	background:url(../img/common/bgGoldL.png) no-repeat center top;
+	background-size:100%;
+	padding:15px 20px 0;
+	margin:0 auto;
+}
+
+/* 金枠サイズM */
+.areaGoldM{
+	position:relative;
+	width:266px;
+	height:66px;
+	background:url(../img/common/bgGoldM.png) no-repeat center top;
+	background-size:100%;
+	padding:15px 20px 0;
+	margin:0 auto;
+}
+
+/* 金枠サイズM2 */
+.areaGoldM2{
+	position:relative;
+	width:266px;
+	height:81px;
+	background:url(../img/common/bgGoldM2.png) no-repeat center top;
+	background-size:100%;
+	padding:15px 20px 0;
+	margin:0 auto;
+}
+
+/* 金枠サイズSM */
+.areaGoldSM {
+	position:relative;
+	width:280px;
+	height:66px;
+	background:url(../img/common/bgGoldSM.png) no-repeat center top;
+	background-size:100%;
+	padding:15px 20px 0;
+}
+
+/* 金枠サイズS 分割線付き */
+.areaGoldsepS {
+	position:relative;
+	width:306px;
+	height:43px;
+	background:url(../img/common/bgGoldsepS.png) no-repeat center top;
+	background-size:100%;
+	padding-top:8px;
+	margin:0 auto;
+}
+
+/* 金枠サイズS */
+.areaGoldS {
+	position:relative;
+	width:264px;
+	height:44px;
+	background:url(../img/common/bgGoldS.png) no-repeat center top;
+	background-size:100%;
+	padding:12px 20px 0;
+	margin:0 auto;
+}
+
+/* 3.Button
+-----------------------------------------------------------------------------*/
+/* 画像ボタン－金1 */
+.btnGd1{
+	display:inline-block;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none !important;
+	width:140px;
+	height:38px;
+	line-height:36px;
+	clear:both;
+	background:url(../img/btn/btnGd.jpg) no-repeat center top;
+	background-size:100%;
+	border:none;
+	font-size:16px;
+	font-weight:bold;
+}
+
+/* 画像ボタン－赤1 */
+.btnRd1{
+	display:inline-block;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none !important;
+	width:140px;
+	height:38px;
+	line-height:36px;
+	clear:both;
+	background:url(../img/btn/btnRd.jpg) no-repeat center top;
+	background-size:100%;
+	border:none;
+	font-size:16px;
+	font-weight:bold;
+}
+
+/* 画像ボタン－赤2 */
+.btnRd2{
+	display:inline-block;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none !important;
+	width:146px;
+	height:48px;
+	line-height:46px;
+	clear:both;
+	background:url(../img/btn/btnRd2.png) no-repeat center top;
+	background-size:100%;
+	border:none;
+	font-size:16px;
+	font-weight:bold;
+}
+
+/* 画像ボタン－黒 */
+.btnBk1{
+	display:inline-block;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none !important;
+	width:140px;
+	height:38px;
+	line-height:36px;
+	clear:both;
+	background:url(../img/btn/btnBk.jpg) no-repeat center top;
+	background-size:100%;
+	border:none;
+	font-size:16px;
+	font-weight:bold;
+}
+
+/* 画像ボタン－灰色 */
+.btnGy1{
+	display:inline-block;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none !important;
+	width:140px;
+	height:38px;
+	line-height:36px;
+	clear:both;
+	background:url(../img/btn/btnGy.jpg) no-repeat center top;
+	background-size:100%;
+	border:none;
+	font-size:16px;
+	font-weight:bold;
+}
+
+/* 画像ボタン－矢印 */
+.btnArrow{
+	display:inline-block;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none !important;
+	width:100px;
+	height:30px;
+	line-height:30px;
+	padding-right:3px;
+	clear:both;
+	background:url(../img/btn/btnArrow.png) no-repeat center top;
+	background-size:100%;
+	border:none;
+	font-size:16px;
+	font-weight:bold;
+    text-shadow:
+		-1px -1px 0px rgba(000,000,000,1);
+}
+
+/* ボタン－黒 */
+.btnBlack1{
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none !important;
+	font-weight:bold;
+	min-width:190px;   /* 最小幅を指定 */
+	max-width:220px;   /* 最大幅を指定 */
+	padding: 10px 24px;
+	clear:both;
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#bfbfbf),
+		color-stop(0.50, #3b3b3b),
+		color-stop(0.50, #242424),
+		to(#000000));
+	border-radius: 5px;
+	border: 1px solid #666666;
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.6);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,1),
+		0px 1px 0px rgba(255,255,255,0.2);
+	color: #ffffff;
+	font-size:16px;
+	font-weight:bold;
+}
+
+/* 2～4個横並びボタン－黒 */
+
+.btnBlack2 {
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none !important;
+	font-weight:bold;
+	padding: 10px 15px;
+	clear:both;
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#bfbfbf),
+		color-stop(0.50, #3b3b3b),
+		color-stop(0.50, #242424),
+		to(#000000));
+	border-radius: 5px;
+	border: 1px solid #666666;
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.6);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,1),
+		0px 1px 0px rgba(255,255,255,0.2);
+	color: #ffffff;
+}
+
+/* 2～3個横並びボタン－黒　縦幅が短いボタン */
+
+.btnBlack3 {
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none !important;
+	font-weight:bold;
+	padding: 5px 20px;
+	clear:both;
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#bfbfbf),
+		color-stop(0.50, #3b3b3b),
+		color-stop(0.50, #242424),
+		to(#000000));
+	border-radius: 5px;
+	border: 1px solid #666666;
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.6);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,1),
+		0px 1px 0px rgba(255,255,255,0.2);
+	color: #ffffff;
+}
+
+/* 2個横並びボタン－黒 ボタン－黒 */
+.btnBlack4{
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none !important;
+	font-weight:bold;
+	min-width:80px;   /* 最小幅を指定 */
+	max-width:100px;   /* 最大幅を指定 */
+	padding: 10px 20px;
+	clear:both;
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#bfbfbf),
+		color-stop(0.50, #3b3b3b),
+		color-stop(0.50, #242424),
+		to(#000000));
+	border-radius: 5px;
+	border: 1px solid #666666;
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.6);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,1),
+		0px 1px 0px rgba(255,255,255,0.2);
+	color: #ffffff;
+}
+
+/* ボタン－赤 */
+.btnRed1{
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none !important;
+	font-weight:bold;
+	min-width:190px;   /* 最小幅を指定 */
+	max-width:220px;   /* 最大幅を指定 */
+	padding: 10px 24px;
+	clear:both;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(169,3,41,1)), color-stop(44%,rgba(143,2,34,1)), color-stop(100%,rgba(109,0,25,1))); 
+	border-radius: 5px;
+	border: 1px solid #666666;
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.6);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,1),
+		0px 1px 0px rgba(255,255,255,0.2);
+	color: #ffffff;
+	font-size:16px;
+	font-weight:bold;
+}
+
+/* 2個横並び未選択状態ボタンー灰色　チュートリアル時に使用 */
+
+.btnGray1 {
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none !important;
+	font-weight:bold;
+	min-width:80px;   /* 最小幅を指定 */
+	max-width:100px;   /* 最大幅を指定 */
+	padding: 10px 20px;
+	clear:both;
+	font-size: 14px;
+	color: #808080;
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#7a7a7a),
+		color-stop(0.50, #3b3b3b),
+		color-stop(0.50, #242424),
+		to(#474747));
+	border: 1px solid #5c5c5c;
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.6);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,1),
+		-3px 2px 0px rgba(0,0,0,0.2);
+	border-radius: 5px;
+}
+
+/* ボタン－ボール型赤 */
+.btnBall{
+	display:inline-block;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none !important;
+	font-weight:bold;
+	width:130px;
+	height:40px;
+	line-height:40px;
+	clear:both;
+	background:url(../img/btn/btnRd.png) no-repeat center top; 
+	background-size:100%;
+	border:none;
+	font-size:16px;
+	font-weight:bold;
+	text-shadow:
+		-1px -1px 0px rgba(000,000,000,1);
+}
+
+/* ボタン－ボール型黒 */
+.btnBallBk{
+	display:inline-block;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none !important;
+	font-weight:bold;
+	width:130px;
+	height:40px;
+	line-height:40px;
+	clear:both;
+	background:url(../img/btn/btnBk.png) no-repeat center top; 
+	background-size:100%;
+	border:none;
+	font-size:16px;
+	font-weight:bold;
+	text-shadow:
+		-1px -1px 0px rgba(000,000,000,1);
+}
+
+
+/* ２個並びタブボタン */
+div.areaTabBR {
+	margin:0 5px;
+}
+
+div.areaTabBR ul.btnTabBlueRed li.active {
+	position: relative;
+	display: inline-block;
+	float:left;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(102,102,102,1))); 
+	padding:1px 1px 0 1px;
+	margin-bottom:-1px;
+	width:152px;
+	z-index: 3;
+}
+
+div.areaTabBR ul.btnTabBlueRed li:first-child {
+	margin-right:1px;
+}
+
+div.areaTabBR ul.btnTabBlueRed li {
+	position: relative;
+	display: inline-block;
+	float:left;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(102,102,102,0))); 
+	padding:1px 1px 0 1px;
+	margin-bottom:-1px;
+	width:152px;
+	z-index:1;
+}
+
+div.areaTabBR ul.btnTabBlueRed li a{
+	display: block;
+	position: relative;
+	height:30px;
+	line-height:30px;
+}
+
+div.areaTabBR ul.btnTabBlueRed li a.crTabRed {
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(170,0,2,1)), color-stop(100%,rgba(0,0,0,1))); 
+}
+
+
+div.areaTabBR ul.btnTabBlueRed li a.crTabBlue {
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,102,204,1)), color-stop(100%,rgba(0,0,0,1))); 
+}
+
+div.areaTabBRbtm {
+	position: relative;
+	height:8px;
+	border-top:1px solid #676767;
+	background-color:#000;
+	z-index:2;
+}
+
+/* Western,Easternタブボタン */
+div.areaTabWE {
+	height:45px;
+}
+
+div.areaTabWE ul#btnTabWestEast{
+	position: relative;
+}
+
+
+div.areaTabWE ul#btnTabWestEast li a {
+	text-indent:-9999em;
+	overflow:hidden;
+}
+
+div.areaTabWE ul#btnTabWestEast li:first-child a{
+	position:absolute;
+	background:url(../img/btn/tabWestern.png) no-repeat left top;
+	background-size:100%;
+	width:148px;
+	height:41px;
+	top:0;
+	left:10px;
+	z-index: 3;
+	display:block;
+}
+
+div.areaTabWE ul#btnTabWestEast li:first-child.selected a{
+	position:absolute;
+	background:url(../img/btn/tabWestern_on.png) no-repeat left top;
+	background-size:100%;
+	width:320px;
+	height:45px;
+	top:0;
+	left:0;
+	z-index: 1;
+}
+
+div.areaTabWE ul#btnTabWestEast li:last-child a{
+	position:absolute;
+	background:url(../img/btn/tabEastern.png) no-repeat left top;
+	background-size:100%;
+	width:148px;
+	height:41px;
+	top:0;
+	right:10px;
+	z-index: 3;
+	display:block;
+}
+
+div.areaTabWE ul#btnTabWestEast li:last-child.selected a{
+	position:absolute;
+	background:url(../img/btn/tabEastern_on.png) no-repeat left top;
+	background-size:100%;
+	width:320px;
+	height:45px;
+	top:0;
+	right:0;
+	z-index:1;
+}
+
+/* Team Memberタブボタン */
+div.areaTabPlayer {
+	height:45px;
+}
+
+div.areaTabPlayer ul#btnTabPlayer{
+	position: relative;
+}
+
+
+div.areaTabPlayer ul#btnTabPlayer li a {
+	text-indent:-9999em;
+	overflow:hidden;
+}
+
+div.areaTabPlayer ul#btnTabPlayer li:first-child a{
+	position:absolute;
+	background:url(../img/btn/tabStart.png) no-repeat left top;
+	background-size:100%;
+	width:98px;
+	height:38px;
+	top:0;
+	left:10px;
+	z-index: 3;
+	display:block;
+}
+
+div.areaTabPlayer ul#btnTabPlayer li:first-child.selected a{
+	position:absolute;
+	background:url(../img/btn/tabStart_on.png) no-repeat left top;
+	background-size:100%;
+	width:320px;
+	height:45px;
+	top:0;
+	left:0;
+	z-index: 1;
+}
+
+div.areaTabPlayer ul#btnTabPlayer li:nth-child(2) a{
+	position:absolute;
+	background:url(../img/btn/tabBench.png) no-repeat left top;
+	background-size:100%;
+	width:98px;
+	height:38px;
+	top:0;
+	left:111px;
+	z-index: 3;
+	display:block;
+}
+
+#TabTutorial div.areaTabPlayer ul#btnTabPlayer li:nth-child(2) a{
+	position:absolute;
+	background:url(../img/btn/tabBenchGray.png) no-repeat left top;
+	background-size:100%;
+	width:98px;
+	height:38px;
+	top:0;
+	left:111px;
+	z-index: 3;
+	display:block;
+}
+
+div.areaTabPlayer ul#btnTabPlayer li:nth-child(2).selected a{
+	position:absolute;
+	background:url(../img/btn/tabBench_on.png) no-repeat left top;
+	background-size:100%;
+	width:320px;
+	height:45px;
+	top:0;
+	left:0;
+	z-index: 1;
+}
+
+div.areaTabPlayer ul#btnTabPlayer li:last-child a{
+	position:absolute;
+	background:url(../img/btn/tabAll.png) no-repeat left top;
+	background-size:100%;
+	width:98px;
+	height:38px;
+	top:0;
+	right:10px;
+	z-index: 3;
+	display:block;
+}
+
+#TabTutorial div.areaTabPlayer ul#btnTabPlayer li:last-child a{
+	position:absolute;
+	background:url(../img/btn/tabAllGray.png) no-repeat left top;
+	background-size:100%;
+	width:98px;
+	height:38px;
+	top:0;
+	right:10px;
+	z-index: 3;
+	display:block;
+}
+
+div.areaTabPlayer ul#btnTabPlayer li:last-child.selected a{
+	position:absolute;
+	background:url(../img/btn/tabAll_on.png) no-repeat left top;
+	background-size:100%;
+	width:320px;
+	height:45px;
+	top:0;
+	right:0;
+	z-index:1;
+}
+
+
+/* Team Memberタブボタン 
+div.areaTabPlayer {
+	height:45px;
+}
+
+div.areaTabPlayer ul#btnTabPlayer{
+	position: relative;
+}
+
+
+div.areaTabPlayer ul#btnTabPlayer li a {
+	text-indent:-9999em;
+	overflow:hidden;
+}
+
+div.areaTabPlayer ul#btnTabPlayer li:first-child a{
+	position:absolute;
+	background:url(../img/btn/tabWestern.png) no-repeat left top;
+	background-size:100%;
+	width:148px;
+	height:41px;
+	top:0;
+	left:10px;
+	z-index: 3;
+	display:block;
+}
+
+div.areaTabPlayer ul#btnTabPlayer li:first-child.selected a{
+	position:absolute;
+	background:url(../img/btn/tabWestern_on.png) no-repeat left top;
+	background-size:100%;
+	width:320px;
+	height:45px;
+	top:0;
+	left:0;
+	z-index: 1;
+}
+
+div.areaTabPlayer ul#btnTabPlayer li:last-child a{
+	position:absolute;
+	background:url(../img/btn/tabEastern.png) no-repeat left top;
+	background-size:100%;
+	width:148px;
+	height:41px;
+	top:0;
+	right:10px;
+	z-index: 3;
+	display:block;
+}
+
+div.areaTabPlayer ul#btnTabPlayer li:last-child.selected a{
+	position:absolute;
+	background:url(../img/btn/tabEastern_on.png) no-repeat left top;
+	background-size:100%;
+	width:320px;
+	height:45px;
+	top:0;
+	right:0;
+	z-index:1;
+}
+*/
+/* チュートリアル改変前バックアップ
+div.areaTabWE {
+	margin:0 5px;
+}
+
+div.areaTabWE ul.btnTabWestEast li:first-child.active {
+	position: relative;
+	display: inline-block;
+	float:left;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(102,102,102,1))); 
+	padding:1px 1px 0 1px;
+	margin-bottom:-1px;
+	width:152px;
+	z-index: 3;
+}
+
+div.areaTabWE ul.btnTabWestEast li:first-child {
+	margin-right:1px;
+}
+
+div.areaTabWE ul.btnTabWestEast li {
+	position: relative;
+	display: inline-block;
+	float:left;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(102,102,102,0))); 
+	padding:1px 1px 0 1px;
+	margin-bottom:-1px;
+	width:152px;
+	z-index:1;
+}
+
+div.areaTabWE ul.btnTabWestEast li a{
+	display: block;
+	position: relative;
+	height:30px;
+	line-height:30px;
+}
+
+div.areaTabWE ul.btnTabWestEast li a.crTabWest {
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(170,0,2,1)), color-stop(100%,rgba(0,0,0,1))); 
+}
+
+
+div.areaTabWE ul.btnTabWestEast li a.crTabEast {
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,102,204,1)), color-stop(100%,rgba(0,0,0,1))); 
+}
+
+div.areaTabWestbtm {
+	position: relative;
+	height:8px;
+	border-top:1px solid #676767;
+	background-color:#000;
+	z-index:2;
+}
+
+div.areaTabEastbtm {
+	position: relative;
+	height:8px;
+	border-top:1px solid #676767;
+	background-color:#000;
+	z-index:2;
+} */
+
+
+/* ３個並びタブボタン */
+.btnTab li {
+	border: 1px solid #AAA;
+	display: inline-block;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(130,140,149,1)), color-stop(100%,rgba(0,0,0,1))); 
+	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 #FFF;
+}
+
+.btnTab li.tabSelected {
+	background: -webkit-linear-gradient(top, #ECECEC 50%, #D1D1D1 100%);
+}
+
+.btnTab li a{
+	padding: 2px 20px;
+	display:block;
+	line-height:30px;
+	color:#FFF;
+}
+
+.btnTab li.tabSelected a{
+	color:#000;
+}
+
+/* 4.各種ゲージ
+-----------------------------------------------------------------------------*/
+/* 各ゲージ外枠  */
+
+.wrapGage /* 汎用 */{
+	width: 100%;
+	height:7px;
+	border-radius:3px;
+	padding:1px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(40,52,59,1)), color-stop(76%,rgba(130,140,149,1)), color-stop(100%,rgba(181,189,200,1)));	
+	border:#999999 1px solid;
+}
+
+.wrapGageQt /* クエスト用 */{
+	width: 100%;
+	height:5px;
+	border-radius:3px;
+	padding:1px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(40,52,59,1)), color-stop(76%,rgba(130,140,149,1)), color-stop(100%,rgba(181,189,200,1)));	
+	border:#999999 1px solid;
+}
+
+/* 経験値ゲージ */
+.innerGageExp {
+	display:block;
+	height: 100%;
+	border-radius:2px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(51%,rgba(198,182,137,1)), color-stop(100%,rgba(199,152,16,1))); 
+}
+
+/* 経営Ptゲージ  */
+.innerGageAct {
+	display:block;
+	height: 100%;
+	border-radius:2px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,154,142,1)), color-stop(100%,rgba(255,26,0,1)));
+}
+
+/* サラリーゲージ  */
+.innerGageSly {
+	display:block;
+	height:100%;
+	border-radius:2px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(73,155,234,1)), color-stop(100%,rgba(0,4,255,1))); 
+}
+
+/* 達成率ゲージ  */
+.innerGageQuest {
+	display:block;
+	height:100%;
+	border-radius:2px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(210,255,82,1)),color-stop(100%,rgba(145,232,66,1)));
+}
+
+
+/* ======================================================
+	基本構成
+======================================================= */
+
+/* 1.GNV
+-----------------------------------------------------------------------------*/
+
+/* 2.container
+-----------------------------------------------------------------------------*/
+/* 黒色背景 */
+#container {
+	margin: 0 auto;
+	width: 320px;
+	min-height:390px;
+	overflow:hidden;
+	position:relative;
+	z-index:0;
+	padding-bottom:20px;
+}
+
+/* 体育館床背景  */
+#containInner {
+	background:url(../img/bg/bgWood.jpg) repeat-y;
+	background-size:100%;
+}
+
+/* 背景調整用  */
+#containInnerSt {
+	/*background:url(../img/bg/bgSt.jpg) repeat-y;ストリート背景
+	background-size:100%;*/
+	background-color:#000;
+	padding-bottom:20px;
+}
+
+/* 背景サイズ調整用  */
+.bgAdjust {
+	min-height:155px;
+}
+
+
+/* 3.header
+-----------------------------------------------------------------------------*/
+#header {
+	position:relative;
+}
+
+#header h1 {
+	width:100%;
+	height:25px;
+	background:url(../img/dummy/headerLogo.jpg) no-repeat center top;
+	background-size:100%;
+	text-indent:-9999em;
+	overflow:hidden;
+}
+
+#header p#btnBack{
+	position:absolute;
+	top:2px;
+	left:10px;
+}
+
+#header p#btnReload{
+	position:absolute;
+	top:2px;
+	right:10px;
+}
+
+
+/* 4.footer
+-----------------------------------------------------------------------------*/
+#WrapFooter {
+	width:320px;
+	height:34px;
+	margin:0 auto;
+}
+
+#footer {
+	width:320px;
+	height:45px;
+}
+
+#footer nav ul li{
+	float: left;
+}
+
+/* 5.popup menu
+-----------------------------------------------------------------------------*/
+
+#bgLayer, #popupMenu, #btnClose{
+	position: absolute;
+	display: none;
+}
+
+body > #bgLayer{ 
+    height:100%; 
+}
+
+#bgLayer {
+	width: 100%;
+	height:100%;
+	background-color: #000;
+	opacity: 0.6;
+	z-index: 20;
+}
+
+#btnClose {
+	display: block;
+	color: #666;
+	top: -10px;
+	right: -10px;
+}
+
+#popupMenu {
+	z-index: 30;
+	color: #000;
+	width:294px;
+	padding:10px 20px;
+	text-align:center;
+	padding:10px 0;
+	border:2px #999 solid;
+	border-radius:5px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(69,72,77,0.6)), color-stop(100%,rgba(0,0,0,0.6)));
+		-webkit-box-shadow:
+		0px 0px 2px rgba(0,0,0,0.5),
+		inset 0px 0px 2px rgba(0,0,0,0.5);
+}
+
+#popupMenu p{
+	color:#FFF;
+	font-size:20px;
+}
+#popupMenu > ul {
+	margin:15px 13px 15px 19px;
+}
+
+#popupMenu > ul > li > a{
+	font-size: 16px;
+	color: #000000;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(254,255,252,1)), color-stop(47%,rgba(182,141,76,1)), color-stop(100%,rgba(255,210,99,1))); 
+		border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #e0e0e0;
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 3px rgba(255,255,255,0.1);
+	text-shadow:
+		1px 1px 0px rgba(255,255,255,1);
+	float:left;
+	width:80px;
+	text-decoration:none;
+	margin:0 5px 5px 0;
+	padding:13px 0;
+}
+
+/* 6.box
+-----------------------------------------------------------------------------*/
+h4.titleBoxGray {
+	color:#FC0;
+	font-size:16px;
+	text-shadow:
+		0px 1px 0px rgba(0,0,0,1);		
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(102,102,102,0.8)), color-stop(100%,rgba(0,0,0,0.8))); 
+	border-top-left-radius:2px;
+	border-top-right-radius:2px;
+	border-bottom:#666 1px solid;
+	height:28px;
+	line-height:28px;
+}
+
+.pstnExp {
+	position:absolute;
+	top:6px;
+	right:6px;
+}
+
+.boxWrapGage{
+	height: 7px;
+	border-radius: 2px;
+	padding: 1px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(40, 52, 59, 1)), color-stop(76%,rgba(130, 140, 149, 1)), color-stop(100%,rgba(181, 189, 200, 1)));
+	border:#999 1px solid;
+}
+
+.boxWrapGage2{
+	height: 7px;
+	border-radius: 1px;
+	padding: 1px;
+	background:#000;
+}
+
+
+.boxTitleRed {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(173,3,6,0.8)), color-stop(100%,rgba(76,0,1,1))); 
+	text-align:left;
+	padding:2px;
+}
+
+.boxWrapAreaGray {
+	width:295px;
+	margin:0 auto;
+	border-radius:5px;
+	border:#666 2px solid;
+	position:relative;
+	-webkit-box-shadow:
+		0px 0px 4px rgba(000,000,000,1),
+		inset 0px 0px 1px rgba(0,0,0,0.6);
+}
+.boxAreaGray {
+	position:relative;
+	border-radius:3px;
+	border:#000 1px solid;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(127,127,127,0.5)), color-stop(100%,rgba(71,71,71,0.5)));
+}
+
+.boxAreaBlue {
+	position:relative;
+	border-radius:3px;
+	background:rgba(0, 102, 204, 0.4);
+	border:#000 1px solid;
+}
+
+/*
+.boxAreaBlue {
+	position:relative;
+	border-radius:3px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,84,140,0.8)), color-stop(100%,rgba(2,0,12,0.8))); 
+	border:1px solid #000;
+}*/
+
+.boxAreaBlue table tbody tr td:first-child {
+	width:60px;
+}
+
+.boxAreaBlue table tbody tr td {
+	padding:0px 4px;
+	font-size:13px;
+}
+
+/*　試合開始前の詳細エリア　*/
+/*　
+.boxAreaBlue table.areaBattleDetail tbody tr td {
+	padding:2px;
+	border-bottom:#000 1px solid;
+	/*font-size:13px; ステータスの桁が増える場合はフォントサイズを縮小
+}
+
+.boxAreaBlue table tbody tr:last-child td {
+	padding-left:5px;
+	border-bottom:none;
+}
+　*/
+.boxLogo {
+	padding:2px;
+}
+
+.boxTdL {
+}
+
+.boxTdR {
+	text-align:right;
+}
+
+/* ======================================================
+	調整用CSS（以下のクラスで細かい調整をします。
+	頻繁に使用する細かい調整系はこちらに追加してください。）
+======================================================= */
+
+/* 1.float
+-----------------------------------------------------------------------------*/
+.flt-clear{ clear: both !important; }
+.flt-right{ float: right !important; }
+.flt-left{ float: left !important; }
+.zoom { zoom:100%;}
+
+/* clearfix */
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+
+
+
+/* 2.font
+-----------------------------------------------------------------------------*/
+/* ページタイトル */
+.txtPageTitle {
+	width:100%;
+	height:22px;
+	font-size:15px;
+	font-style:italic;
+	font-weight:bold;
+	padding-top:8px;
+	line-height:25px;
+	text-align:center;
+	color:#FFF;
+	background:url(../img/common/bgTitle.jpg) no-repeat center top;
+	background-size:100%;
+	text-shadow:
+		2px 2px 0px rgba(000,000,000,1);
+}
+
+/* チーム名 */
+.txtTeamName {
+	color:rgba(255,255,255,0.8);
+	font-weight:bold;
+	text-shadow:
+		1px 1px 0px rgba(0,0,0,1);
+}
+
+/* ユーザー名 */
+.txtUserName {
+	font-weight:bold;
+	text-shadow:
+		0px 1px 0px rgba(0,0,0,1);
+}
+
+/* ユーザーステータスタイトル */
+.txtTitle{
+	color:#FFF;
+	font-size:13px;
+	text-shadow:
+		1px 1px 2px rgba(000,000,000,1);
+}
+
+/* ユーザーステータス変数 */
+.txtStatus{
+	color:#FFCC00;
+	font-weight:bold;
+	text-shadow:
+		1px 1px 2px rgba(000,000,000,1);
+}
+
+/* ユーザーステータス最大値 */
+.txtStatusS{
+	color:#FFF;
+	text-decoration:none;
+	text-shadow:
+		1px 1px 2px rgba(000,000,000,1);
+}
+
+/* 日付 */
+.txtDate { 
+	color: #0099FF;
+	font-size:12px;
+	text-decoration:none;
+}
+
+/* 他ユーザー名 */
+.txtOtherUser { 
+	color: #FFCC00;
+	text-decoration:underline;
+}
+
+/* クエストエリア、選手名（英語/斜体） */
+.txtNameEng {
+	font-weight:bold;
+	font-style:italic;
+	color:#FFCC00;
+	text-shadow:
+		1px 2px 0px rgba(0,0,0,1);
+}
+
+/* クエストエリア、選手名（日本語/斜体） */
+.txtNameJap {
+	font-weight:bold;
+	font-style:italic;
+	text-shadow:
+		1px 2px 0px rgba(0,0,0,1);
+}
+
+/* 経験値 */
+.txtExp {
+	color:#FFF;
+	font-size:10px;
+text-shadow:0px 2px 1px #000,0px 1px 1px #000,1px 1px 1px #000,1px 0px 1px #000,2px 0px 1px #000,1px -1px 1px #000,1px -2px 1px #000,0px -2px 1px #000,-1px -2px 1px #000,-2px -2px 1px #000,-2px -1px 1px #000;}
+
+/* ポジション略称（英語） */
+.txtPstnEng {
+	color:#FC0;
+	font-size: 16px;
+	text-shadow: 0px 1px 0px rgba(0, 0, 0, 1);
+}
+
+/* ポジション日本語 */
+.txtPstnJap {
+	color:#FC0;
+	font-size: 12px;
+	text-shadow: 0px 1px 0px rgba(0, 0, 0, 1);
+}
+
+/* リンク用テキスト */
+.txtLink {
+	color:#99FF00;
+	text-decoration:underline;
+}
+
+/* シャドウ付きテキスト白色 */
+.txtWhite {
+	color:#FFF;
+	text-shadow:
+		1px 1px 0px rgba(0,0,0,1);
+}
+
+
+/* シャドウ付きテキスト灰色 */
+.txtGray {
+	color:#999;
+	text-shadow:
+		1px 1px 0px rgba(0,0,0,1);
+}
+
+/* シャドウ付きテキスト黄色 */
+.txtYellow {
+	color:#FFCC00;
+	text-shadow:
+		1px 1px 0px rgba(0,0,0,1);
+}
+
+
+/* テキストシャドウ */
+.txtShadow{
+	text-shadow:
+		1px 1px 0px rgba(0,0,0,1);
+}
+
+
+/* font-color */
+.fc-white{ color: #ffffff; }
+.fc-red{ color: #FF0000; }
+.fc-yellow{ color: #FFCC00; }
+.fc-blue{ color: #0099FF; }
+.fc-black{ color:#000000; }
+.fc-gray{ color:#999999; }
+
+/* decoration */
+.bold{ font-weight: bold !important; }
+
+/* fontsize + */ 
+.fsp1 { font-size: 1.00em !important; } /*14px*/
+.fsp2 { font-size: 1.143em !important; } /*16px*/
+.fsp3 { font-size: 1.286em !important; } /*18px*/
+.fsp4 { font-size: 1.429em !important; } /*20px*/
+.fsp5 { font-size: 1.572em !important; } /*22px*/
+.fsp6{ font-size: 1.715em !important; } /*24px*/
+.fsp7{ font-size: 1.857em !important; } /*26px*/
+.fsp8{ font-size: 1.928em !important; } /*27px*/
+
+/* fontsize - */
+.fsm1 { font-size: 0.929em !important; }  /*13px*/
+.fsm2 { font-size: 0.857em !important; }  /*12px*/ 
+.fsm3 { font-size: 0.786em !important; }  /*11px*/ 
+.fsm4 { font-size: 0.715em !important; }  /*10px*/
+.fsm5 { font-size: 0.643em !important; }  /*9px*/
+
+/* 3.text
+-----------------------------------------------------------------------------*/
+/* position */
+.txt-center{ text-align: center !important; }
+.txt-mAuto{ margin:0 auto !important; }
+.txt-right{ text-align: right !important; }
+.txt-left{ text-align: left !important; }
+.txt-mid{ vertical-align: middle !important; }
+.txt-top {vertical-align:top !important; }
+.txt-btm {vertical-align:bottom !important; }
+
+/* decoration */
+.txt-deco-none {text-decoration:none !important; }
+.txt-deco-unline {text-decoration:underline !important; }
+
+/* 4.title,shadow
+-----------------------------------------------------------------------------*/
+.titleRed1 /* 背景をCSSのみにした場合のサンプル */{
+	height:33px;
+	line-height:33px;
+	font-size:16px;
+	font-weight:bold;
+	text-align:center;
+	width:100%;
+	background:url(../img/common/lineGray1.jpg),url(../img/common/lineGray1.jpg), -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(186,154,154,0.8)), color-stop(50%,rgba(165,16,16,0.8)), color-stop(53%,rgba(104,0,0,0.8)), color-stop(97%,rgba(183,0,0,0.8)));
+	background-repeat:no-repeat, no-repeat;
+	background-position:top, bottom;
+	background-size:100%;
+	text-shadow:
+		2px 2px 0px rgba(0,0,0,0.5);
+	-webkit-box-shadow:
+		0px 0px 6px rgba(000,000,000,0.8),
+		inset 0px 0px 3px rgba(255,255,255,0.1);
+}
+
+/* 赤帯 上下のボーダーあり*/
+.titleRed2 {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(173,3,6,0.8)), color-stop(100%,rgba(76,0,1,1))); 
+	border-top:#24211C 1px solid;
+	border-bottom:#24211C 1px solid;
+	text-align:left;
+}
+
+/* 黒帯 バーグラデーション*/
+.titleBlack1 {
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.8)), color-stop(50%,rgba(153,153,153,0.8)), color-stop(100%,rgba(0,0,0,0.8))); 
+	width:100%;
+}
+
+/* ボックスシャドウ　上部に白い影をつける */
+.shadowWhite1 {
+	-webkit-box-shadow:
+		0px 0px 0px rgba(000,000,000,0),
+		inset 0px 3px 5px rgba(255,255,255,1);
+}
+
+
+/* ボックスシャドウ　上部に黒い影をつける */
+.shadowBlack2 {
+	-webkit-box-shadow:
+		0px 0px 0px rgba(000,000,000,0),
+		inset 0px 3px 4px rgba(0,0,0,0.9);
+}
+
+
+/* 5.gradient,bgcolor
+-----------------------------------------------------------------------------*/
+/* グラデーション赤1 // 上から下に向かって赤*/
+.gradeRed1 {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(155,3,3,1)), color-stop(100%,rgba(86,0,0,1)));
+}
+
+/* グラデーション青1 // 上から下に向かって青*/
+.gradeBlue1 {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(44,83,158,1)), color-stop(100%,rgba(17,34,61,1)));
+}
+
+/* グラデーション黒1 // 上から下に向かってグレー → 黒*/
+.gradeBlack1 {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(102,102,102,0.8)), color-stop(100%,rgba(0,0,0,0.8))); 
+}
+
+/* グラデーション黒2　// 左から右に向かって透過 */
+.gradeBlack2 {
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,1)), color-stop(100%,rgba(0,0,0,0.5)));
+}
+
+/* グラデーション黒3 // 上から下に向かって位置80　黒100％　→ 黒0％*/
+.gradeBlack3 {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,1)), color-stop(80%,rgba(0,0,0,1)), color-stop(97%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0))); 
+}
+
+/* 20%白　単色背景 */
+.bgWhite1 {
+	background-color:rgba(255,255,255,0.2);
+}
+
+/* 黒　単色背景 */
+.bgBlack1 {
+	background-color:rgba(0,0,0,1);
+}
+
+
+
+/* 6.margin
+-----------------------------------------------------------------------------*/
+/* all */
+.ma05{ margin:5px; }
+.ma10{ margin:10px; }
+
+/* top */
+.mt05{ margin-top:5px; }
+.mt10{ margin-top:10px; }
+.mt15{ margin-top:15px; }
+.mt20{ margin-top:20px; }
+
+/* bottom */
+.mb05{ margin-bottom:5px; }
+.mb10{ margin-bottom:10px; }
+.mb15{ margin-bottom:15px; }
+.mb20{ margin-bottom:20px; }
+.mb25{ margin-bottom:25px; }
+
+/* margin-right */
+.mr10{ margin-right:10px; }
+
+/* margin-left */
+.ml10{ margin-left:10px; }
+.ml40{ margin-left:40px; }
+
+/* top+bottom */
+.mtb10{ margin-top:10px; margin-bottom:10px; }
+
+
+/* 7.padding
+-----------------------------------------------------------------------------*/
+/* all */
+.pa05{ padding:5px; }
+.pa15{ padding:15px; }
+
+/* top */
+.pt02{ padding-top:2px; }
+.pt05{ padding-top:5px; }
+.pt10{ padding-top:10px; }
+.pt15{ padding-top:15px; }
+.pt30{ padding-top:30px; }
+
+/* right */
+.pr05 { padding-right:5px; }
+.pr10 { padding-right:10px; }
+
+/* left */
+.pl05 { padding-left:5px; }
+.pl10 { padding-left:10px; }
+.pl20 { padding-left:20px; }
+.pl65 { padding-left:65px; }
+
+/* bottom */
+.pb05{ padding-bottom:5px; }
+.pb10{ padding-bottom:10px; }
+
+/* top+bottom */
+.ptb05{ padding-top:5px; padding-bottom:5px; }
+.ptb10{ padding-top:10px; padding-bottom:10px; }
+
+/* 8.width
+-----------------------------------------------------------------------------*/
+.width100per { width: 100%; }
+
+.width10px { width: 10px; }
+.width20px { width: 20px; }
+.width40px { width: 40px; }
+.width60px { width: 60px; }
+.width75px { width: 75px; }
+.width95px { width: 95px; }
+.width115px { width: 115px; }
+.width150px { width: 150px; }
+.width170px { width: 170px; }
+.width180px { width: 180px; }
+.width240px { width: 240px; }
+.width250px { width: 250px; }
+.width260px { width: 260px; }
+
+/* 9.border　区切り線
+-----------------------------------------------------------------------------*/
+.brT {
+	border-top:#000 1px solid;
+}
+
+.brL {
+	border-left:#000 1px solid;
+}
+
+.brR {
+	border-right:#000 1px solid;
+}
+
+.brB {
+	border-bottom:#000 1px solid;
+}
+
+.hrSilver {
+	background:url(../img/common/hrSilver.gif) no-repeat center top;
+	background-size:100%;
+	height:2px;
+}
+
+.hrGold {
+	background:url(../img/common/hrGold.gif) no-repeat center top;
+	background-size:100%;
+	height:2px;
+}
+
+
+/* 10.Others
+-----------------------------------------------------------------------------*/
+/* block position */
+.hide{
+  display: none;
+}
+
+.relative {
+	position:relative;
+}

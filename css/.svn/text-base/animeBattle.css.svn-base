@@ -1,0 +1,118 @@
+@-webkit-keyframes nbaLogoIN {
+	0% {-webkit-transform:scale(4, 4);opacity: 0;}
+	100% {-webkit-transform:scale(1, 1);opacity: 1;}
+}
+@-webkit-keyframes teamLogoIN1 {
+	0% {-webkit-transform:translate(-80px, 0px);opacity: 0;}
+	100% {-webkit-transform:translate(0px, 0px);opacity: 1;}
+}
+@-webkit-keyframes teamLogoIN2 {
+	0% {-webkit-transform:translate(80px, 0px);opacity: 0;}
+	100% {-webkit-transform:translate(0px, 0px);opacity: 1;}
+}
+@-webkit-keyframes run1 {
+	0% {opacity: 1;}
+	33% {opacity: 0;}
+	66% {opacity: 0;}
+	100% {opacity: 1;}
+}
+@-webkit-keyframes run2 {
+	0% {opacity: 0;}
+	33% {opacity: 1;}
+	66% {opacity: 0;}
+	100% {opacity: 0;}
+}
+@-webkit-keyframes run3 {
+	0% {opacity: 0;}
+	33% {opacity: 0;}
+	66% {opacity: 1;}
+	100% {opacity: 0;}
+}
+@-webkit-keyframes skillAreaIN {
+	0% {-webkit-transform:scale(1, 0);opacity: 1;}
+	100% {-webkit-transform:scale(1, 1);opacity: 1;}
+}
+@-webkit-keyframes skillAreaOUT {
+	0% {-webkit-transform:scale(1, 1);opacity: 1;}
+	100% {-webkit-transform:scale(1, 0);opacity: 0;}
+}
+@-webkit-keyframes slowIN1{
+	0% {opacity: 0;-webkit-transform: translate3d(180px, 0px, 0px);-webkit-animation-timing-function: ease-out; }
+	15% {opacity: 1;-webkit-transform: translate3d(40px, 0px, 0px);-webkit-animation-timing-function: linear; }
+	90% {opacity: 1;-webkit-transform: translate3d(-50px, 0px, 0px);}
+	100% {opacity: 0;-webkit-transform: translate3d(-320px, 0px, 0px);}
+}
+@-webkit-keyframes slowIN2{
+	0% {opacity: 0;-webkit-transform: translate3d(-180px, 0px, 0px);-webkit-animation-timing-function: ease-out; }
+	15% {opacity: 1;-webkit-transform: translate3d(-40px, 0px, 0px);-webkit-animation-timing-function: linear; }
+	90% {opacity: 1;-webkit-transform: translate3d(50px, 0px, 0px);}
+	100% {opacity: 0;-webkit-transform: translate3d(320px, 0px, 0px);}
+}
+
+.doSlowIN1{
+	-webkit-animation-name: slowIN1; 
+	-webkit-animation-duration: 2s; 
+	-webkit-animation-timing-function: ease-in;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.doSlowIN2{
+	-webkit-animation-name: slowIN2; 
+	-webkit-animation-duration: 2s; 
+	-webkit-animation-timing-function: ease-in;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.doSkillAreaOUT{
+	-webkit-animation-name: skillAreaOUT; 
+	-webkit-animation-duration: 0.1s; 
+	-webkit-animation-timing-function: ease-in;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.doSkillAreaIN{
+	-webkit-animation-name: skillAreaIN; 
+	-webkit-animation-duration: 0.1s; 
+	-webkit-animation-timing-function: ease-in;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.doRun1 {
+	-webkit-animation-name: run1; 
+	-webkit-animation-duration: 0.3s; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: infinite;
+}
+.doRun2 {
+	-webkit-animation-name: run2; 
+	-webkit-animation-duration: 0.3s; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: infinite;
+}
+.doRun3 {
+	-webkit-animation-name: run3; 
+	-webkit-animation-duration: 0.3s; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: infinite;
+}
+.doTeamLogoIN1 {
+	-webkit-animation-name: teamLogoIN1; 
+	-webkit-animation-duration: 0.1s; 
+	-webkit-animation-timing-function: ease-in;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.doTeamLogoIN2 {
+	-webkit-animation-name: teamLogoIN2; 
+	-webkit-animation-duration: 0.1s; 
+	-webkit-animation-timing-function: ease-in;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.doNbaLogoIN {
+	-webkit-animation-name: nbaLogoIN; 
+	-webkit-animation-duration: 0.1s; 
+	-webkit-animation-timing-function: ease-in;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}

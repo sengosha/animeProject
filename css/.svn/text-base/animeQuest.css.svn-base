@@ -1,0 +1,102 @@
+@-webkit-keyframes player1_1 {
+	0% {-webkit-transform:scale(0.5, 0.5)translate(-10px, 50px);opacity: 0;}
+	20% {-webkit-transform:scale(0.7, 0.7)translate(-8px, 40px);opacity: 1;}
+	70% {-webkit-transform:scale(1, 1)translate(-1px, 5px);opacity: 1;}
+	100% {-webkit-transform:scale(1, 1)translate(0px, 0px);opacity: 0;}
+}
+@-webkit-keyframes player1_2 {
+	0% {-webkit-transform:scale(1, 1);translate(0px, 0px);opacity: 1;}
+	80% {-webkit-transform:scale(1, 0.7);translate(0px, 0px);opacity: 1;}
+	100% {-webkit-transform:scale(1, 0.6);translate(0px, 0px);opacity: 0;}
+}
+@-webkit-keyframes bg2In {
+	0% {-webkit-transform:scale(1, 1);opacity: 0;}
+	20% {-webkit-transform:scale(1, 1);opacity: 1;}
+	100% {-webkit-transform:scale(2, 2);opacity: 1;}
+}
+@-webkit-keyframes ballIN {
+	0% {-webkit-transform:translate(0px, -30px);opacity: 0;}
+	10% {-webkit-transform:translate(0px, -20px);opacity: 1;}
+	30% {-webkit-transform:translate(0px, 0px);opacity: 1;}
+	80% {-webkit-transform:translate(0px, 50px);opacity: 1;}
+	100% {-webkit-transform:translate(0px, 70px);opacity: 0;}
+}
+@-webkit-keyframes textIN {
+	0% {-webkit-transform:scale(3, 3);opacity: 0;}
+	100% {-webkit-transform:scale(1, 1);opacity: 1;}
+}
+@-webkit-keyframes inAndOut2 {
+	0% {opacity: 0;}
+	49% {opacity: 0;}
+	50% {opacity: 1;}
+	99% {opacity: 0;}
+	100% {opacity: 0;}
+}
+@-webkit-keyframes inAndOut1 {
+	0% {opacity: 1;}
+	49% {opacity: 1;}
+	50% {opacity: 0;}
+	99% {opacity: 1;}
+	100% {opacity: 1;}
+}
+
+
+.doBGInAndOut1 {
+	-webkit-animation-name: inAndOut1; 
+	-webkit-animation-duration: 0.5s; 
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+}
+.doBGInAndOut2 {
+	-webkit-animation-name: inAndOut2; 
+	-webkit-animation-duration: 0.5s; 
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+}
+.doPEOInAndOut1 {
+	-webkit-animation-name: inAndOut1; 
+	-webkit-animation-duration: 0.7s; 
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+}
+.doPEOInAndOut2 {
+	-webkit-animation-name: inAndOut2; 
+	-webkit-animation-duration: 0.7s; 
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+}
+.doTextIN {
+	-webkit-animation-name: textIN; 
+	-webkit-animation-duration: 0.1s; 
+	-webkit-animation-timing-function: ease-in;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.doBallIN {
+	-webkit-animation-name: ballIN; 
+	-webkit-animation-duration: 0.2s; 
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.doBg2In {
+	-webkit-animation-name: bg2In; 
+	-webkit-animation-duration: 0.15s; 
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.doPlayer1_1 {
+	-webkit-animation-name: player1_1; 
+	-webkit-animation-duration: 0.2s; 
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+.doPlayer1_2 {
+	-webkit-animation-name: player1_2; 
+	-webkit-animation-duration: 0.2s; 
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
