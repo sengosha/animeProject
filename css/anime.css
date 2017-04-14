@@ -16,7 +16,76 @@
 
 }
 
+.bg_eff{width:1280px;height:550px;background: url(../img/ef_b_4.jpg) left top/50% 100% repeat-x;left: -905px;top: 0px;mix-blend-mode: screen;}
+.effWrap{mix-blend-mode: screen;}
 
+#bg_pole{mix-blend-mode: screen;}
+@keyframes bg_eff_move {
+	0% {transform:translate(0px, 0px);}
+	100% {transform:translate(640px, 0px);}
+}
+
+@keyframes opacitymov {
+	0% {opacity:0.9;}
+	50% {opacity:0.3;}
+	100% {opacity:0.9;}
+}
+
+.opacityMov1 {
+	animation-name: opacitymov;
+	animation-duration: 2s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.opacityMov2 {
+	animation-name: opacitymov;
+	animation-duration: 5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.opacityMov3 {
+	animation-name: opacitymov;
+	animation-duration: 9s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.opacityMov4 {
+	animation-name: opacitymov;
+	animation-duration: 8s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.bgEffMove1 {
+	animation-name: bg_eff_move;
+	animation-duration: 10s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.bgEffMove2 {
+	animation-name: bg_eff_move;
+	animation-duration: 15s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.bgEffMove3 {
+	animation-name: bg_eff_move;
+	animation-duration: 22s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.bgEffMove4 {
+	animation-name: bg_eff_move;
+	animation-duration: 25s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
 
 @-webkit-keyframes kaminari_one {
 	0% {opacity: 1;}
