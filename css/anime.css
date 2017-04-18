@@ -19,7 +19,65 @@
 .bg_eff{width:1280px;height:550px;background: url(../img/ef_b_4.jpg) left top/50% 100% repeat-x;left: -905px;top: 0px;mix-blend-mode: screen;}
 .effWrap{mix-blend-mode: screen;}
 
-#bg_pole{mix-blend-mode: screen;}
+#bg_pillar{mix-blend-mode: screen;}
+.cardPack {
+	display: none;
+}
+.mainCard{
+	width: 200px;
+	height: 279.5px;
+	left: 87.5px;
+	top: 135.25px;
+	opacity: 0;
+}
+.smallCard{
+	width: 50px;
+	height: 70px;
+	background-image:url(../img/littlecard.jpg);
+	background-size: 1000px 350px;
+	background-repeat: no-repeat;
+	opacity: 0;
+}
+
+.smallCardPos_0{
+	left: 40px;
+	top: 400px;
+}
+.smallCardPos_1{
+	left: 100px;
+	top: 400px;
+}
+.smallCardPos_2{
+	left: 160px;
+	top: 400px;
+}
+.smallCardPos_3{
+	left: 40px;
+	top: 475px;
+}
+.smallCardPos_4{
+	left: 100px;
+	top: 475px;
+}
+.smallCardPos_5{
+	left: 160px;
+	top: 475px;
+}
+
+@keyframes bg_pillar_move {
+	0% {transform:scale(1, 1);}
+	50% {transform:scale(1.5, 1);}
+	100% {transform:scale(1, 1);}
+}
+
+.bg_pillar_move {
+	animation-name: bg_pillar_move;
+	animation-duration: 3s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+
 @keyframes bg_eff_move {
 	0% {transform:translate(0px, 0px);}
 	100% {transform:translate(640px, 0px);}
@@ -30,6 +88,7 @@
 	50% {opacity:0.3;}
 	100% {opacity:0.9;}
 }
+
 
 .opacityMov1 {
 	animation-name: opacitymov;

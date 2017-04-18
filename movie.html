@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>シートガチャ</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, initial-scale=1.0" />
+    <meta name="viewport" content="width=375, maximum-scale=1.0, user-scalable=no, initial-scale=1" />
     <meta name="format-detection" content="telephone=no, address=no" />
     <link type="text/css" rel="stylesheet" href="css/anime_base.css" />
     <link type="text/css" rel="stylesheet" href="css/anime.css" />
@@ -17,37 +17,164 @@
 
     </style>
     <script>
+      /*
+        サーバーからのパラメーター（JSONデータ形式）
+        cardpack:配列。各カードパックデータ、最大20パックを想定。
+        cardpack.maincard:文字列。大きいカードのファイルパス。
+        cardpack.subcard:配列。小さいカードは一枚のタイル画像に対し、X軸とY軸のオフセットで指定された画像をDOM要素の背景画像として設定する。
+        cardpack.subcard.xの値は0~19
+        cardpack.subcard.yの値は0~4
+        例: 
+        cardpack.subcard.x = 1 (タイル画像の左から1を数える位置)
+        cardpack.subcard.y = 2 (タイル画像の上から2を数える位置)
+        */
+      const JSON_DATA = {
+        
+        cardpack:[
+          {
+           maincard:"img/bigcard.jpg",
+           subcard: [
+              {x:1,y:2},
+              {x:3,y:4},
+              {x:2,y:4},
+              {x:1,y:1},
+              {x:0,y:0},
+              {x:0,y:0}
+           ]
+          },
+          {
+           maincard:"img/bigcard.jpg",
+           subcard: [
+              {x:0,y:0},
+              {x:1,y:2},
+              {x:4,y:4},
+              {x:3,y:3},
+              {x:9,y:0},
+              {x:19,y:4}
+           ]
+          },
+        ]
+      };
+       /*カードのパック数*/
+      const PACK_NUM = JSON_DATA.cardpack.length;
+      /*小さいカードの幅*/
+      const SMALLCARD_WIDTH = 50;
+      /*小さいカードの高さ*/
+      const SMALLCARD_HEIGHT = 70; 
+       /*画像プリロード用の配列*/
+      let loadImgs = [];
+
       var bg2switching = true;
       var bg1switching = true;
       var tick = 0;
       var lightTick = 0;
       var staring = true;
 
+      /**
+      *  画像のプリロード
+      *  @param  imageArray  画像パスの配列
+      *  @param  startFnc    開始時に呼ばれる関数
+      *  @param  progressFnc ロード中に呼ばれる関数(パーセントが帰ってくる)
+      *  @param  completeFnc 完了時に呼ばれる関数
+      *
+      */
+
+      function preloadImage(imageArray, startFnc, progressFnc, completeFnc){  
+          function preload(images, progress){
+              var total = images.length;
+              $(images).each(function(){
+                  var src = this;
+                  $('<img/>').attr('src', src).load(function() {
+                      for(var i = 0; i < images.length; i++){
+                          if (images[i] == src) images.splice(i, 1);
+                      }
+                      progress(total, total - images.length);
+                  });
+              });
+          }
+
+          var nowPercent = 0;
+          startFnc();
+          preload(imageArray, function(total, loaded){
+              nowPercent = Math.ceil(100 * loaded / total);
+              progressFnc(nowPercent);
+              if(nowPercent >= 100){
+                  completeFnc();
+              }
+          });
+      }
+      /*プリロード画像の配列初期化*/
+      function initLoadImgs(){
+        /*大きいカード画像*/
+        
+        for(let i=0; i < PACK_NUM; i++){
+          loadImgs.push(JSON_DATA.cardpack[i].maincard);
+        }
+        /*小さいカード画像*/
+        loadImgs.push("img/littlecard.jpg");
+
+      }
+
+      function initAnime(){
+        /*大きいカード画像を生成*/
+        for(let i=0; i < PACK_NUM; i++){
+          let cardpack = JSON_DATA.cardpack[i];
+          
+          $("#cardPackWrapper").append("<div id='cardPack" + i + "' class='cardPack'>");
+          $("<div id='mainCard" + i + "' class='mainCard'><img src='" + cardpack.maincard + "'></div>").appendTo("#cardPack" + i);
+
+          /*小さいカード画像生成*/
+          for(let j=0; j < cardpack.subcard.length; j++){
+            let bgPosX = cardpack.subcard[j].x * SMALLCARD_WIDTH * -1; // -1はタイル画像を左方向へ移動のため
+            let bgPosY = cardpack.subcard[j].y * SMALLCARD_HEIGHT * -1;// -1はタイル画像を上方向へ移動のため
+            $("<div id='smallCard" + j + "' class='smallCard smallCardPos_" + j + "' style='background-position:" + bgPosX + "px " + bgPosY + "px'></div>").appendTo("#cardPack" + i);
+          }
+          
+        }
+        
+      }
 
       $(document).ready(function() {
-        var params = getUrlParams();
-        if(params['gachatype']) gachatype = params['gachatype'];
-        if(params['number']) number = params['number'];
-
         Deferred.define();
-        
-        
-        
-        next(function () {
-            $("#card").velocity({rotateX:[75,0]},{duration:500,easing:"linear"})
-                      .velocity({rotateZ:360},{duration:750,easing:"linear",loop:2});
-            $("#eff").velocity({scaleX:[0,2],scaleY:[0,2],opacity:[0,1]},{duration:1500,easing:"ease-in"});
-            $("#bg_pole").velocity({scaleX:[1.5,1]},{duration:1500,easing:"linear",loop:true});
-            return wait(1);
 
-        }).
-        next(function () {
-            $("#eff1").velocity({scaleX:[2,1],scaleY:[2,1]},{duration:1000,easing:"ease-in",queue:false});
-            $("#eff1").velocity({opacity:[1,0]},{duration:300,easing:"ease-in"})
-                      .velocity({opacity:[0,1]},{duration:500,easing:"ease-in",delay:200});
-            return wait(0.4);
+        function start(){ 
+          console.log('start');
+          initLoadImgs();
+          initAnime();
+        }
+        function progress(per){
+           console.log(per);
+        }
+        function complete(){
+           console.log('complete...animeStart');
+           next(function () {
+              $("#card").velocity({rotateX:[75,0]},{duration:500,easing:"linear"})
+                        .velocity({rotateZ:360},{duration:750,easing:"linear",loop:2});
+              $("#eff").velocity({scaleX:[0,2],scaleY:[0,2],opacity:[0,1]},{duration:1500,easing:"ease-in"});
+              return wait(1);
 
-        });
+          }).
+          next(function () {
+              $("#eff1").velocity({scaleX:[2,1],scaleY:[2,1]},{duration:1000,easing:"ease-in",queue:false});
+              $("#eff1").velocity({opacity:[1,0]},{duration:300,easing:"ease-in"})
+                        .velocity({opacity:[0,1]},{duration:500,easing:"ease-in",delay:200});
+              return wait(0.4);
+
+          });
+        }
+
+        var images = [
+            'img/bigcard.jpg',
+            'img/littlecard.jpg',
+            'img/bg_a_1.jpg'
+        ];
+        preloadImage(images, start, progress, complete);
+
+        
+        
+        
+        
+        
         // next(function () {
         //     doBg1Switch();
         //     return wait(0.4);
@@ -173,26 +300,16 @@
       }
     }
 
-      function getUrlParams() {
-        var params = {};
-        var query = window.location.search.substring(1);
-        var vars = query.split('&');
-        for (var i = 0; i < vars.length; i++) {
-          console.log("vars is : " + vars[i]);
-          var tmp = vars[i].split('=');
-          params[tmp[0]] = tmp[1];
-        }
-        return params;
-      }
-
     </script>
     <div id="main">
       <!-- ▼アニメーションエリア▼ -->
       <div class='anime-stage'>
         <div id="animelim">
           <div id="scene1">
-              <div id="bg" class="bg"><img src="img/bg_a_1.jpg"></div>
-              <div id="bg_pole" class="bg"><img src="img/ef_f_1.jpg"></div>
+              <div id="bg_back" class="bg"><img src="img/bg_c_1.png"></div>
+              <div id="bg_middle" class="bg"><img src="img/bg_b_1.png"></div>
+              <div id="bg_front" class="bg"><img src="img/bg_a_1.png"></div>
+              <div id="bg_pillar" class="bg bg_pillar_move"><img src="img/ef_f_1.jpg"></div>
               <div id="bg_effWrap1" class="effWrap opacityMov1">
               <div id="bg_eff1" style="background-image: url(img/ef_b_1.jpg)" class="bg_eff bgEffMove1"></div>
               </div>
@@ -212,9 +329,8 @@
               <!--<div id="card" class="card"><img src="img/ef_c_1.png"></div>-->
               <div id="eff" class="eff"><img src="img/ef_c_1.jpg"></div>
               <div id="eff1" class="eff"><img src="img/ef_d_1.jpg"></div>
-              
-
-
+              <div id="cardPackWrapper">
+              </div>
           </div>
 
 
