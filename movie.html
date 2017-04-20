@@ -19,56 +19,164 @@
     <script>
       /*
         サーバーからのパラメーター（JSONデータ形式）
-        cardpack:配列。各カードパックデータ、最大20パックを想定。
-        cardpack.maincard:文字列。大きいカードのファイルパス。
-        cardpack.subcard:配列。小さいカードは一枚のタイル画像に対し、X軸とY軸のオフセットで指定された画像をDOM要素の背景画像として設定する。
-        cardpack.subcard.xの値は0~19
-        cardpack.subcard.yの値は0~4
+        packs.cards:配列。小さいカードは一枚のタイル画像に対し、X軸とY軸のオフセットで指定された画像をDOM要素の背景画像として設定する。
+        packs.cards.positionXの値は1~20
+        packs.cards.positionYの値は1~5
         例: 
-        cardpack.subcard.x = 1 (タイル画像の左から1を数える位置)
-        cardpack.subcard.y = 2 (タイル画像の上から2を数える位置)
+        packs.cards.positionX = 1 (タイル画像の左から1枚目位置)
+        packs.cards.positionY = 2 (タイル画像の上から2枚目位置)
         */
       const JSON_DATA = {
-        
-        cardpack:[
+        /*購入パック数*/
+        "purchase":10,
+        /*シリーズ*/
+        "series":20,
+        "packs":[
           {
-           maincard:"img/bigcard.jpg",
-           subcard: [
-              {x:1,y:2},
-              {x:3,y:4},
-              {x:2,y:4},
-              {x:1,y:1},
-              {x:0,y:0},
-              {x:0,y:0}
+          "charaVoice":8,
+          "cards": [
+                    {
+                      "class":0,
+                      "positionX":1,
+                      "positionY":2,
+                      "specialNo":"",
+                      "rarity":"0",
+                      "holo":"0"
+                    },
+                    {
+                      "class":0,
+                      "positionX":1,
+                      "positionY":2,
+                      "specialNo":"",
+                      "rarity":"0",
+                      "holo":"0"
+                    },
+                    {
+                      "class":0,
+                      "positionX":1,
+                      "positionY":2,
+                      "specialNo":"",
+                      "rarity":"0",
+                      "holo":"0"
+                    },
+                    {
+                      "class":0,
+                      "positionX":1,
+                      "positionY":2,
+                      "specialNo":"",
+                      "rarity":"0",
+                      "holo":"0"
+                    },
+                    {
+                      "class":0,
+                      "positionX":1,
+                      "positionY":2,
+                      "specialNo":"",
+                      "rarity":"0",
+                      "holo":"0"
+                    },
+                    {
+                      "class":0,
+                      "positionX":1,
+                      "positionY":2,
+                      "specialNo":"",
+                      "rarity":"0",
+                      "holo":"0"
+                    },
+                    {
+                      /*classは1の場合は特別カード（中央に表示する一番でかいカード）*/
+                      "class":1,
+                      "positionX":"",
+                      "positionY":"",
+                      "specialNo":30,
+                      "rarity":"3",
+                      "holo":"0"
+                    }
            ]
           },
+
           {
-           maincard:"img/bigcard.jpg",
-           subcard: [
-              {x:0,y:0},
-              {x:1,y:2},
-              {x:4,y:4},
-              {x:3,y:3},
-              {x:9,y:0},
-              {x:19,y:4}
+          "charaVoice":8,
+          "cards": [
+                    {
+                      "class":0,
+                      "positionX":1,
+                      "positionY":2,
+                      "specialNo":"",
+                      "rarity":"0",
+                      "holo":"0"
+                    },
+                    {
+                      "class":0,
+                      "positionX":1,
+                      "positionY":2,
+                      "specialNo":"",
+                      "rarity":"0",
+                      "holo":"0"
+                    },
+                    {
+                      "class":0,
+                      "positionX":1,
+                      "positionY":2,
+                      "specialNo":"",
+                      "rarity":"0",
+                      "holo":"0"
+                    },
+                    {
+                      "class":0,
+                      "positionX":1,
+                      "positionY":2,
+                      "specialNo":"",
+                      "rarity":"0",
+                      "holo":"0"
+                    },
+                    {
+                      "class":0,
+                      "positionX":1,
+                      "positionY":2,
+                      "specialNo":"",
+                      "rarity":"0",
+                      "holo":"0"
+                    },
+                    {
+                      "class":0,
+                      "positionX":1,
+                      "positionY":2,
+                      "specialNo":"",
+                      "rarity":"0",
+                      "holo":"0"
+                    },
+                    {
+                      "class":1,
+                      "positionX":"",
+                      "positionY":"",
+                      "specialNo":30,
+                      "rarity":"3",
+                      "holo":"0"
+                    }
            ]
           },
-        ]
+        ],
+        /*キャライラスト*/
+        "charaIllust":4
       };
        /*カードのパック数*/
-      const PACK_NUM = JSON_DATA.cardpack.length;
+      const PACK_NUM = JSON_DATA.packs.length;
       /*小さいカードの幅*/
       const SMALLCARD_WIDTH = 50;
       /*小さいカードの高さ*/
       const SMALLCARD_HEIGHT = 70; 
        /*画像プリロード用の配列*/
       let loadImgs = [];
-
+       /*ナビキャラの音声*/
+      let naviVoice = [];
       var bg2switching = true;
       var bg1switching = true;
       var tick = 0;
       var lightTick = 0;
       var staring = true;
+      
+
 
       /**
       *  画像のプリロード
@@ -106,27 +214,42 @@
       /*プリロード画像の配列初期化*/
       function initLoadImgs(){
         /*大きいカード画像*/
-        
         for(let i=0; i < PACK_NUM; i++){
-          loadImgs.push(JSON_DATA.cardpack[i].maincard);
+          let cardpack = JSON_DATA.packs[i];
+          for(let j=0; j < cardpack.cards.length; j++){
+             if(cardpack.cards[j].class == 1){
+              let imgpath = "img/bigcard_" + JSON_DATA.packs[i].cards[j].specialNo + ".jpg";
+              loadImgs.push(imgpath);
+             }
+            
+            
+          }
         }
         /*小さいカード画像*/
         loadImgs.push("img/littlecard.jpg");
 
       }
 
+      /*アニメの初期化*/
       function initAnime(){
-        /*大きいカード画像を生成*/
+        
         for(let i=0; i < PACK_NUM; i++){
-          let cardpack = JSON_DATA.cardpack[i];
+          let cardpack = JSON_DATA.packs[i];
           
           $("#cardPackWrapper").append("<div id='cardPack" + i + "' class='cardPack'>");
-          $("<div id='mainCard" + i + "' class='mainCard'><img src='" + cardpack.maincard + "'></div>").appendTo("#cardPack" + i);
+          
 
-          /*小さいカード画像生成*/
-          for(let j=0; j < cardpack.subcard.length; j++){
-            let bgPosX = cardpack.subcard[j].x * SMALLCARD_WIDTH * -1; // -1はタイル画像を左方向へ移動のため
-            let bgPosY = cardpack.subcard[j].y * SMALLCARD_HEIGHT * -1;// -1はタイル画像を上方向へ移動のため
+          /*カード画像生成*/
+          for(let j=0; j < cardpack.cards.length; j++){
+
+            /*大きいカード画像を生成*/
+            if(cardpack.cards[j].class == 1){
+              $("<div id='mainCard" + i + "' class='mainCard'><img src='img/bigcard_" + cardpack.cards[j].specialNo + ".jpg'></div>").prependTo("#cardPack" + i);
+            }
+
+            /*小さいカード画像を生成*/
+            let bgPosX = (cardpack.cards[j].positionX - 1) * SMALLCARD_WIDTH * -1; // -1はタイル画像を左方向へ移動のため
+            let bgPosY = (cardpack.cards[j].positionY - 1) * SMALLCARD_HEIGHT * -1;// -1はタイル画像を上方向へ移動のため
             $("<div id='smallCard" + j + "' class='smallCard smallCardPos_" + j + "' style='background-position:" + bgPosX + "px " + bgPosY + "px'></div>").appendTo("#cardPack" + i);
           }
           
@@ -134,20 +257,40 @@
         
       }
 
+      /*オーディオの初期化*/
+      function initAudio(){
+        // naviVoice[0] = new Audio();
+        // naviVoice[0].src = "audio/8.mp3";
+        // naviVoice[0].load();
+
+      }
+
       $(document).ready(function() {
         Deferred.define();
-
+        let startBtn = document.getElementById("startBtn");
         function start(){ 
           console.log('start');
           initLoadImgs();
           initAnime();
+          
         }
         function progress(per){
            console.log(per);
         }
         function complete(){
            console.log('complete...animeStart');
-           next(function () {
+           
+        }
+
+        // var images = [
+        //     'img/bigcard.jpg',
+        //     'img/littlecard.jpg',
+        //     'img/bg_a_1.jpg'
+        // ];
+        preloadImage(loadImgs, start, progress, complete);
+
+        function animeStart(){
+          next(function () {
               $("#card").velocity({rotateX:[75,0]},{duration:500,easing:"linear"})
                         .velocity({rotateZ:360},{duration:750,easing:"linear",loop:2});
               $("#eff").velocity({scaleX:[0,2],scaleY:[0,2],opacity:[0,1]},{duration:1500,easing:"ease-in"});
@@ -160,17 +303,18 @@
                         .velocity({opacity:[0,1]},{duration:500,easing:"ease-in",delay:200});
               return wait(0.4);
 
+          }).
+          next(function () {
+              //naviVoice[0].play();
+              audio.play();
+              return wait(36);
+          }).
+          next(function () {
+            $("#audio").attr("src","http://www.sousound.com/music/showup/showup_01.mp3");
+              audio.play();
+              return wait(60);
           });
         }
-
-        var images = [
-            'img/bigcard.jpg',
-            'img/littlecard.jpg',
-            'img/bg_a_1.jpg'
-        ];
-        preloadImage(images, start, progress, complete);
-
-        
         
         
         
@@ -214,14 +358,20 @@
         //   $('#btn').velocity({opacity:[1,0]},{duration:300,easing:"linear"});
         // });
 
-        
-        
-        
+         
+  startBtn.addEventListener('click',function(){
+    console.log("btn click");
+    //initAudio();
+    audio.load();
+    animeStart();
+  })      
 
   $('.anime-stage').bind('click',function() {
-
+    console.log("click");
+    //animeStart();
            //window.location = 'next.html';
    });
+
 
 });
 
@@ -331,11 +481,17 @@
               <div id="eff1" class="eff"><img src="img/ef_d_1.jpg"></div>
               <div id="cardPackWrapper">
               </div>
+
+
+              
           </div>
 
 
           <div id="bitFFF" class="bitFFF"><img src="img/bitFFF.png"></div>
           <div id="bit000" class="bit000"><img src="img/bit000.png"></div>
+          <div id="startBtn">Click to Start!!</div>
+          <audio id="audio" src="http://www.sousound.com/music/showup/showup_02.mp3" preload="auto"></audio>
+          
         </div>
       </div>
       <!-- ▲アニメーションエリア▲ -->
