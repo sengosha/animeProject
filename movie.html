@@ -41,7 +41,7 @@
                       "positionY":2,
                       "specialNo":"",
                       "rarity":"0",
-                      "holo":"0"
+                      "holo":"1"
                     },
                     {
                       "class":0,
@@ -57,7 +57,7 @@
                       "positionY":2,
                       "specialNo":"",
                       "rarity":"0",
-                      "holo":"0"
+                      "holo":"1"
                     },
                     {
                       "class":0,
@@ -73,7 +73,7 @@
                       "positionY":2,
                       "specialNo":"",
                       "rarity":"0",
-                      "holo":"0"
+                      "holo":"1"
                     },
                     {
                       "class":0,
@@ -90,7 +90,7 @@
                       "positionY":"",
                       "specialNo":30,
                       "rarity":"3",
-                      "holo":"0"
+                      "holo":"1"
                     }
            ]
           },
@@ -112,7 +112,15 @@
                       "positionY":2,
                       "specialNo":"",
                       "rarity":"0",
-                      "holo":"0"
+                      "holo":"1"
+                    },
+                    {
+                      "class":0,
+                      "positionX":1,
+                      "positionY":2,
+                      "specialNo":"",
+                      "rarity":"0",
+                      "holo":"1"
                     },
                     {
                       "class":0,
@@ -128,7 +136,7 @@
                       "positionY":2,
                       "specialNo":"",
                       "rarity":"0",
-                      "holo":"0"
+                      "holo":"1"
                     },
                     {
                       "class":0,
@@ -136,15 +144,7 @@
                       "positionY":2,
                       "specialNo":"",
                       "rarity":"0",
-                      "holo":"0"
-                    },
-                    {
-                      "class":0,
-                      "positionX":1,
-                      "positionY":2,
-                      "specialNo":"",
-                      "rarity":"0",
-                      "holo":"0"
+                      "holo":"1"
                     },
                     {
                       "class":1,
@@ -174,8 +174,14 @@
       var bg1switching = true;
       var tick = 0;
       var lightTick = 0;
-      var staring = true;
-      
+      /*この変数によって各シーンの動きを決める。
+      0：最初のシーンの演出からユーザーのタップを受付までの演出
+      1：タップ後にエフェクトの演出　→　魔法陣の演出
+      2：カード出しの演出からナビキャラが出てくる演出
+      3：演出は完全終了、結果ページに遷移
+      */
+      let scene = 0; 
+      let waitTimer;
 
 
       /**
@@ -288,48 +294,132 @@
         //     'img/bg_a_1.jpg'
         // ];
         preloadImage(loadImgs, start, progress, complete);
+        function checkAction(){
+          console.log("scene is : " + scene);
+          switch(scene){
+            case 0: // 魔法陣を出す前の演出
+              animeStart();
+              break;
+            case 1: // 魔法陣を出す演出、次のパックの演出は基本魔法陣の演出から
+              playEffMove(1)
+              break;
+            case 2:
+              break;
+            case 3:
+              break;
+
+          }
+        }
 
         function animeStart(){
           next(function () {
-              $("#card").velocity({rotateX:[75,0]},{duration:500,easing:"linear"})
-                        .velocity({rotateZ:360},{duration:750,easing:"linear",loop:2});
-              $("#eff").velocity({scaleX:[0,2],scaleY:[0,2],opacity:[0,1]},{duration:1500,easing:"ease-in"});
-              return wait(1);
+              // $("#card").velocity({rotateX:[75,0]},{duration:500,easing:"linear"})
+              //           .velocity({rotateZ:360},{duration:750,easing:"linear",loop:2});
+              // $("#eff").velocity({scaleX:[0,2],scaleY:[0,2],opacity:[0,1]},{duration:1500,easing:"ease-in"});
+              // return wait(1);
 
           }).
           next(function () {
-              $("#eff1").velocity({scaleX:[2,1],scaleY:[2,1]},{duration:1000,easing:"ease-in",queue:false});
-              $("#eff1").velocity({opacity:[1,0]},{duration:300,easing:"ease-in"})
-                        .velocity({opacity:[0,1]},{duration:500,easing:"ease-in",delay:200});
-              return wait(0.4);
+              // $("#eff1").velocity({scaleX:[2,1],scaleY:[2,1]},{duration:1000,easing:"ease-in",queue:false});
+              // $("#eff1").velocity({opacity:[1,0]},{duration:300,easing:"ease-in"})
+              //           .velocity({opacity:[0,1]},{duration:500,easing:"ease-in",delay:200});
+              // return wait(0.4);
 
           }).
           next(function () {
               //naviVoice[0].play();
-              audio.play();
-              return wait(36);
+              // audio.play();
+              // return wait(36);
           }).
           next(function () {
-            $("#audio").attr("src","http://www.sousound.com/music/showup/showup_01.mp3");
-              audio.play();
-              return wait(60);
+            //  $("#audio").attr("src","http://develop.cardgacha.com/files/contents/showup_02.mp3");
+            //    audio.play();
+            //   return wait(60);
+          }).
+          next(function () {
+            $("#s_naviChar_w").velocity({opacity:[0,1],scaleX:[1.5,1],scaleY:[1.5,1]},{duration:500,easing:"ease-in"});
+            $("#s_naviChar").remove();
+            waitTimer = wait(1);
+            return waitTimer;
+          }).
+          next(function () {
+            $("#bg_back").velocity({translateX:[750,0]},{duration:1000,easing:"ease-in"});
+            waitTimer = wait(1);
+            return waitTimer;
+          }).
+          next(function () {
+            // $("#bitFFF").velocity({opacity:[1,0]},{duration:200,easing:"linear"});
+            // waitTimer = wait(0.2);
+            // return waitTimer;
+          }).
+          next(function () {
+            
+            //$(".effWrap,.bg_eff").removeClass("anim");
+            // $("#bitFFF").velocity({opacity:[0,1]},{duration:200,easing:"linear"});
+            // waitTimer = wait(0);
+            // return waitTimer;
+          }).
+          next(function () {
+            $("#bgMask").velocity({opacity:[0.8,0]},{duration:1000,easing:"linear"});
+            //$("#bg_pillar").velocity({opacity:[1,0]},{duration:200,easing:"linear"});
+            $(".effWrap").velocity({translateX:[1280,0],opacity:[0,1]},{duration:1600,easing:"easeInCubic"});
+            $("#pillarWrap").velocity({opacity:[0,1]},{duration:1600,easing:"linear",display:"none"});
+            waitTimer = wait(1.6);
+            return waitTimer;
+          }).
+          next(function () {
+            playEffMove(1);
+          });
+        }
+        /*カードを出す前の魔法陣演出*/
+        function playEffMove(rarity){
+          next(function () {
+              $("#magicSquare1").velocity({opacity:[1,1],scaleX:[1,-1],scaleY:[1,0],rotateZ:[0,540]},{duration:400,easing:"ease-in"})
+                                .velocity({rotateZ:[-360,0]},{duration:12000,easing:"linear",loop:true});
+              waitTimer = wait(0.4);
+            return waitTimer;
+
+          }).
+          next(function () {
+              $("#magicSquareWrap").velocity({opacity:[1,0],scaleX:[1,1.2],scaleY:[1,1.2]},{duration:400,easing:"linear"});
+              waitTimer = wait(0.8);
+            return waitTimer;
+
+          }).
+          next(function () {
+              $(".thunder1").css("display","block");
+              waitTimer = wait(2);
+              return waitTimer;
+          }).
+          next(function () {
+              $("#bitFFF").velocity({opacity:[1,0]},{duration:1500,easing:"ease-in"});
+              $("#animelim").velocity({scaleX:[1.5,1],scaleY:[1.5,1]},{duration:1500,easing:"ease-in"});
+              waitTimer = wait(2);
+              return waitTimer;
           });
         }
         
-        
-        
-        
-        // next(function () {
-        //     doBg1Switch();
-        //     return wait(0.4);
-
-        // }).
-        // next(function () {
-        //     $("#char1").velocity({translateX:[355,0]},{duration:300,easing:"linear"})
-        //                .velocity({translateX:[390,355]},{duration:1500,easing:"linear"});
-        //     return wait(0.2);
-
-        // }).
+        /*アニメ開始のナビキャラが出て来る演出*/
+        next(function () {
+            waitTimer = wait(1);
+            return waitTimer;
+        })
+        next(function () {
+            $("#s_naviChar_f").velocity({opacity:[1,0]},{duration:300,easing:"linear"});
+            waitTimer = wait(0.3);
+            return waitTimer;
+        }).
+        next(function () {
+            
+            $("#s_naviChar").velocity({opacity:[1,0]},{duration:500,easing:"linear"});
+            waitTimer = wait(0.5);
+            return waitTimer;
+        }).
+        next(function () {
+            $("#s_naviChar_f").velocity({opacity:[0,1]},{duration:500,easing:"linear"});
+            waitTimer = wait(0.5);
+            return waitTimer;
+        });
         // next(function () {
         //     $("#char2").velocity({translateX:[-500,0]},{duration:300,easing:"linear"})
         //                .velocity({translateX:[-550,-500]},{duration:1500,easing:"linear"});
@@ -362,14 +452,21 @@
   startBtn.addEventListener('click',function(){
     console.log("btn click");
     //initAudio();
-    audio.load();
-    animeStart();
+    //audio.load();
+    startBtn.remove();
+    checkAction();
+    //playEffMove()
   })      
 
   $('.anime-stage').bind('click',function() {
-    console.log("click");
+    console.log("stage click");
+    switch(scene){
+      case 0:
+        //scene = 1;
+        break;
+    }
     //animeStart();
-           //window.location = 'next.html';
+    //window.location = 'next.html';
    });
 
 
@@ -456,29 +553,68 @@
       <div class='anime-stage'>
         <div id="animelim">
           <div id="scene1">
-              <div id="bg_back" class="bg"><img src="img/bg_c_1.png"></div>
-              <div id="bg_middle" class="bg"><img src="img/bg_b_1.png"></div>
-              <div id="bg_front" class="bg"><img src="img/bg_a_1.png"></div>
-              <div id="bg_pillar" class="bg bg_pillar_move"><img src="img/ef_f_1.jpg"></div>
-              <div id="bg_effWrap1" class="effWrap opacityMov1">
-              <div id="bg_eff1" style="background-image: url(img/ef_b_1.jpg)" class="bg_eff bgEffMove1"></div>
+              <div id="bg_back" class="bg"><img src="img/bg_light_1.png"></div>
+              <div id="bg_middle" class="bg"><img src="img/bg_wall_1.png"></div>
+              <div id="bg_front" class="bg"><img src="img/bg_device_1.png"></div>
+              <div id="pillarWrap">
+              <div id="bg_pillar" class="bg bg_pillar_move"><img src="img/ef_light_1.jpg"></div>
+              </div>
+              <div id="bgMask" class="bit000"><img src="img/bit000.png"></div>
+               <!-- PC版用に残す
+              <div id="bg_effWrap1" class="effWrap anim">
+              <div id="bg_eff1" style="background-image: url(img/ef_line_1.gif)" class="bg_eff anim"></div>
               </div>
 
-              <div id="bg_effWrap2" class="effWrap opacityMov2">
-              <div id="bg_eff2" style="background-image: url(img/ef_b_2.jpg)" class="bg_eff bgEffMove2"></div>
+              <div id="bg_effWrap2" class="effWrap anim">
+              <div id="bg_eff2" style="background-image: url(img/ef_line_2.gif)" class="bg_eff anim"></div>
               </div>
 
-              <div id="bg_effWrap3" class="effWrap opacityMov3">
-              <div id="bg_eff3" style="background-image: url(img/ef_b_3.jpg)" class="bg_eff bgEffMove3"></div>
+              <div id="bg_effWrap3" class="effWrap anim">
+              <div id="bg_eff3" style="background-image: url(img/ef_line_3.gif)" class="bg_eff anim"></div>
               </div>
 
-              <div id="bg_effWrap4" class="effWrap opacityMov4">
-              <div id="bg_eff4" style="background-image: url(img/ef_b_4.jpg)" class="bg_eff bgEffMove4"></div>
+              <div id="bg_effWrap4" class="effWrap anim">
+              <div id="bg_eff4" style="background-image: url(img/ef_line_4.gif)" class="bg_eff anim"></div>
               </div>
-              
+              -->
+              <div id="bg_effWrap1" class="effWrap">
+              <div id="bg_eff1" style="background-image: url(img/ef_line_1.gif)" class="bg_eff"></div>
+              </div>
+
+              <div id="bg_effWrap2" class="effWrap">
+              <div id="bg_eff2" style="background-image: url(img/ef_line_2.gif)" class="bg_eff"></div>
+              </div>
+
+              <div id="bg_effWrap3" class="effWrap">
+              <div id="bg_eff3" style="background-image: url(img/ef_line_3.gif)" class="bg_eff"></div>
+              </div>
+
+              <div id="bg_effWrap4" class="effWrap">
+              <div id="bg_eff4" style="background-image: url(img/ef_line_4.gif)" class="bg_eff"></div>
+              </div>
+              <!-- タップする前に出てくるナビキャラ-->
+              <div id="s_naviCharWrap" class="anim">
+                <div id="s_naviChar" class="s_naviChar"><img src="img/chara_unit_2.png" /></div>
+                <div id="s_naviChar_f" class="s_naviChar"><img src="img/chara_unit_1.png" /></div>
+                <div id="s_naviChar_w" class="s_naviChar"><img src="img/chara_unit_3.png" /></div>
+              </div>
+              <div id="magicSquare1" class="magicSquare"><img src="img/ef_circle_1.jpg" /></div>
+              <div id="magicSquareWrap">
+                <div id="magicSquare2" class="magicSquare anim"><img src="img/ef_circle_2.jpg" /></div>
+              </div>
+
+
+              <!-- 雷エフェクトグループ-->
+              <div id="thunder1_1" class="thunder1 anim"><img src="img/ef_thunder_0_1.jpg" /></div>
+              <div id="thunder1_2" class="thunder1 anim"><img src="img/ef_thunder_0_2.jpg" /></div>
+              <div id="thunder1_3" class="thunder1 anim"><img src="img/ef_thunder_0_3.jpg" /></div>
+              <div id="thunder1_4" class="thunder1 anim"><img src="img/ef_thunder_0_4.jpg" /></div>
+              <div id="thunder1_5" class="thunder1 anim"><img src="img/ef_thunder_0_5.jpg" /></div>
+              <div id="thunder1_6" class="thunder1 anim"><img src="img/ef_thunder_0_6.jpg" /></div>
+
               <!--<div id="card" class="card"><img src="img/ef_c_1.png"></div>-->
-              <div id="eff" class="eff"><img src="img/ef_c_1.jpg"></div>
-              <div id="eff1" class="eff"><img src="img/ef_d_1.jpg"></div>
+              <div id="eff" class="eff"><img src="img/card_big_1.jpg"></div>
+              <div id="eff1" class="eff"><img src="img/ef_flare_1.jpg"></div>
               <div id="cardPackWrapper">
               </div>
 
@@ -490,7 +626,7 @@
           <div id="bitFFF" class="bitFFF"><img src="img/bitFFF.png"></div>
           <div id="bit000" class="bit000"><img src="img/bit000.png"></div>
           <div id="startBtn">Click to Start!!</div>
-          <audio id="audio" src="http://www.sousound.com/music/showup/showup_02.mp3" preload="auto"></audio>
+          <!--<audio id="audio" src="http://develop.cardgacha.com/files/contents/showup_01.mp3" preload="auto"></audio>-->
           
         </div>
       </div>

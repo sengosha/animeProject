@@ -17,9 +17,23 @@
 }
 
 .bg_eff{width:1280px;height:550px;background: url(../img/ef_b_4.jpg) left top/50% 100% repeat-x;left: -905px;top: 0px;mix-blend-mode: screen;}
+#bgMask{width:375px;height:550px;opacity:0}
+#bg_back{left:-375px}
 .effWrap{mix-blend-mode: screen;}
-
 #bg_pillar{mix-blend-mode: screen;}
+.s_naviChar{opacity: 0;width: 375px;}
+
+@keyframes naviCharFloat{
+	0% {transform:translateY(0px)}
+	50%{transform:translateY(6px)}
+	100%{transform:translateY(0px)}
+}
+#s_naviCharWrap.anim{
+	animation-name: naviCharFloat;
+	animation-duration: 3s;
+	animation-timing-function: 	ease-in-out;
+	animation-iteration-count: infinite;
+}
 
 .cardPack {
 	display: none;
@@ -65,6 +79,140 @@
 	top: 475px;
 }
 
+#magicSquare1{
+	width: 498px;
+	left:-61.5px;
+	top:26px;
+	mix-blend-mode: screen;
+	opacity:0;
+}
+#magicSquare2{
+	width: 498px;
+}
+#magicSquareWrap{
+	width: 498px;
+	height:498px;
+	left:-61.5px;
+	top:26px;
+	opacity: 0;
+	mix-blend-mode: screen;
+}
+@keyframes clockwiseRotate{
+	0% {transform:rotateZ(0deg)}
+	100% {transform:rotateZ(360deg)}
+}
+
+#magicSquare2.anim{
+	animation-name: clockwiseRotate;
+	animation-duration: 4s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.thunder1,.thunder2{
+	width:375px;
+	mix-blend-mode: screen;
+	display:none;
+}
+
+@-webkit-keyframes thunder1 {
+	0% {opacity: 1;}
+	16.6% {opacity: 0;}
+	33.2% {opacity: 0;}
+	49.8% {opacity: 0;}
+	66.4% {opacity: 0;}
+	83%  {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+@-webkit-keyframes thunder2 {
+	0% {opacity: 0;}
+	16.6% {opacity: 1;}
+	33.2% {opacity: 0;}
+	49.8% {opacity: 0;}
+	66.4% {opacity: 0;}
+	83%  {opacity: 0;}
+	100% {opacity: 0;}
+}
+
+@-webkit-keyframes thunder3 {
+	0% {opacity: 0;}
+	16.6% {opacity: 0;}
+	33.2% {opacity: 1;}
+	49.8% {opacity: 0;}
+	66.4% {opacity: 0;}
+	83%  {opacity: 0;}
+	100% {opacity: 0;}
+}
+
+@-webkit-keyframes thunder4 {
+	0% {opacity: 0;}
+	16.6% {opacity: 0;}
+	33.2% {opacity: 0;}
+	49.8% {opacity: 1;}
+	66.4% {opacity: 0;}
+	83%  {opacity: 0;}
+	100% {opacity: 0;}
+}
+
+@-webkit-keyframes thunder5 {
+	0% {opacity: 0;}
+	16.6% {opacity: 0;}
+	33.2% {opacity: 0;}
+	49.8% {opacity: 0;}
+	66.4% {opacity: 1;}
+	83%  {opacity: 0;}
+	100% {opacity: 0;}
+}
+
+@-webkit-keyframes thunder6 {
+	0% {opacity: 0;}
+	16.6% {opacity: 0;}
+	33.2% {opacity: 0;}
+	49.8% {opacity: 0;}
+	66.4% {opacity: 0;}
+	83%  {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+#thunder1_1.anim {
+	animation-name: thunder1;
+	animation-duration: 0.6s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+#thunder1_2.anim {
+	animation-name: thunder2;
+	animation-duration: 0.6s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+#thunder1_3.anim {
+	animation-name: thunder3;
+	animation-duration: 0.6s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+#thunder1_4.anim {
+	animation-name: thunder4;
+	animation-duration: 0.6s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+#thunder1_5.anim {
+	animation-name: thunder5;
+	animation-duration: 0.6s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+#thunder1_6.anim {
+	animation-name: thunder6;
+	animation-duration: 0.6s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+
 #startBtn{
     width: 150px;
     height: 50px;
@@ -99,56 +247,56 @@
 }
 
 
-.opacityMov1 {
+#bg_effWrap1.anim {
 	animation-name: opacitymov;
 	animation-duration: 2s;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 }
 
-.opacityMov2 {
+#bg_effWrap2.anim {
 	animation-name: opacitymov;
 	animation-duration: 5s;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 }
 
-.opacityMov3 {
+#bg_effWrap3.anim {
 	animation-name: opacitymov;
 	animation-duration: 9s;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 }
 
-.opacityMov4 {
+#bg_effWrap4.anim {
 	animation-name: opacitymov;
 	animation-duration: 8s;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 }
 
-.bgEffMove1 {
+#bg_eff1.anim {
 	animation-name: bg_eff_move;
 	animation-duration: 10s;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 }
 
-.bgEffMove2 {
+#bg_eff2.anim {
 	animation-name: bg_eff_move;
 	animation-duration: 15s;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 }
 
-.bgEffMove3 {
+#bg_eff3.anim {
 	animation-name: bg_eff_move;
 	animation-duration: 22s;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 }
 
-.bgEffMove4 {
+#bg_eff4.anim {
 	animation-name: bg_eff_move;
 	animation-duration: 25s;
 	animation-timing-function: linear;
@@ -561,19 +709,19 @@
 }
 .doKaminari1 {
 	-webkit-animation-name: kaminari_one;
-	-webkit-animation-duration: 1s;
+	-webkit-animation-duration: 0.3s;
 	-webkit-animation-timing-function: linear;
 	-webkit-animation-iteration-count: infinite;
 }
 .doKaminari2 {
 	-webkit-animation-name: kaminari_two;
-	-webkit-animation-duration: 1s;
+	-webkit-animation-duration: 0.3s;
 	-webkit-animation-timing-function: linear;
 	-webkit-animation-iteration-count: infinite;
 }
 .doKaminari3 {
 	-webkit-animation-name: kaminari_three;
-	-webkit-animation-duration: 1s;
+	-webkit-animation-duration: 0.3s;
 	-webkit-animation-timing-function: linear;
 	-webkit-animation-iteration-count: infinite;
 }
