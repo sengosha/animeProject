@@ -38,7 +38,7 @@
                     {
                       "class":0,
                       "positionX":1,
-                      "positionY":2,
+                      "positionY":1,
                       "specialNo":"",
                       "rarity":"0",
                       "holo":"1"
@@ -53,32 +53,32 @@
                     },
                     {
                       "class":0,
-                      "positionX":1,
-                      "positionY":2,
+                      "positionX":3,
+                      "positionY":4,
                       "specialNo":"",
                       "rarity":"0",
                       "holo":"1"
                     },
                     {
                       "class":0,
-                      "positionX":1,
-                      "positionY":2,
+                      "positionX":20,
+                      "positionY":5,
                       "specialNo":"",
                       "rarity":"0",
                       "holo":"0"
                     },
                     {
                       "class":0,
-                      "positionX":1,
-                      "positionY":2,
+                      "positionX":5,
+                      "positionY":5,
                       "specialNo":"",
                       "rarity":"0",
                       "holo":"1"
                     },
                     {
                       "class":0,
-                      "positionX":1,
-                      "positionY":2,
+                      "positionX":15,
+                      "positionY":3,
                       "specialNo":"",
                       "rarity":"0",
                       "holo":"0"
@@ -100,48 +100,48 @@
           "cards": [
                     {
                       "class":0,
-                      "positionX":1,
-                      "positionY":2,
+                      "positionX":7,
+                      "positionY":3,
                       "specialNo":"",
                       "rarity":"0",
                       "holo":"0"
                     },
                     {
                       "class":0,
-                      "positionX":1,
-                      "positionY":2,
+                      "positionX":18,
+                      "positionY":3,
                       "specialNo":"",
                       "rarity":"0",
                       "holo":"1"
                     },
                     {
                       "class":0,
-                      "positionX":1,
-                      "positionY":2,
+                      "positionX":16,
+                      "positionY":1,
                       "specialNo":"",
                       "rarity":"0",
                       "holo":"1"
                     },
                     {
                       "class":0,
-                      "positionX":1,
-                      "positionY":2,
+                      "positionX":3,
+                      "positionY":3,
                       "specialNo":"",
                       "rarity":"0",
                       "holo":"0"
                     },
                     {
                       "class":0,
-                      "positionX":1,
-                      "positionY":2,
+                      "positionX":9,
+                      "positionY":1,
                       "specialNo":"",
                       "rarity":"0",
                       "holo":"1"
                     },
                     {
                       "class":0,
-                      "positionX":1,
-                      "positionY":2,
+                      "positionX":10,
+                      "positionY":3,
                       "specialNo":"",
                       "rarity":"0",
                       "holo":"1"
@@ -163,17 +163,13 @@
        /*カードのパック数*/
       const PACK_NUM = JSON_DATA.packs.length;
       /*小さいカードの幅*/
-      const SMALLCARD_WIDTH = 50;
+      const SMALLCARD_WIDTH = 60;
       /*小さいカードの高さ*/
-      const SMALLCARD_HEIGHT = 70; 
+      const SMALLCARD_HEIGHT = 84; 
        /*画像プリロード用の配列*/
       let loadImgs = [];
        /*ナビキャラの音声*/
       let naviVoice = [];
-      var bg2switching = true;
-      var bg1switching = true;
-      var tick = 0;
-      var lightTick = 0;
       /*この変数によって各シーンの動きを決める。
       0：最初のシーンの演出からユーザーのタップを受付までの演出
       1：タップ後にエフェクトの演出　→　魔法陣の演出
@@ -181,6 +177,10 @@
       3：演出は完全終了、結果ページに遷移
       */
       let scene = 0; 
+       /*最初のパックの大きいカードのレアリティ*/
+      let cardRarity = JSON_DATA.packs[0].cards[6].rarity;
+       /*パックの演出用インデックス*/
+      let packIndex = 0; 
       let waitTimer;
 
 
@@ -239,28 +239,44 @@
       /*アニメの初期化*/
       function initAnime(){
         
+        /*カード生成　BEGIN*/
         for(let i=0; i < PACK_NUM; i++){
           let cardpack = JSON_DATA.packs[i];
           
           $("#cardPackWrapper").append("<div id='cardPack" + i + "' class='cardPack'>");
           
 
-          /*カード画像生成*/
+          /*カード画像生成 div idはcard_パック順番_カード順番　順番は0からスタート*/
           for(let j=0; j < cardpack.cards.length; j++){
 
             /*大きいカード画像を生成*/
             if(cardpack.cards[j].class == 1){
-              $("<div id='mainCard" + i + "' class='mainCard'><img src='img/bigcard_" + cardpack.cards[j].specialNo + ".jpg'></div>").prependTo("#cardPack" + i);
+              $("<div id='card_" + i + "_" + j + "' class='mainCard'><img src='img/bigcard_" + cardpack.cards[j].specialNo + ".jpg'></div>").prependTo("#cardPack" + i);
+              $("<div id='mainCardLight_" + i + "' class='mainCardLight'><img src='img/card_light_l_1.png'></div>").insertAfter("#card_" + i + "_" + j);
+              if(cardpack.cards[j].holo == 1){
+                $("<div id='cardHolo_" + i + "_" + j + "' class='mainCardHolo'><img src='img/card_horo_l_1.jpg'></div>").insertAfter("#card_" + i + "_" + j);
+              }
             }
-
-            /*小さいカード画像を生成*/
-            let bgPosX = (cardpack.cards[j].positionX - 1) * SMALLCARD_WIDTH * -1; // -1はタイル画像を左方向へ移動のため
-            let bgPosY = (cardpack.cards[j].positionY - 1) * SMALLCARD_HEIGHT * -1;// -1はタイル画像を上方向へ移動のため
-            $("<div id='smallCard" + j + "' class='smallCard smallCardPos_" + j + "' style='background-position:" + bgPosX + "px " + bgPosY + "px'></div>").appendTo("#cardPack" + i);
+            else{
+              /*小さいカード画像を生成*/
+              let bgPosX = (cardpack.cards[j].positionX - 1) * SMALLCARD_WIDTH * -1; // -1はタイル画像を左方向へ移動のため
+              let bgPosY = (cardpack.cards[j].positionY - 1) * SMALLCARD_HEIGHT * -1;// -1はタイル画像を上方向へ移動のため
+              $("<div id='card_" + i + "_" + j + "' class='smallCard smallCardPos_" + j + "' style='background-position:" + bgPosX + "px " + bgPosY + "px'></div>").appendTo("#cardPack" + i);
+              if(cardpack.cards[j].holo == 1){
+                $("<div id='cardHolo_" + i + "_" + j + "' class='smallCardHolo smallCardPos_" + j + "'><img src='img/card_horo_s_1.jpg'></div>").insertAfter("#card_" + i + "_" + j);
+              }
+            }
+            
           }
           
         }
+        /*カード生成　END*/
         
+        /*魔法陣をセット*/
+        setMagicSquare(cardRarity);
+        /*パック数をセット*/
+        setPack(PACK_NUM,false);
+        setPack(packIndex+1,false);
       }
 
       /*オーディオの初期化*/
@@ -269,6 +285,38 @@
         // naviVoice[0].src = "audio/8.mp3";
         // naviVoice[0].load();
 
+      }
+      function setMagicSquare(rarity){
+        $("#magicSquare1 img").attr("src","img/ef_circle_" + rarity + "_1.jpg");
+        $("#magicSquare2 img").attr("src","img/ef_circle_" + rarity + "_2.jpg");
+      }
+
+      //パック数を設定
+      function setPack(num,isBigNum){
+          
+          let target = (isBigNum) ? "#packCounterNum" : "#packCounterSmallNum";
+          //マス数を全部消す
+          for(var i=0; i<=9; i++){
+              for(var j=1;j<=3;j++){
+                  $(target + j + "_" + i).css("opacity","0");
+              }
+          }
+
+          //一の位をパースする
+          if(parseInt(num).toString()[parseInt(num).toString().length - 1] != undefined){
+              $(target + "1_" + parseInt(num).toString()[parseInt(num).toString().length - 1]).css("opacity","1");
+          }
+
+          //十の位をパースする
+          if(parseInt(num).toString()[parseInt(num).toString().length - 2] != undefined){
+              $(target + "2_" + parseInt(num).toString()[parseInt(num).toString().length - 2]).css("opacity","1");
+          }
+
+          //百の位をパースする
+          if(parseInt(num).toString()[parseInt(num).toString().length - 3] != undefined){
+              $(target + "3_" + parseInt(num).toString()[parseInt(num).toString().length - 3]).css("opacity","1");
+          }
+   
       }
 
       $(document).ready(function() {
@@ -401,6 +449,7 @@
         
         /*アニメ開始のナビキャラが出て来る演出*/
         next(function () {
+            $("#startBtn").velocity({opacity:0.6},{duration:1000,easing:"linear",loop:true});
             waitTimer = wait(1);
             return waitTimer;
         })
@@ -457,8 +506,15 @@
     checkAction();
     //playEffMove()
   })      
+  /*オールスキップのタップ処理*/
+  $('.allSkipBtn').bind('click',function() {
+    console.log("all skip");
+    window.location = 'next.html';
+   });
 
-  $('.anime-stage').bind('click',function() {
+
+  /*全画面のタップ処理*/
+  $('#animelim').bind('click',function() {
     console.log("stage click");
     switch(scene){
       case 0:
@@ -472,80 +528,6 @@
 
 });
 
- 
-
-
-     function doBg2Switch(){
-      if(bg2switching){
-        next(function(){
-          if(tick == 0){
-            $('#bg21').css("visibility","visible");
-            $('#bg22').css("visibility","hidden");
-            $('#bg23').css("visibility","hidden");
-            $('#bg24').css("visibility","hidden");
-            tick = 1;
-          }
-          else if(tick == 1){
-            $('#bg21').css("visibility","hidden");
-            $('#bg22').css("visibility","visible");
-            $('#bg23').css("visibility","hidden");
-            $('#bg24').css("visibility","hidden");
-            tick = 2;
-          }
-          else if(tick == 2){
-            $('#bg21').css("visibility","hidden");
-            $('#bg22').css("visibility","hidden");
-            $('#bg23').css("visibility","visible");
-            $('#bg24').css("visibility","hidden");
-            tick = 3;
-          }
-          else if(tick == 3){
-            $('#bg21').css("visibility","hidden");
-            $('#bg22').css("visibility","hidden");
-            $('#bg23').css("visibility","hidden");
-            $('#bg24').css("visibility","visible");
-            tick = 0;
-          }
-        }).
-        next(function(){
-          setTimeout("doBg2Switch()",125);
-        });
-
-      }
-    }
-
-      function doBg1Switch(){
-      if(bg1switching){
-        next(function(){
-          if(lightTick == 0){
- 
-            $('#bg1_1').css("visibility","visible");
-            $('#bg1_2').css("visibility","hidden");
-            $('#bg1_3').css("visibility","hidden");
-            lightTick = 1;
-          }
-          else if(lightTick == 1){
-
-            $('#bg1_1').css("visibility","hidden");
-            $('#bg1_2').css("visibility","visible");
-            $('#bg1_3').css("visibility","hidden");
-            lightTick = 2;
-          }
-          else if(lightTick == 2){
-
-            $('#bg1_1').css("visibility","hidden");
-            $('#bg1_2').css("visibility","hidden");
-            $('#bg1_3').css("visibility","visible");
-            lightTick = 0;
-          }
-
-        }).
-        next(function(){
-          setTimeout("doBg1Switch()",75);
-        });
-
-      }
-    }
 
     </script>
     <div id="main">
@@ -577,6 +559,8 @@
               <div id="bg_eff4" style="background-image: url(img/ef_line_4.gif)" class="bg_eff anim"></div>
               </div>
               -->
+
+              <!--スマホ版は背景のパーティクルが動かさない-->
               <div id="bg_effWrap1" class="effWrap">
               <div id="bg_eff1" style="background-image: url(img/ef_line_1.gif)" class="bg_eff"></div>
               </div>
@@ -592,17 +576,19 @@
               <div id="bg_effWrap4" class="effWrap">
               <div id="bg_eff4" style="background-image: url(img/ef_line_4.gif)" class="bg_eff"></div>
               </div>
-              <!-- タップする前に出てくるナビキャラ-->
+
+              <!-- タップスタートする前に出てくるナビキャラ-->
               <div id="s_naviCharWrap" class="anim">
                 <div id="s_naviChar" class="s_naviChar"><img src="img/chara_unit_2.png" /></div>
                 <div id="s_naviChar_f" class="s_naviChar"><img src="img/chara_unit_1.png" /></div>
                 <div id="s_naviChar_w" class="s_naviChar"><img src="img/chara_unit_3.png" /></div>
               </div>
-              <div id="magicSquare1" class="magicSquare"><img src="img/ef_circle_1.jpg" /></div>
-              <div id="magicSquareWrap">
-                <div id="magicSquare2" class="magicSquare anim"><img src="img/ef_circle_2.jpg" /></div>
-              </div>
 
+              <!-- 魔法陣　-->
+              <div id="magicSquare1" class="magicSquare"><img src="img/ef_circle_1_1.jpg" /></div>
+              <div id="magicSquareWrap">
+                <div id="magicSquare2" class="magicSquare anim"><img src="img/ef_circle_1_2.jpg" /></div>
+              </div>
 
               <!-- 雷エフェクトグループ-->
               <div id="thunder1_1" class="thunder1 anim"><img src="img/ef_thunder_0_1.jpg" /></div>
@@ -613,24 +599,117 @@
               <div id="thunder1_6" class="thunder1 anim"><img src="img/ef_thunder_0_6.jpg" /></div>
 
               <!--<div id="card" class="card"><img src="img/ef_c_1.png"></div>-->
-              <div id="eff" class="eff"><img src="img/card_big_1.jpg"></div>
               <div id="eff1" class="eff"><img src="img/ef_flare_1.jpg"></div>
+              <!--カードのラッパー-->
               <div id="cardPackWrapper">
               </div>
 
+              <div id="mainCardCover" class="bg"><img src="img/card_light_l_2.png"></div>
 
-              
+              <div id="cardFadeInLight_0" class="cardFadeInLight cardFadeInLightPos_0"><img src="img/card_light_s_1.png" /></div>
+              <div id="cardFadeInLight_1" class="cardFadeInLight cardFadeInLightPos_1"><img src="img/card_light_s_1.png" /></div>
+              <div id="cardFadeInLight_2" class="cardFadeInLight cardFadeInLightPos_2"><img src="img/card_light_s_1.png" /></div>
+              <div id="cardFadeInLight_3" class="cardFadeInLight cardFadeInLightPos_3"><img src="img/card_light_s_1.png" /></div>
+              <div id="cardFadeInLight_4" class="cardFadeInLight cardFadeInLightPos_4"><img src="img/card_light_s_1.png" /></div>
+              <div id="cardFadeInLight_5" class="cardFadeInLight cardFadeInLightPos_5"><img src="img/card_light_s_1.png" /></div>
+
+              <!--ナビキャラのラッパー idはnaviChar_レア度
+                0:N, 1:SR, 2:HR, 3:ZXR, 4:シークレット
+              -->
+              <div id="naviCharWrapper">
+                <div id="naviChar_0" class="naviChar"><img src="img/chara_result_0.png" /></div>
+                <div id="naviChar_1" class="naviChar"><img src="img/chara_result_1.png" /></div>
+                <div id="naviChar_2" class="naviChar"><img src="img/chara_result_2.png" /></div>
+                <div id="naviChar_3" class="naviChar"><img src="img/chara_result_3.png" /></div>
+                <div id="naviChar_4" class="naviChar"><img src="img/chara_result_4.png" /></div>
+              </div>
+
+              <!--パック数のラッパー-->
+              <div id="packCounterCont">
+            
+                <div id="packCounterBg"><img src="img/ui_window_pack.png"></div>
+                <!--パック数の一の位の数字（大きい方）-->
+                <div id="packCounterNumCont1">
+                    <div id="packCounterNum1_0" class="packCounterNum"><img src="img/ui_number_m_0.png"></div>
+                    <div id="packCounterNum1_1" class="packCounterNum"><img src="img/ui_number_m_1.png"></div>
+                    <div id="packCounterNum1_2" class="packCounterNum"><img src="img/ui_number_m_2.png"></div>
+                    <div id="packCounterNum1_3" class="packCounterNum"><img src="img/ui_number_m_3.png"></div>
+                    <div id="packCounterNum1_4" class="packCounterNum"><img src="img/ui_number_m_4.png"></div>
+                    <div id="packCounterNum1_5" class="packCounterNum"><img src="img/ui_number_m_5.png"></div>
+                    <div id="packCounterNum1_6" class="packCounterNum"><img src="img/ui_number_m_6.png"></div>
+                    <div id="packCounterNum1_7" class="packCounterNum"><img src="img/ui_number_m_7.png"></div>
+                    <div id="packCounterNum1_8" class="packCounterNum"><img src="img/ui_number_m_8.png"></div>
+                    <div id="packCounterNum1_9" class="packCounterNum"><img src="img/ui_number_m_9.png"></div>
+                </div>
+                <!--パック数の十の位の数字（大きい方）-->
+                <div id="packCounterNumCont2">
+                    <div id="packCounterNum2_0" class="packCounterNum"><img src="img/ui_number_m_0.png"></div>
+                    <div id="packCounterNum2_1" class="packCounterNum"><img src="img/ui_number_m_1.png"></div>
+                    <div id="packCounterNum2_2" class="packCounterNum"><img src="img/ui_number_m_2.png"></div>
+                    <div id="packCounterNum2_3" class="packCounterNum"><img src="img/ui_number_m_3.png"></div>
+                    <div id="packCounterNum2_4" class="packCounterNum"><img src="img/ui_number_m_4.png"></div>
+                    <div id="packCounterNum2_5" class="packCounterNum"><img src="img/ui_number_m_5.png"></div>
+                    <div id="packCounterNum2_6" class="packCounterNum"><img src="img/ui_number_m_6.png"></div>
+                    <div id="packCounterNum2_7" class="packCounterNum"><img src="img/ui_number_m_7.png"></div>
+                    <div id="packCounterNum2_8" class="packCounterNum"><img src="img/ui_number_m_8.png"></div>
+                    <div id="packCounterNum2_9" class="packCounterNum"><img src="img/ui_number_m_9.png"></div>
+                </div>
+
+                <!--パック数の一の位の数字（小さい方）-->
+                <div id="packCounterSmallNumCont1">
+                    <div id="packCounterSmallNum1_0" class="packCounterSmallNum"><img src="img/ui_number_s_0.png"></div>
+                    <div id="packCounterSmallNum1_1" class="packCounterSmallNum"><img src="img/ui_number_s_1.png"></div>
+                    <div id="packCounterSmallNum1_2" class="packCounterSmallNum"><img src="img/ui_number_s_2.png"></div>
+                    <div id="packCounterSmallNum1_3" class="packCounterSmallNum"><img src="img/ui_number_s_3.png"></div>
+                    <div id="packCounterSmallNum1_4" class="packCounterSmallNum"><img src="img/ui_number_s_4.png"></div>
+                    <div id="packCounterSmallNum1_5" class="packCounterSmallNum"><img src="img/ui_number_s_5.png"></div>
+                    <div id="packCounterSmallNum1_6" class="packCounterSmallNum"><img src="img/ui_number_s_6.png"></div>
+                    <div id="packCounterSmallNum1_7" class="packCounterSmallNum"><img src="img/ui_number_s_7.png"></div>
+                    <div id="packCounterSmallNum1_8" class="packCounterSmallNum"><img src="img/ui_number_s_8.png"></div>
+                    <div id="packCounterSmallNum1_9" class="packCounterSmallNum"><img src="img/ui_number_s_9.png"></div>
+                </div>
+                <!--パック数の十の位の数字（小さい方）-->
+                <div id="packCounterSmallNumCont2">
+                    <div id="packCounterSmallNum2_0" class="packCounterSmallNum"><img src="img/ui_number_s_0.png"></div>
+                    <div id="packCounterSmallNum2_1" class="packCounterSmallNum"><img src="img/ui_number_s_1.png"></div>
+                    <div id="packCounterSmallNum2_2" class="packCounterSmallNum"><img src="img/ui_number_s_2.png"></div>
+                    <div id="packCounterSmallNum2_3" class="packCounterSmallNum"><img src="img/ui_number_s_3.png"></div>
+                    <div id="packCounterSmallNum2_4" class="packCounterSmallNum"><img src="img/ui_number_s_4.png"></div>
+                    <div id="packCounterSmallNum2_5" class="packCounterSmallNum"><img src="img/ui_number_s_5.png"></div>
+                    <div id="packCounterSmallNum2_6" class="packCounterSmallNum"><img src="img/ui_number_s_6.png"></div>
+                    <div id="packCounterSmallNum2_7" class="packCounterSmallNum"><img src="img/ui_number_s_7.png"></div>
+                    <div id="packCounterSmallNum2_8" class="packCounterSmallNum"><img src="img/ui_number_s_8.png"></div>
+                    <div id="packCounterSmallNum2_9" class="packCounterSmallNum"><img src="img/ui_number_s_9.png"></div>
+                </div>
+
+              </div>
+
+              <div id="rarityTextWrapper">
+                <div id="rarityBg_1" class="rarityBg"><img src="img/ui_rare_1_bg.jpg" /></div>
+                <div id="rarityText_1" class="rarityText"><img src="img/ui_rare_1_text.png" /></div>
+                <div id="rarityBg_2" class="rarityBg"><img src="img/ui_rare_2_bg.jpg" /></div>
+                <div id="rarityText_2" class="rarityText"><img src="img/ui_rare_2_text.png" /></div>
+                <div id="rarityBg_3" class="rarityBg"><img src="img/ui_rare_3_bg.jpg" /></div>
+                <div id="rarityText_3" class="rarityText"><img src="img/ui_rare_3_text.png" /></div>
+                <div id="rarityBg_4" class="rarityBg"><img src="img/ui_rare_4_bg.jpg" /></div>
+                <div id="rarityText_4" class="rarityText"><img src="img/ui_rare_4_text.png" /></div>
+              </div>
+
           </div>
 
 
           <div id="bitFFF" class="bitFFF"><img src="img/bitFFF.png"></div>
           <div id="bit000" class="bit000"><img src="img/bit000.png"></div>
-          <div id="startBtn">Click to Start!!</div>
+          
+          <div id="nextBtn" class="btn"><img src="img/ui_btn_next.png"></div>
+          <div id="startBtn" class="btn"><img src="img/ui_btn_start.png"></div>
           <!--<audio id="audio" src="http://develop.cardgacha.com/files/contents/showup_01.mp3" preload="auto"></audio>-->
           
         </div>
+        <div id="allSkip" class="allSkipBtn"><img src="img/ui_btn_allskip.png"></div>
       </div>
       <!-- ▲アニメーションエリア▲ -->
+      
     </div><!-- /main -->
   </body>
 </html>

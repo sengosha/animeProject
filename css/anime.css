@@ -21,6 +21,20 @@
 #bg_back{left:-375px}
 .effWrap{mix-blend-mode: screen;}
 #bg_pillar{mix-blend-mode: screen;}
+
+@keyframes bg_pillar_move {
+	0% {transform:scale(1, 1);}
+	50% {transform:scale(1.5, 1);}
+	100% {transform:scale(1, 1);}
+}
+
+.bg_pillar_move {
+	animation-name: bg_pillar_move;
+	animation-duration: 3s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
 .s_naviChar{opacity: 0;width: 375px;}
 
 @keyframes naviCharFloat{
@@ -40,47 +54,82 @@
 }
 .mainCard{
 	width: 200px;
-	height: 279.5px;
+	height: 280px;
 	left: 87.5px;
-	top: 135.25px;
+	top: 70px;
 	opacity: 0;
 }
 .smallCard{
-	width: 50px;
-	height: 70px;
+	width: 60px;
+	height: 84px;
 	background-image:url(../img/littlecard.jpg);
-	background-size: 1000px 350px;
+	background-size: 1200px 420px;
 	background-repeat: no-repeat;
+	box-shadow: 2px 2px 3px rgba(100%,100%,100%,0.8) inset, -2px -2px 3px rgba(100%,100%,100%,0.8) inset,0px -2px 3px rgba(100%,100%,100%,0.8),0px 2px 3px rgba(100%,100%,100%,0.8);
 	opacity: 0;
 }
 
 .smallCardPos_0{
-	left: 40px;
-	top: 400px;
+	left: 15px;
+	top: 430px;
 }
 .smallCardPos_1{
-	left: 100px;
-	top: 400px;
+	left: 70px;
+	top: 430px;
 }
 .smallCardPos_2{
-	left: 160px;
-	top: 400px;
+	left: 125px;
+	top: 430px;
 }
 .smallCardPos_3{
-	left: 40px;
-	top: 475px;
+	left: 180px;
+	top: 430px;
 }
 .smallCardPos_4{
-	left: 100px;
-	top: 475px;
+	left: 15px;
+	top: 336px;
 }
 .smallCardPos_5{
-	left: 160px;
-	top: 475px;
+	left: 70px;
+	top: 336px;
 }
 
+#packCounterCont,#packCounterBg{
+	width: 87.5px;
+	height: 70px;
+}
+#packCounterCont{
+	left:-87.5px;
+}
+.packCounterNum{
+	width: 22px;
+	height: 27px;
+	opacity:0;
+}
+#packCounterNumCont1{
+  top: 30px;
+  left: 23px;
+}
+#packCounterNumCont2{
+  top: 30px;
+  left: 6px;
+}
+.packCounterSmallNum{
+	width: 9px;
+	height: 9px;
+	opacity:0;
+}
+#packCounterSmallNumCont1{
+  top: 35px;
+  left: 60px;
+}
+#packCounterSmallNumCont2{
+  top: 35px;
+  left: 52px;
+}
 #magicSquare1{
 	width: 498px;
+	height: 498px;
 	left:-61.5px;
 	top:26px;
 	mix-blend-mode: screen;
@@ -88,6 +137,7 @@
 }
 #magicSquare2{
 	width: 498px;
+	height: 498px;
 }
 #magicSquareWrap{
 	width: 498px;
@@ -108,7 +158,89 @@
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 }
-
+#naviCharWrapper{
+	width:375px;
+	height:550px;
+}
+.naviChar{
+	width:187.5px;
+	height: 250px;
+	opacity:0;
+	right:0px;
+	bottom:0px;
+}
+#mainCardCover{
+  width: 220px;
+	height: 300px;
+	left: 79px;
+	top: 59px;
+	opacity: 1;
+	transform-origin: center bottom;
+}
+.mainCardLight{
+	width:375px;
+	height:550px;
+	opacity:0;
+}
+.mainCardHolo{
+	width: 200px;
+	height: 280px;
+	left: 87.5px;
+	top: 70px;
+	mix-blend-mode: screen;
+	opacity: 0;
+}
+.smallCardHolo{
+	width: 60px;
+	height: 84px;
+	mix-blend-mode: screen;
+	
+	opacity: 0;
+}
+.cardFadeInLight{
+	width:80px;
+	height:104px;
+	opacity:0;
+}
+.cardFadeInLightPos_0{
+	left: 5px;
+  top: 422px;
+}
+.cardFadeInLightPos_1{
+	left: 59px;
+	top: 422px;
+}
+.cardFadeInLightPos_2{
+	left: 113px;
+	top: 422px;
+}
+.cardFadeInLightPos_3{
+	left: 170px;
+	top: 422px;
+}
+.cardFadeInLightPos_4{
+	left: 5px;
+	top: 327px;
+}
+.cardFadeInLightPos_5{
+	left: 59px;
+	top: 327px;
+}
+.rarityText{
+	width:375px;
+	height:280px;
+	top:130px;
+	left:0px;
+	opacity:0;
+}
+.rarityBg{
+	width:375px;
+	height:280px;
+	top:130px;
+	left:0px;
+	mix-blend-mode: screen;
+	opacity:0;
+}
 .thunder1,.thunder2{
 	width:375px;
 	mix-blend-mode: screen;
@@ -212,27 +344,24 @@
 	animation-iteration-count: infinite;
 }
 
-
+.btn{
+	width: 290px;
+	height: 60px;
+	left: 42.5px;
+	top: 480px;
+	opacity:0;
+}
 #startBtn{
-    width: 150px;
-    height: 50px;
-    color: red;
-    font-weight: bold;
-    top: 465px;
-    left: 121px;
-}
-@keyframes bg_pillar_move {
-	0% {transform:scale(1, 1);}
-	50% {transform:scale(1.5, 1);}
-	100% {transform:scale(1, 1);}
+	opacity:1;
 }
 
-.bg_pillar_move {
-	animation-name: bg_pillar_move;
-	animation-duration: 3s;
-	animation-timing-function: linear;
-	animation-iteration-count: infinite;
+.allSkipBtn{
+    width: 87.5px;
+    height: 70px;
+    left: 288px;
+    top: 0px;
 }
+
 
 
 @keyframes bg_eff_move {
