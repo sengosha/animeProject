@@ -1907,7 +1907,7 @@
           }).
           next(function () {
               $("#card_" + packIndex + "_" + MAIN_CARD_INDEX).css({"opacity":"1","z-index":"1"});
-              $("#mainCardCover").velocity({scaleY:[0,1]},{duration:700,easing:"linear"});
+              $("#mainCardCover").velocity({opacity:[0,1]},{duration:700,easing:"linear"});
               waitTimer = wait(0.7);
               return waitTimer;
           }).
@@ -2076,7 +2076,7 @@
     $("#pillarWrap,.skipshowpack_" + packIndex).css({display:"block",opacity:"1"});
     $(".skipshowholo_" + packIndex).css({display:"block",opacity:"0.6"});
     $("#packCounterCont").velocity({translateX:[87.5,87.5]},{duration:50,easing:"linear"});
-    $("#naviChar_" + naviChar).css("opacity","1");
+    $("#naviChar_" + naviChar).css({opacity:"1",transform:"translate(0px,0px)"});
     $("#nextBtn").velocity({opacity:[0.4,1]},{duration:1000,easing:"linear",display:"block",loop:true});           
     /*タップスキップ処理　END*/
 
