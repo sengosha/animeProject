@@ -2,7 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>シートガチャ</title>
+    <title>ガチャアニメ</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=375, maximum-scale=1.0, user-scalable=no, initial-scale=1" />
     <meta name="format-detection" content="telephone=no, address=no" />
@@ -34,7 +34,8 @@
         /*20パックのデータ*/
         "packs":[
           {
-          "naviChar":2,
+          /*ナビキャラの画像*/
+          "charaIllust":2,
           "charaVoice":8,
           "cards": [
                     {
@@ -98,7 +99,7 @@
           },
 
           {
-          "naviChar":0,  
+          "charaIllust":0,  
           "charaVoice":8,
           "cards": [
                     {
@@ -161,7 +162,7 @@
           },
 
           {
-          "naviChar":1,
+          "charaIllust":1,
           "charaVoice":8,
           "cards": [
                     {
@@ -225,7 +226,7 @@
           },
 
           {
-          "naviChar":4,
+          "charaIllust":4,
           "charaVoice":8,
           "cards": [
                     {
@@ -288,7 +289,7 @@
           },
 
           {
-            "naviChar":2,
+            "charaIllust":2,
           "charaVoice":8,
           "cards": [
                     {
@@ -352,7 +353,7 @@
           },
 
           {
-            "naviChar":2,
+            "charaIllust":2,
           "charaVoice":8,
           "cards": [
                     {
@@ -415,7 +416,7 @@
           },
 
           {
-            "naviChar":2,
+            "charaIllust":2,
           "charaVoice":8,
           "cards": [
                     {
@@ -479,7 +480,7 @@
           },
 
           {
-            "naviChar":2,
+            "charaIllust":2,
           "charaVoice":8,
           "cards": [
                     {
@@ -542,7 +543,7 @@
           },
 
           {
-            "naviChar":2,
+            "charaIllust":2,
           "charaVoice":8,
           "cards": [
                     {
@@ -606,7 +607,7 @@
           },
 
           {
-            "naviChar":2,
+            "charaIllust":2,
           "charaVoice":8,
           "cards": [
                     {
@@ -669,7 +670,7 @@
           },
 
           {
-            "naviChar":2,
+            "charaIllust":2,
           "charaVoice":8,
           "cards": [
                     {
@@ -733,7 +734,7 @@
           },
 
           {
-            "naviChar":2,
+            "charaIllust":2,
           "charaVoice":8,
           "cards": [
                     {
@@ -796,7 +797,7 @@
           },
 
           {
-            "naviChar":2,
+            "charaIllust":2,
           "charaVoice":8,
           "cards": [
                     {
@@ -860,7 +861,7 @@
           },
 
           {
-            "naviChar":2,
+            "charaIllust":2,
           "charaVoice":8,
           "cards": [
                     {
@@ -923,7 +924,7 @@
           },
 
           {
-            "naviChar":2,
+            "charaIllust":2,
           "charaVoice":8,
           "cards": [
                     {
@@ -987,7 +988,7 @@
           },
 
           {
-            "naviChar":2,
+            "charaIllust":2,
           "charaVoice":8,
           "cards": [
                     {
@@ -1050,7 +1051,7 @@
           },
 
           {
-            "naviChar":2,
+            "charaIllust":2,
           "charaVoice":8,
           "cards": [
                     {
@@ -1114,7 +1115,7 @@
           },
 
           {
-            "naviChar":2,
+            "charaIllust":2,
           "charaVoice":8,
           "cards": [
                     {
@@ -1177,7 +1178,7 @@
           },
 
           {
-            "naviChar":2,
+            "charaIllust":2,
           "charaVoice":8,
           "cards": [
                     {
@@ -1241,7 +1242,7 @@
           },
 
           {
-            "naviChar":2,
+            "charaIllust":2,
           "charaVoice":8,
           "cards": [
                     {
@@ -1307,7 +1308,7 @@
         /*2パックのデータ*/
         // "packs":[
         //   {
-        //   "naviChar":2,
+        //   "charaIllust":2,
         //   "charaVoice":8,
         //   "cards": [
         //             {
@@ -1370,7 +1371,7 @@
         //    ]
         //   },
         //   {
-        //   "naviChar":2,
+        //   "charaIllust":2,
         //   "charaVoice":8,
         //   "cards": [
         //             {
@@ -1433,8 +1434,6 @@
         //    ]
         //   }
         //   ],
-        /*キャライラスト*/
-        "charaIllust":4
       };
        /*カードのパック数*/
       const PACK_NUM = JSON_DATA.packs.length;
@@ -1515,7 +1514,7 @@
        /*ナビキャラの音声*/
       let naviVoice = [];
        /*ナビキャラの変数*/
-      let naviChar = JSON_DATA.packs[0].naviChar;
+      let naviChar = JSON_DATA.packs[0].charaIllust;
       /*この変数によって各シーンの動きを決める。
       0：最初のシーンの演出からユーザーのタップを受付までの演出
       1：タップ後にエフェクトの演出　→　魔法陣の演出
@@ -1594,7 +1593,7 @@
         for(let i=0; i < PACK_NUM; i++){
           let cardpack = JSON_DATA.packs[i];
           
-          $("#cardPackWrapper").append("<div id='cardPack" + i + "' class='cardPack'>");
+          $("#cardPackWrapper").append("<div id='cardPack" + i + "' class='cardPack skipshowpack_" + i + "'>");
           
 
           /*カード画像生成 div idはcard_パック順番_カード順番　順番は0からスタート*/
@@ -1602,19 +1601,19 @@
 
             /*大きいカード画像を生成*/
             if(cardpack.cards[j].class == 1){
-              $("<div id='card_" + i + "_" + j + "' class='mainCard'><img src='img/bigcard_" + cardpack.cards[j].specialNo + ".jpg'></div>").prependTo("#cardPack" + i);
+              $("<div id='card_" + i + "_" + j + "' class='mainCard skipshowpack_" + i + "'><img src='img/bigcard_" + cardpack.cards[j].specialNo + ".jpg'></div>").prependTo("#cardPack" + i);
               $("<div id='mainCardLight_" + i + "' class='mainCardLight'><img src='img/card_light_l_1.png'></div>").insertAfter("#card_" + i + "_" + j);
               if(cardpack.cards[j].holo == 1){
-                $("<div id='cardHolo_" + i + "_" + j + "' class='mainCardHolo'><img src='img/card_horo_l_1.jpg'></div>").insertAfter("#card_" + i + "_" + j);
+                $("<div id='cardHolo_" + i + "_" + j + "' class='mainCardHolo skipshowholo_" + i + "'><img src='img/card_horo_l_1.jpg'></div>").insertAfter("#card_" + i + "_" + j);
               }
             }
             else{
               /*小さいカード画像を生成*/
               let bgPosX = (cardpack.cards[j].positionX - 1) * SMALLCARD_WIDTH * -1; // -1はタイル画像を左方向へ移動のため
               let bgPosY = (cardpack.cards[j].positionY - 1) * SMALLCARD_HEIGHT * -1;// -1はタイル画像を上方向へ移動のため
-              $("<div id='card_" + i + "_" + j + "' class='smallCard smallCardPos_" + j + "' style='background-position:" + bgPosX + "px " + bgPosY + "px'></div>").appendTo("#cardPack" + i);
+              $("<div id='card_" + i + "_" + j + "' class='smallCard smallCardPos_" + j + " animestopable skipshowpack_" + i + "' style='background-position:" + bgPosX + "px " + bgPosY + "px'></div>").appendTo("#cardPack" + i);
               if(cardpack.cards[j].holo == 1){
-                $("<div id='cardHolo_" + i + "_" + j + "' class='smallCardHolo smallCardPos_" + j + "'><img src='img/card_horo_s_1.jpg'></div>").insertAfter("#card_" + i + "_" + j);
+                $("<div id='cardHolo_" + i + "_" + j + "' class='smallCardHolo smallCardPos_" + j + "  skipshowholo_" + i + "'><img src='img/card_horo_s_1.jpg'></div>").insertAfter("#card_" + i + "_" + j);
               }
             }
             
@@ -1780,7 +1779,7 @@
         /*カードを出す前の魔法陣演出*/
         function playEffAnim(rarity){
           next(function () {
-              $("#magicSquare1").css("display","block");
+
               $("#magicSquare1").velocity({opacity:[1,1],scaleX:[1,-1],scaleY:[1,0],rotateZ:[0,540]},{duration:400,easing:"ease-in",display:"block"})
                                 .velocity({rotateZ:[-360,0]},{duration:12000,easing:"linear",loop:true});
               waitTimer = wait(0.4);
@@ -1788,21 +1787,23 @@
 
           }).
           next(function () {
-              $("#magicSquareWrap").css("display","block");
-              $("#magicSquareWrap").velocity({opacity:[1,0],scaleX:[1,1.2],scaleY:[1,1.2]},{duration:400,easing:"linear"});
+
+              $("#magicSquareWrap").velocity({opacity:[1,0],scaleX:[1,1.2],scaleY:[1,1.2]},{duration:400,easing:"linear",display:"block"});
+              $("#magicSquare2").addClass("anim");
               waitTimer = wait(0.8);
             return waitTimer;
 
           }).
           next(function () {
+              $(".thunder1").addClass("anim");
               $(".thunder1").css("display","block");
               waitTimer = wait(1.5);
               return waitTimer;
           }).
           next(function () {
-              $("#bitFFF").velocity({opacity:[1,0]},{duration:1000,easing:"ease-in"});
-              $("#animelim").velocity({scaleX:[1.5,1],scaleY:[1.5,1]},{duration:1000,easing:"ease-in"});
-              waitTimer = wait(1.2);
+              $("#bitFFF").velocity({opacity:[1,0]},{duration:800,easing:"ease-in"});
+              //$("#animelim").velocity({scaleX:[1.5,1],scaleY:[1.5,1]},{duration:1000,easing:"ease-in"});
+              waitTimer = wait(0.8);
               return waitTimer;
           }).
           next(function () {
@@ -1814,9 +1815,12 @@
         function playPackAnim(rarity){
           let cardpack = JSON_DATA.packs[packIndex];
           const MAIN_CARD_INDEX = 6;
+          const CARD_FADEIN_TIME = 1000;
+          const DELAY_TIME = 300;
           next(function () {
               
-              $("#animelim").css("transform","scale(1,1)");
+              //$("#animelim").css("transform","scale(1,1)");
+              $("#magicSquare2,.thunder1").removeClass("anim");
               $("#magicSquare1").velocity("stop");
               $(".thunder1,#magicSquare1,#magicSquareWrap").css("display","none");
               $("#pillarWrap").css({display:"block",opacity:"1"});
@@ -1826,41 +1830,85 @@
           }).
           next(function () {
               $("#bitFFF").velocity({opacity:[0,1]},{duration:1400,easing:"ease-in"});
-              waitTimer = wait(1.4);
+              waitTimer = wait(0.5);
               return waitTimer;
           }).
           next(function () {
               $("#cardPack" + packIndex).css("display","block");
-              const CARD_FADEIN_TIME = 1000;
-              const DELAY_TIME = 300;
-              for(let i = 0; i < cardpack.cards.length - 1; i++){
-                $("#cardFadeInLight_" + i).velocity({opacity:[0,1]},{duration:800,easing:"ease-in",delay:DELAY_TIME * i});
-                $("#card_" + packIndex + "_" + i).velocity({opacity:[1,0]},{duration:CARD_FADEIN_TIME,easing:"ease-in",delay:DELAY_TIME * i});
-                $("#cardHolo_" + packIndex + "_" + i).velocity({opacity:[1,0]},{duration:CARD_FADEIN_TIME,easing:"ease-in",delay:DELAY_TIME * i})
-                                                     .velocity({opacity:[0.6,1]},{duration:CARD_FADEIN_TIME,easing:"ease-in"});
-              }
-              waitTimer = wait(2.1);
+              
+              $("#cardFadeInLight_0").velocity({opacity:[0,1]},{duration:800,easing:"ease-in"});
+              $("#card_" + packIndex + "_0").velocity({opacity:[1,0]},{duration:CARD_FADEIN_TIME,easing:"ease-in"});
+              $("#cardHolo_" + packIndex + "_0").velocity({opacity:[1,0]},{duration:CARD_FADEIN_TIME,easing:"ease-in",delay:DELAY_TIME})
+                                                    .velocity({opacity:[0.6,1]},{duration:CARD_FADEIN_TIME,easing:"ease-in"});
+
+              waitTimer = wait(0.1);
+              return waitTimer;
+          }).
+          next(function () {  
+              $("#cardFadeInLight_1").velocity({opacity:[0,1]},{duration:800,easing:"ease-in"});
+              $("#card_" + packIndex + "_1").velocity({opacity:[1,0]},{duration:CARD_FADEIN_TIME,easing:"ease-in"});
+              $("#cardHolo_" + packIndex + "_1").velocity({opacity:[1,0]},{duration:CARD_FADEIN_TIME,easing:"ease-in",delay:DELAY_TIME})
+                                                    .velocity({opacity:[0.6,1]},{duration:CARD_FADEIN_TIME,easing:"ease-in"});
+
+              waitTimer = wait(0.1);
+              return waitTimer;
+          }).
+          next(function () {  
+              $("#cardFadeInLight_2").velocity({opacity:[0,1]},{duration:800,easing:"ease-in"});
+              $("#card_" + packIndex + "_2").velocity({opacity:[1,0]},{duration:CARD_FADEIN_TIME,easing:"ease-in"});
+              $("#cardHolo_" + packIndex + "_2").velocity({opacity:[1,0]},{duration:CARD_FADEIN_TIME,easing:"ease-in",delay:DELAY_TIME})
+                                                    .velocity({opacity:[0.6,1]},{duration:CARD_FADEIN_TIME,easing:"ease-in"});
+
+              waitTimer = wait(0.1);
+              return waitTimer;
+          }).
+          next(function () {  
+              $("#cardFadeInLight_3").velocity({opacity:[0,1]},{duration:800,easing:"ease-in"});
+              $("#card_" + packIndex + "_3").velocity({opacity:[1,0]},{duration:CARD_FADEIN_TIME,easing:"ease-in"});
+              $("#cardHolo_" + packIndex + "_3").velocity({opacity:[1,0]},{duration:CARD_FADEIN_TIME,easing:"ease-in",delay:DELAY_TIME})
+                                                    .velocity({opacity:[0.6,1]},{duration:CARD_FADEIN_TIME,easing:"ease-in"});
+
+              waitTimer = wait(0.1);
+              return waitTimer;
+          }).
+          next(function () {  
+              $("#cardFadeInLight_4").velocity({opacity:[0,1]},{duration:800,easing:"ease-in"});
+              $("#card_" + packIndex + "_4").velocity({opacity:[1,0]},{duration:CARD_FADEIN_TIME,easing:"ease-in"});
+              $("#cardHolo_" + packIndex + "_4").velocity({opacity:[1,0]},{duration:CARD_FADEIN_TIME,easing:"ease-in",delay:DELAY_TIME})
+                                                    .velocity({opacity:[0.6,1]},{duration:CARD_FADEIN_TIME,easing:"ease-in"});
+
+              waitTimer = wait(0.1);
+              return waitTimer;
+          }).
+          next(function () {  
+              $("#cardFadeInLight_5").velocity({opacity:[0,1]},{duration:800,easing:"ease-in"});
+              $("#card_" + packIndex + "_5").velocity({opacity:[1,0]},{duration:CARD_FADEIN_TIME,easing:"ease-in"});
+              $("#cardHolo_" + packIndex + "_5").velocity({opacity:[1,0]},{duration:CARD_FADEIN_TIME,easing:"ease-in",delay:DELAY_TIME})
+                                                .velocity({opacity:[0.6,1]},{duration:CARD_FADEIN_TIME,easing:"ease-in"});
+
+              waitTimer = wait(0.5);
               return waitTimer;
           }).
           next(function () {
               $("#bit000").velocity({opacity:[0.6,0]},{duration:500,easing:"linear"});
-              $("#mainCardCover").velocity({translateY:[0,-360],scaleX:[-1,1],scaleY:[1,1],opacity:[1,1]},{duration:600,easing:"linear"})
+              $("#mainCardCover").velocity({translateY:[0,-360],scaleX:[-1,1],scaleY:[1,1],opacity:[1,1]},{duration:600,easing:"linear",display:"block"})
                                  .velocity({translateY:[10,0]},{duration:100,easing:"linear"})
                                  .velocity({translateY:[0,10]},{duration:100,easing:"linear"});
               waitTimer = wait(0.6);
               return waitTimer;
           }).
           next(function () {
-              $("#card_" + packIndex + "_" + MAIN_CARD_INDEX).css({"opacity":"1","z-index":"1"});
               
-              $("#cardParticle").velocity({scaleX:[1.4,1],scaleY:[1.4,1],translateY:[-450,100]},{duration:1500,easing:"ease-in"});
+              
+              $("#cardParticle").velocity({scaleX:[1.4,1],scaleY:[1.4,1],translateY:[-450,100]},{duration:1500,easing:"ease-in",display:"block"});
               $("#cardParticle").velocity({opacity:[1,0]},{duration:200,easing:"ease-in",queue:false});
-              waitTimer = wait(1);
+              waitTimer = wait(0.7);
               return waitTimer;
           }).
           next(function () {
-              $("#mainCardCover").velocity({scaleY:[0,1]},{duration:1400,easing:"easeInExpo"});
-              waitTimer = wait(1.4);
+              $("#card_" + packIndex + "_" + MAIN_CARD_INDEX).css({"opacity":"1","z-index":"1"});
+              $("#mainCardCover").velocity({scaleY:[0,1]},{duration:700,easing:"linear"});
+              waitTimer = wait(0.7);
               return waitTimer;
           }).
           next(function () {
@@ -1884,7 +1932,7 @@
               $("#cardParticle").velocity({scaleX:[2,1],scaleY:[2,1],translateY:[0,0]},{duration:800,easing:"ease-in",queue:false});
               $("#cardParticle").velocity({opacity:[1,1]},{duration:100,easing:"linear",queue:false})
                                 .velocity({opacity:[0,1]},{duration:600,easing:"linear"});
-              waitTimer = wait(2.5);
+              waitTimer = wait(1);
               return waitTimer;
           }).
           next(function () {
@@ -1895,7 +1943,7 @@
               $("#rarityBg_" + rarity).velocity({opacity:[0,1]},{duration:300,easing:"linear"});
               $("#rarityText_" + rarity).velocity({opacity:[0,1]},{duration:300,easing:"linear"});
               $("#bit000").velocity({opacity:[0,0.6]},{duration:300,easing:"linear"});
-              waitTimer = wait(0.3);
+              waitTimer = wait(0);
               return waitTimer;
           }).
           next(function () {
@@ -1919,7 +1967,7 @@
           packIndex++;
           cardIndex = 0;
           cardRarity = JSON_DATA.packs[packIndex].cards[6].rarity;
-          naviChar = JSON_DATA.packs[packIndex].naviChar;
+          naviChar = JSON_DATA.packs[packIndex].charaIllust;
            /*魔法陣をセット*/
           setMagicSquare(cardRarity);
           /*パック数をセット*/
@@ -1932,7 +1980,7 @@
           next(function () {
               $("#loading").remove();
               $("#animelim,#allSkip").velocity({opacity:[1,0]},{duration:300,easing:"linear",display:"block"});
-              $("#startBtn").velocity({opacity:0.6},{duration:1000,easing:"linear",display:"block",loop:true});
+              $("#startBtn").velocity({opacity:[0.4,1]},{duration:2000,easing:"linear",display:"block",loop:true});
               waitTimer = wait(0.3);
               return waitTimer;
           })
@@ -1953,34 +2001,7 @@
               return waitTimer;
           });
         }
-          
-        // next(function () {
-        //     $("#char2").velocity({translateX:[-500,0]},{duration:300,easing:"linear"})
-        //                .velocity({translateX:[-550,-500]},{duration:1500,easing:"linear"});
-        //     return wait(0.2);
 
-        // }).
-        // next(function () {
-        //     $("#char3").velocity({translateX:[300,0]},{duration:300,easing:"linear"})
-        //                .velocity({translateX:[330,300]},{duration:1500,easing:"linear"});
-        //     return wait(1);
-
-        // }).
-        // next(function () {        
-        //   $("#cardMask" + gachatype).velocity({scaleX:[1,0.5],scaleY:[1,0.5],opacity:1},{duration:400});
-        //     return wait(0.3);
-        // }).
-        // next(function () {
-        //   $("#bitFFF").velocity({opacity:[1,0]},{duration:200,easing:"linear"});
-        //     return wait(0.2);
-        // }).
-        // next(function () {
-        //   $(".speed").remove();
-        //   doBg2Switch();    
-        //   $("#bitFFF").velocity({opacity:[0,1]},{duration:100,easing:"linear"});
-        //   $("#card"+gachatype).css("opacity","1");
-        //   $('#btn').velocity({opacity:[1,0]},{duration:300,easing:"linear"});
-        // });
 
          
   startBtn.addEventListener('click',function(){
@@ -2037,11 +2058,33 @@
     if(!istapable) return;
     istapable = false;
     console.log("stage click");
-    switch(scene){
-      case 0:
-        //scene = 1;
-        break;
-    }
+    /*タップスキップ処理　BEGIN*/
+    //まず非同期の処理タイマーを停止させる
+    waitTimer.cancel();
+    //スキップ後に使わない要素をすべて削除
+    $(".removeable").remove();
+   //velocityJSで動いている物をすべて停止させる
+    $(".animestopable").velocity("stop");
+    $("#magicSquare2,.thunder1").removeClass("anim");
+    //要素を隠す
+    $(".thunder1,#magicSquare1,#magicSquareWrap,#mainCardCover,#cardParticle").css("display","none");
+    $("#bit000,#bitFFF,#bgMask,.cardFadeInLight,.naviChar,.rarityBg,.rarityText").css("opacity","0");
+    //アニメエリアは演出の途中に拡大するため、強制的に戻す
+    //$("#animelim").css("transform","scale(1,1)");
+    //パックのシーンで出す要素をすべて表示させる
+    $("#card_" + packIndex + "_6").css("z-index","0");
+    $("#pillarWrap,.skipshowpack_" + packIndex).css({display:"block",opacity:"1"});
+    $(".skipshowholo_" + packIndex).css({display:"block",opacity:"0.6"});
+    $("#packCounterCont").velocity({translateX:[87.5,87.5]},{duration:50,easing:"linear"});
+    $("#naviChar_" + naviChar).css("opacity","1");
+    $("#nextBtn").velocity({opacity:[0.4,1]},{duration:1000,easing:"linear",display:"block",loop:true});           
+    /*タップスキップ処理　END*/
+
+    // switch(scene){
+    //   case 0:
+    //     //scene = 1;
+    //     break;
+    // }
     //animeStart();
     //window.location = 'next.html';
    });
@@ -2054,15 +2097,20 @@
     <div id="main">
       <!-- ▼アニメーションエリア▼ -->
       <div class='anime-stage'>
-        <div id="animelim">
+        <div id="animelim" class="animestopable">
           <div id="scene1">
-              <div id="bg_back" class="bg"><img src="img/bg_light_1.png"></div>
+              <div id="bg_back" class="bg removeable"><img src="img/bg_light_1.png"></div>
               <div id="bg_middle" class="bg"><img src="img/bg_wall_1.png"></div>
               <div id="bg_front" class="bg"><img src="img/bg_device_1.png"></div>
-              <div id="pillarWrap">
+              <!--PC版用に残す
+                <div id="pillarWrap" class="animestopable">
               <div id="bg_pillar" class="bg bg_pillar_move"><img src="img/ef_light_1.jpg"></div>
               </div>
-              <div id="bgMask" class="bit000"><img src="img/bit000.png"></div>
+              -->
+              <div id="pillarWrap" class="animestopable">
+              <div id="bg_pillar" class="bg"><img src="img/ef_light_1.jpg"></div>
+              </div>
+              <div id="bgMask" class="bit000 animestopable"><img src="img/bit000.png"></div>
                <!-- PC版用に残す
               <div id="bg_effWrap1" class="effWrap anim">
               <div id="bg_eff1" style="background-image: url(img/ef_line_1.gif)" class="bg_eff anim"></div>
@@ -2082,33 +2130,33 @@
               -->
 
               <!--スマホ版は背景のパーティクルが動かさない-->
-              <div id="bg_effWrap1" class="effWrap">
+              <div id="bg_effWrap1" class="effWrap removeable">
               <div id="bg_eff1" style="background-image: url(img/ef_line_1.gif)" class="bg_eff"></div>
               </div>
 
-              <div id="bg_effWrap2" class="effWrap">
+              <div id="bg_effWrap2" class="effWrap removeable">
               <div id="bg_eff2" style="background-image: url(img/ef_line_2.gif)" class="bg_eff"></div>
               </div>
 
-              <div id="bg_effWrap3" class="effWrap">
+              <div id="bg_effWrap3" class="effWrap removeable">
               <div id="bg_eff3" style="background-image: url(img/ef_line_3.gif)" class="bg_eff"></div>
               </div>
 
-              <div id="bg_effWrap4" class="effWrap">
+              <div id="bg_effWrap4" class="effWrap removeable">
               <div id="bg_eff4" style="background-image: url(img/ef_line_4.gif)" class="bg_eff"></div>
               </div>
 
               <!-- タップスタートする前に出てくるナビキャラ-->
-              <div id="s_naviCharWrap" class="anim">
+              <div id="s_naviCharWrap" class="removeable anim">
                 <div id="s_naviChar" class="s_naviChar"><img src="img/chara_unit_2.png" /></div>
                 <div id="s_naviChar_f" class="s_naviChar"><img src="img/chara_unit_1.png" /></div>
                 <div id="s_naviChar_w" class="s_naviChar"><img src="img/chara_unit_3.png" /></div>
               </div>
 
               <!-- 魔法陣　-->
-              <div id="magicSquare1" class="magicSquare"><img src="img/ef_circle_1_1.jpg" /></div>
-              <div id="magicSquareWrap">
-                <div id="magicSquare2" class="magicSquare anim"><img src="img/ef_circle_1_2.jpg" /></div>
+              <div id="magicSquare1" class="animestopable magicSquare"><img src="img/ef_circle_1_1.jpg" /></div>
+              <div id="magicSquareWrap" class="animestopable">
+                <div id="magicSquare2" class="magicSquare"><img src="img/ef_circle_1_2.jpg" /></div>
               </div>
 
               <!-- 雷エフェクトグループ-->
@@ -2127,25 +2175,25 @@
 
 
 
-              <div id="mainCardCover" class="bg"><img src="img/card_light_l_2.png"></div>
-              <div id="cardParticle" class="particle"><img src="img/ef_particle_1.png"></div>
+              <div id="mainCardCover" class="animestopable bg"><img src="img/card_light_l_2.png"></div>
+              <div id="cardParticle" class="animestopable particle"><img src="img/ef_particle_1.png"></div>
 
-              <div id="cardFadeInLight_0" class="cardFadeInLight cardFadeInLightPos_0"><img src="img/card_light_s_1.png" /></div>
-              <div id="cardFadeInLight_1" class="cardFadeInLight cardFadeInLightPos_1"><img src="img/card_light_s_1.png" /></div>
-              <div id="cardFadeInLight_2" class="cardFadeInLight cardFadeInLightPos_2"><img src="img/card_light_s_1.png" /></div>
-              <div id="cardFadeInLight_3" class="cardFadeInLight cardFadeInLightPos_3"><img src="img/card_light_s_1.png" /></div>
-              <div id="cardFadeInLight_4" class="cardFadeInLight cardFadeInLightPos_4"><img src="img/card_light_s_1.png" /></div>
-              <div id="cardFadeInLight_5" class="cardFadeInLight cardFadeInLightPos_5"><img src="img/card_light_s_1.png" /></div>
+              <div id="cardFadeInLight_0" class="animestopable cardFadeInLight cardFadeInLightPos_0"><img src="img/card_light_s_1.png" /></div>
+              <div id="cardFadeInLight_1" class="animestopable cardFadeInLight cardFadeInLightPos_1"><img src="img/card_light_s_1.png" /></div>
+              <div id="cardFadeInLight_2" class="animestopable cardFadeInLight cardFadeInLightPos_2"><img src="img/card_light_s_1.png" /></div>
+              <div id="cardFadeInLight_3" class="animestopable cardFadeInLight cardFadeInLightPos_3"><img src="img/card_light_s_1.png" /></div>
+              <div id="cardFadeInLight_4" class="animestopable cardFadeInLight cardFadeInLightPos_4"><img src="img/card_light_s_1.png" /></div>
+              <div id="cardFadeInLight_5" class="animestopable cardFadeInLight cardFadeInLightPos_5"><img src="img/card_light_s_1.png" /></div>
 
               <!--ナビキャラのラッパー idはnaviChar_レア度
                 0:N, 1:SR, 2:HR, 3:ZXR, 4:シークレット
               -->
               <div id="naviCharWrapper">
-                <div id="naviChar_0" class="naviChar"><img src="img/chara_result_0.png" /></div>
-                <div id="naviChar_1" class="naviChar"><img src="img/chara_result_1.png" /></div>
-                <div id="naviChar_2" class="naviChar"><img src="img/chara_result_2.png" /></div>
-                <div id="naviChar_3" class="naviChar"><img src="img/chara_result_3.png" /></div>
-                <div id="naviChar_4" class="naviChar"><img src="img/chara_result_4.png" /></div>
+                <div id="naviChar_0" class="animestopable naviChar"><img src="img/chara_result_0.png" /></div>
+                <div id="naviChar_1" class="animestopable naviChar"><img src="img/chara_result_1.png" /></div>
+                <div id="naviChar_2" class="animestopable naviChar"><img src="img/chara_result_2.png" /></div>
+                <div id="naviChar_3" class="animestopable naviChar"><img src="img/chara_result_3.png" /></div>
+                <div id="naviChar_4" class="animestopable naviChar"><img src="img/chara_result_4.png" /></div>
               </div>
 
               <!--パック数のラッパー-->
@@ -2209,21 +2257,21 @@
               </div>
 
               <div id="rarityTextWrapper">
-                <div id="rarityBg_1" class="rarityBg"><img src="img/ui_rare_1_bg.jpg" /></div>
-                <div id="rarityText_1" class="rarityText"><img src="img/ui_rare_1_text.png" /></div>
-                <div id="rarityBg_2" class="rarityBg"><img src="img/ui_rare_2_bg.jpg" /></div>
-                <div id="rarityText_2" class="rarityText"><img src="img/ui_rare_2_text.png" /></div>
-                <div id="rarityBg_3" class="rarityBg"><img src="img/ui_rare_3_bg.jpg" /></div>
-                <div id="rarityText_3" class="rarityText"><img src="img/ui_rare_3_text.png" /></div>
-                <div id="rarityBg_4" class="rarityBg"><img src="img/ui_rare_4_bg.jpg" /></div>
-                <div id="rarityText_4" class="rarityText"><img src="img/ui_rare_4_text.png" /></div>
+                <div id="rarityBg_1" class="animestopable rarityBg"><img src="img/ui_rare_1_bg.jpg" /></div>
+                <div id="rarityText_1" class="animestopable rarityText"><img src="img/ui_rare_1_text.png" /></div>
+                <div id="rarityBg_2" class="animestopable rarityBg"><img src="img/ui_rare_2_bg.jpg" /></div>
+                <div id="rarityText_2" class="animestopable rarityText"><img src="img/ui_rare_2_text.png" /></div>
+                <div id="rarityBg_3" class="animestopable rarityBg"><img src="img/ui_rare_3_bg.jpg" /></div>
+                <div id="rarityText_3" class="animestopable rarityText"><img src="img/ui_rare_3_text.png" /></div>
+                <div id="rarityBg_4" class="animestopable rarityBg"><img src="img/ui_rare_4_bg.jpg" /></div>
+                <div id="rarityText_4" class="animestopable rarityText"><img src="img/ui_rare_4_text.png" /></div>
               </div>
 
           </div>
 
 
-          <div id="bitFFF" class="bitFFF"><img src="img/bitFFF.png"></div>
-          <div id="bit000" class="bit000"><img src="img/bit000.png"></div>
+          <div id="bitFFF" class="bitFFF animestopable"><img src="img/bitFFF.png"></div>
+          <div id="bit000" class="bit000 animestopable"><img src="img/bit000.png"></div>
           
           
           

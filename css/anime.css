@@ -222,27 +222,27 @@
 }
 .cardFadeInLightPos_0{
 	left: 5px;
-  top: 422px;
+  top: 420px;
 }
 .cardFadeInLightPos_1{
 	left: 59px;
-	top: 422px;
+	top: 420px;
 }
 .cardFadeInLightPos_2{
 	left: 113px;
-	top: 422px;
+	top: 420px;
 }
 .cardFadeInLightPos_3{
 	left: 170px;
-	top: 422px;
+	top: 420px;
 }
 .cardFadeInLightPos_4{
 	left: 5px;
-	top: 327px;
+	top: 326px;
 }
 .cardFadeInLightPos_5{
 	left: 59px;
-	top: 327px;
+	top: 326px;
 }
 .rarityText{
 	width:375px;
@@ -375,7 +375,7 @@
 	z-index: 99;
 }
 #startBtn{
-	opacity:0;
+	opacity:1;
 	display:none;
 }
 #nextBtn{
